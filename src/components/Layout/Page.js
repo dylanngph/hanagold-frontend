@@ -10,7 +10,8 @@ import Container from './Container'
 const StyledPage = styled(Container)`
   min-height: calc(100vh - 74px);
   padding: 0px;
-  background-image: url("images/backgroud.png");
+  color: #fff;
+  background-color: #24262D;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

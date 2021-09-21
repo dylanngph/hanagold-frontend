@@ -14,24 +14,6 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const StyledNav = styled.nav`
-  position: fixed;
-  top: ${({showMenu}) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
-  left: 0;
-  transition: top 0.2s;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 8px;
-  padding-right: 16px;
-  width: 100%;
-  height: ${MENU_HEIGHT}px;
-  ${({theme}) => theme.headerBackground};
-  border-bottom: solid 2px rgba(133, 133, 133, 0.1);
-  z-index: 20;
-  transform: translate3d(0, 0, 0);
-`;
-
 const BodyWrapper = styled.div`
   position: relative;
   display: flex;
@@ -39,7 +21,6 @@ const BodyWrapper = styled.div`
 
 const Inner = styled.div`
   flex-grow: 1;
-  margin-top: ${({showMenu}) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
   transition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
   max-width: 100%;
@@ -104,8 +85,6 @@ const UikitMenu = ({
     };
   }, []);
 
-  // Find the home link if provided
-  const homeLink = links.find((link) => link.label === 'Home');
 
   return (
       <Wrapper>

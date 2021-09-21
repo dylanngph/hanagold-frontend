@@ -14,8 +14,8 @@ const rainbowAnimation = keyframes`
 const LinkLabel = styled.div`
   flex-grow: 1;
   font-weight: 400;
-  ${({isActive, theme }) => (isActive ? `color: #fff` : null)};
-  ${({ isPushed, theme }) => (!isPushed ? `display: none` : null)}
+  ${({isActive}) => (isActive ? `color: #FFC247` : null)};
+  ${({ isPushed}) => (!isPushed ? `display: none` : null)}
 `;
 
 const MenuEntry = styled.div`
@@ -23,24 +23,22 @@ const MenuEntry = styled.div`
   display: flex;
   align-items: center;
   height: ${MENU_ENTRY_HEIGHT}px;
-  padding: ${({ secondary, isPushed }) => (secondary ? "0 32px" : isPushed ? "0 16px" : "5px")};
   font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
   background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
-  color: ${({ theme }) => theme.colors.textSubtle};
+  color: rgba(255, 255, 255, .5);
   position: relative;
   border-right: ${({ isPushed }) => (!isPushed ? "2px solid rgba(133, 133, 133, 0.1)" : 0)};
   
   &:before {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: #F8CE46;
     content: ${({ isActive, isPushed }) => (isActive && isPushed ? `""` : "none") };
     left: 0;
     width: 6px;
     height: 100%;
     position: absolute;
-    border-radius: 0px 8px 8px 0px
   }
 
-  ${({isActive, isPushed, theme }) => (isActive && `
+  ${({isActive}) => (isActive && `
   svg {
     filter: invert(99%) sepia(19%) saturate(125%) hue-rotate(82deg) brightness(119%) contrast(100%);
   }`)}
@@ -50,13 +48,12 @@ const MenuEntry = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: ${({ isActive, theme }) => (isActive ? theme.colors.secondary : "none") };
-    border-radius: 14px;
-    padding: 0 16px;
+    background-color: ${({ isActive }) => (isActive ? 'rgba(248, 206, 70, .1)' : "none") };
+    padding: 0 35px;
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: rgba(248, 206, 70, .1);
   }
 
   // Safari fix

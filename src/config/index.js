@@ -4,7 +4,7 @@ import YoutubeIcon from 'components/Svg/YoutubeIcon';
 import { BIG_TEN } from 'utils/bigNumber'
 
 export const SIDEBAR_WIDTH_FULL = 250;
-export const SIDEBAR_WIDTH_REDUCED = 56;
+export const SIDEBAR_WIDTH_REDUCED = 60;
 export const MENU_HEIGHT = 74;
 export const MENU_ENTRY_HEIGHT = 55;
 

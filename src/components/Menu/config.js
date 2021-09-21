@@ -6,7 +6,12 @@ const config =  (t) => [
     href: "/",
   },
   {
-    label: t('Exchange'),
+    label: t('LaunchPad'),
+    icon: "ExchangeIcon",
+    href: "#",
+  },
+  {
+    label: t('Trade'),
     icon: "ExchangeIcon",
     href: "https://kaidex.io/exchange",
   },
@@ -16,7 +21,7 @@ const config =  (t) => [
     href: "/farms",
   },
   {
-    label: "Stake",
+    label: "Pool",
     icon: "StakeIcon",
     href: "/pools",
   },
@@ -35,24 +40,24 @@ const config =  (t) => [
   //   icon: "ExchangeIcon",
   //   href: "/dipo",
   // },
-  {
-    label: t('More'),
-    icon: "MoreIcon",
-    items: [
-      {
-        label: 'Whitepaper',
-        href: "https://drive.google.com/file/d/1bGi_mQAiGgCv0zScWUHyq1_j6o2suPGA/view",
-      },
-      {
-        label: t('Docs'),
-        href: "https://docs.livetrade.io/",
-      },
-      {
-        label: 'Smart contract',
-        href: "https://bscscan.com/token/0x0f7cd24e31293b162dcf6211c6ac5bd8efcb81f4",
-      },
-    ],
-  },
+  // {
+  //   label: t('More'),
+  //   icon: "MoreIcon",
+  //   items: [
+  //     {
+  //       label: 'Whitepaper',
+  //       href: "https://drive.google.com/file/d/1bGi_mQAiGgCv0zScWUHyq1_j6o2suPGA/view",
+  //     },
+  //     {
+  //       label: t('Docs'),
+  //       href: "https://docs.livetrade.io/",
+  //     },
+  //     {
+  //       label: 'Smart contract',
+  //       href: "https://bscscan.com/token/0x0f7cd24e31293b162dcf6211c6ac5bd8efcb81f4",
+  //     },
+  //   ],
+  // },
  ]
 
 export default config

@@ -11,7 +11,7 @@ import LangSelector from 'components/Menu/LangSelector';
 const Container = styled.div`
   flex: none;
   padding: 8px 4px;
-  background-color: ${({theme}) => theme.nav.background};
+  background-color: #202125;
   border-top: solid 2px rgba(133, 133, 133, 0.1);
 `;
 

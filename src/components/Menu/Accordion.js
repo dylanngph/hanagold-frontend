@@ -47,7 +47,6 @@ const Accordion = ({
       <MenuEntry onClick={handleClick} className={className} isActive={isActive} isPushed={isPushed}>
         {icon}
         <LinkLabel isActive={isActive} isPushed={isPushed}>{label}</LinkLabel>
-        {isOpen ? <ChevronUpIcon width="16"/> : <ChevronDownIcon width="16"/>}
       </MenuEntry>
       <AccordionContent
         isOpen={isOpen}

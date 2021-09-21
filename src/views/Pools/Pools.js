@@ -56,7 +56,7 @@ const Pools = () => {
             title="Non-term savings"
             subTitle="Stake tokens to earn tokens and unstake at any time"
         />
-        <div>
+        <div style={{height: '100vh'}}>
           <Flex
               justifyContent="center"
               alignItems="center"

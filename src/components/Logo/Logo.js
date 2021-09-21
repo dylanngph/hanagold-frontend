@@ -22,6 +22,11 @@ const StyledLink = styled(Link)`
     }
   }
 `;
+const FlexWrapper = styled(Flex)`
+  height: 56px;
+  padding-top: 10px;
+  margin-bottom: 50px
+`
 
 const Logo = ({ isPushed, togglePush, isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
@@ -33,12 +38,12 @@ const Logo = ({ isPushed, togglePush, isDark, href }) => {
   );
 
   return (
-      <Flex>
+      <FlexWrapper>
         <MenuButton aria-label="Toggle menu" onClick={togglePush}>
           {isPushed ? (
-              <HamburgerCloseIcon width="36px" color="textSubtle" />
+              <HamburgerCloseIcon width="36px" color="#fff" />
           ) : (
-              <HamburgerIcon width="36px" color="textSubtle" />
+              <HamburgerIcon width="36px" color="#fff" />
           )}
         </MenuButton>
         {isAbsoluteUrl ? (
@@ -50,7 +55,7 @@ const Logo = ({ isPushed, togglePush, isDark, href }) => {
               {innerLogo}
             </StyledLink>
         )}
-      </Flex>
+      </FlexWrapper>
   );
 };
 
