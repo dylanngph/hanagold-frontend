@@ -1,0 +1,45 @@
+/* table */
+.tbl{
+    width: 100%;
+    background: #101133;
+    box-sizing: border-box;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* table header and body */
+.tbl-head{
+    background: linear-gradient(90.49deg, rgba(255, 255, 255, 0.17) 6.72%, rgba(255, 255, 255, 0.07) 77.46%);
+    border-radius: 20px 20px 0px 0px;
+    height: 60px;
+}
+
+.tbl-1{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 5%;
+}
+
+.tbl-2{
+    width: 28.57142857142858%;
+}
+
+.tbl-3{
+    width: 14.28571428571429%;
+}
+
+.tbl-4{
+    display: flex;
+    padding-top: 15px;
+    padding-left: 5%;
+    padding-bottom: 15px;
+    align-items: center;
+    background: linear-gradient(90.49deg, rgba(255, 255, 255, 0.06) 6.72%, rgba(255, 255, 255, 0.01) 77.46%);
+}
+
+.tbl-body{
+    border-radius: 0px 0px 20px 20px;
+}
+
+
