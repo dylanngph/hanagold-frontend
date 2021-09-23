@@ -12,7 +12,7 @@ import Box from 'components/Box/Box';
 
 const Wrapper = styled(Flex)`
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   height: 759px;
   margin-top: 100px;
 `
@@ -44,26 +44,11 @@ const Container = styled(Flex)`
   flex-direction: column;
   align-items: flex-end;
   padding: 0 100px 0 50px;
-  button {
-    padding: 15px 32px;
-    background-color: rgba(255, 194, 71, 1);
-    border-radius: 4px;
-    color: #000;
-    font-family: SFProTextBold;
-    width: 150px
-  }
-
-  button:hover {
-    background-color: rgba(255, 194, 71, .9)
-  }
 `
 const Home = () => {
   return (
       <Page>
         <Container>
-          <button>
-              Contact
-          </button>
           <Wrapper>
             <LeftBox>
               <img src="/images/mockup.png" alt="Mockup Image" width="100%" />

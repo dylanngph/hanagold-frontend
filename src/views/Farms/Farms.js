@@ -62,7 +62,7 @@ const Farms = () => {
           <div>
             <Flex
                 justifyContent = "space-between"
-                style={{marginBottom: 18, marginLeft: '35px', marginRight: '35px'}}
+                style={{marginBottom: 18, marginRight: '40px', padding: '5px'}}
             >
               <Flex alignItems="center">
                 <ViewButton/>
@@ -83,17 +83,16 @@ const Farms = () => {
               </Flex>
             </Flex>
             <FlexLayout>
-              {console.log(farmsDisplay)}
               {
                 farmsDisplay.map((farm, index) => (
                     <FarmCard key={index} farm={farm}/>
                 ))
               }
-              {
+              {/* {
                 poolsDisplay.map((pool, index) => (
                     <PoolCard key={index} pool={pool}/>
                 ))
-              }
+              } */}
             </FlexLayout>
           </div>
         </Container>
@@ -106,7 +105,6 @@ const Title = styled.div`
 `
 const Container = styled(Flex)`
   flex-direction: column;
-  padding: 10px;
   margin-top: 100px;
 `
 

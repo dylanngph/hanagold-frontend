@@ -13,7 +13,7 @@ const SearchBox = () => {
                     background: "rgba(255,255,255, .2)",
                     borderRadius: '4px',
                     marginTop: '10px',
-                    width: '367px',
+                    width: '500px',
                     '& input' : {
                         color: '#fff'
                     }

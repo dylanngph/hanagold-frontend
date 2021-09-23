@@ -31,7 +31,6 @@ const FCard = styled.div`
   flex-direction: column;
   justify-content: space-around;
   position: relative;
-  width: 366px;
   min-width: 300px;
 `;
 

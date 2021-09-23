@@ -46,6 +46,7 @@ const MenuEntry = styled.div`
   }`
   )}
 
+  ${({ isPushed}) => (!isPushed ? `.mobile-child {margin-left: -15px;${({isActive}) => (isActive ? `color: #FFC247` : null)}; }` : `.mobile-child {display: none}`)}
 
   a {
     display: flex;

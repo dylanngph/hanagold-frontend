@@ -13,6 +13,7 @@ import history from './routerHistory'
 import Home from 'views/Home/Home'
 import Farm from 'views/Farm/Farm';
 import Farms from 'views/Farms/Farms';
+import Contact from 'components/Contact/Contact';
 // import Member from 'views/Member/Member';
 // import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
@@ -33,6 +34,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Menu>
+          <Contact/>
           <Route path="/" exact>
             <Home />
           </Route>

@@ -9,7 +9,6 @@ import {Box} from '@mui/material'
 
 const Wrapper = styled.div`
   padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
 `;
 
 const StyledLinkExternal = styled(LinkExternal)`
@@ -37,7 +36,7 @@ const DetailsSection = ({
   return (
       <Wrapper>
         <PairSection>
-          <Box>Total Liquidity:</Box>
+          <Box>Total Value Locked:</Box>
           <Box color="#85D7B6">$609,973,486</Box>
         </PairSection>
         <PairSection>

@@ -28,7 +28,7 @@ export const lightColors = {
   textSubtle: "#333",
   borderColor: "#E9EAEB",
   card: "#FFFFFF",
-  scrollBar: "#4880FF",
+  scrollBar: "#FFB237",
   gradients: {
     bubblegum: "linear-gradient(139.73deg, #E6FDFF 0%, #F3EFFF 100%)",
   },
