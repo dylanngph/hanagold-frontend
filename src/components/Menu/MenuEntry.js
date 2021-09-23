@@ -12,6 +12,8 @@ const rainbowAnimation = keyframes`
 `;
 
 const LinkLabel = styled.div`
+  display: flex;
+  align-items: center;
   flex-grow: 1;
   font-weight: 400;
   ${({isActive}) => (isActive ? `color: #FFC247` : null)};
@@ -40,8 +42,10 @@ const MenuEntry = styled.div`
 
   ${({isActive}) => (isActive && `
   svg {
-    filter: invert(99%) sepia(19%) saturate(125%) hue-rotate(82deg) brightness(119%) contrast(100%);
-  }`)}
+    fill: #F8CE46;
+  }`
+  )}
+
 
   a {
     display: flex;

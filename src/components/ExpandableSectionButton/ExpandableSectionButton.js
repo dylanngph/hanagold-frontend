@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   svg {
-    fill: ${({ theme }) => theme.colors.secondary};
+    margin-left: 5px;
   }
 `
 
@@ -22,7 +22,7 @@ const ExpandableSectionButton = ({ onClick, expanded, style }) => {
     <Wrapper
         style={style}
         aria-label={t('Hide or show expandable content')} role="button" onClick={() => onClick()}>
-      <Text color="secondary" bold>
+      <Text color="primary">
         {expanded ? t('Hide') : t('Details')}
       </Text>
       {expanded ? <ChevronUpIcon

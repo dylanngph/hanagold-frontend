@@ -1,4 +1,3 @@
-
 const config =  (t) => [
   {
     label: t('Home'),
@@ -12,7 +11,7 @@ const config =  (t) => [
   },
   {
     label: t('Trade'),
-    icon: "ExchangeIcon",
+    icon: "TradeIcon",
     href: "https://kaidex.io/exchange",
   },
   {

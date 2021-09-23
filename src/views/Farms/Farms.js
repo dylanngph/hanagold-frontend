@@ -14,11 +14,19 @@ import { styled as MuiStyled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import ViewButton from '../../components/ViewButton/ViewButton'
 import Switch from '@mui/material/Switch';
+import {Box} from '@mui/material'
+import SearchBox from 'components/SearchInput/SearchBox';
+import FilterBox from 'components/SearchInput/FilterBox';
 
 const Farms = () => {
   const farms = useFarms();
+  const [stakeOnly , setStakeOnly] = useState(true)
   const pools = usePools();
   const [tabLive, setTabLive] = useState(TABS_LIVE.live);
+
+  const handleChangeStake = (event) => {
+    setStakeOnly(event.target.checked);
+  };
 
   const handleChangeTab = (tabSelected) => {
     if (tabSelected !== tabLive) {
@@ -53,18 +61,26 @@ const Farms = () => {
           </Title>
           <div>
             <Flex
-                alignItems="center"
-                style={{marginBottom: 18, marginLeft: '25px'}}
+                justifyContent = "space-between"
+                style={{marginBottom: 18, marginLeft: '35px', marginRight: '35px'}}
             >
-              <ViewButton/>
-              <FormControlLabel
-                control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-                label="Stake Only"
-              />
-              <PoolsLiveTabButtons
-                  onChange={handleChangeTab}
-                  tab={tabLive}
-              />
+              <Flex alignItems="center">
+                <ViewButton/>
+                <FormControlLabel
+                  control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                  checked={stakeOnly}
+                  onChange={handleChangeStake}
+                  label="Stake Only"
+                />
+                <PoolsLiveTabButtons
+                    onChange={handleChangeTab}
+                    tab={tabLive}
+                />
+              </Flex>
+              <Flex>
+                <FilterBox/>
+                <SearchBox/>
+              </Flex>
             </Flex>
             <FlexLayout>
               {console.log(farmsDisplay)}
@@ -108,7 +124,7 @@ const IOSSwitch = MuiStyled((props) => (
       transform: 'translateX(16px)',
       color: '#333',
       '& + .MuiSwitch-track': {
-        backgroundColor: theme.palette.mode === 'dark' ? '#fefefe' : '#fefefe',
+        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,.2)' : '#fefefe',
         opacity: 1,
         border: 0,
       },
@@ -137,7 +153,7 @@ const IOSSwitch = MuiStyled((props) => (
   },
   '& .MuiSwitch-track': {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+    backgroundColor: theme.palette.mode === 'light' ? 'rgba(255,255,255,.3)' : '#39393D',
     opacity: 1,
     transition: theme.transitions.create(['background-color'], {
       duration: 500,

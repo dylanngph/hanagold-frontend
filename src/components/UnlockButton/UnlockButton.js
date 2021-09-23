@@ -9,7 +9,7 @@ const UnlockButton = (props) => {
   return (
       <Button
           onClick={onPresentConnectModal} {...props}>
-        Connect Wallet
+        Unlock Wallet
       </Button>
   )
 }

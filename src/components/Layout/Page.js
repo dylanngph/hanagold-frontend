@@ -11,7 +11,7 @@ const StyledPage = styled(Container)`
   min-height: 100vh;
   padding: 0px;
   color: #fff;
-  background-color: #24262D;
+  background-color: #16171B;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

@@ -4,14 +4,14 @@ function Icon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="17"
+      width="19"
+      height="14"
       fill="currentColor"
-      viewBox="0 0 15 17"
+      viewBox="0 0 19 14"
     >
       <path
         fill="currentColor"
-        d="M14.972 6h-4V0h-6v6h-4l7 7 7-7zm-14 9v2h14v-2h-14z"
+        d="M4.962 6l-3.99 4 3.99 4v-3h7.01V9h-7.01V6zm14.01-2l-3.99-4v3h-7.01v2h7.01v3l3.99-4z"
       ></path>
     </svg>
   );
