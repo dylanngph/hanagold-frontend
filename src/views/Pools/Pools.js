@@ -52,7 +52,7 @@ const Pools = () => {
   return (
       <Page>
         <PageHeader
-            logo="/logo.png"
+            logo="/hng-logo.png"
             title="Non-term savings"
             subTitle="Stake tokens to earn tokens and unstake at any time"
         />

@@ -12,8 +12,9 @@ import Box from 'components/Box/Box';
 
 const Wrapper = styled(Flex)`
   justify-content: center;
-  align-items: center;
-  height: 90vh;
+  align-items: flex-start;
+  height: 759px;
+  margin-top: 100px;
 `
 const LeftBox = styled(Box)`
   width: 50%;

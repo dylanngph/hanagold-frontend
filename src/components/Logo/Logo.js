@@ -9,6 +9,8 @@ import MenuButton from "components/Menu/MenuButton";
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+  padding: 10px;
+  margin-top: 10px;
   .mobile-icon {
     width: 130px;
     ${({ theme }) => theme.mediaQueries.nav} {
@@ -24,7 +26,7 @@ const StyledLink = styled(Link)`
 `;
 const FlexWrapper = styled(Flex)`
   height: 56px;
-  padding-top: 10px;
+  padding-top: 20px;
   margin-bottom: 50px
 `
 
@@ -32,8 +34,8 @@ const Logo = ({ isPushed, togglePush, isDark, href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
       <>
-        <img src="/logo.png" className="desktop-icon"/>
-        <img src="/logo.png" className="mobile-icon"/>
+        <img src="/hng-logo.png" className="desktop-icon"/>
+        <img src="/hng-logo.png" className="mobile-icon"/>
       </>
   );
 

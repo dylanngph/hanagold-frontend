@@ -14,7 +14,7 @@ function DIPO() {
               margin: '0 auto'
             }}
             fontSizeTitle="30px"
-            logo="images/DIPO_logo.png"
+            logo="images/DIPO_hng-logo.png"
             title="DIGITAL INITIAL PRIVATE OFFERING"
             subTitle="Valuable capital for productive projects"
         />

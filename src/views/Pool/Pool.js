@@ -32,7 +32,7 @@ const Pool = () => {
   return (
       <Page>
         <PageHeader
-            logo="/logo.png"
+            logo="/hng-logo.png"
             title={`${pool.tag === POOLS_TAGS.ifo ? 'Burn' : 'Deposit'} ${pool.stakingToken.symbol} Tokens and earn ${
                 poolName
             }`}

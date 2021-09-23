@@ -1,30 +1,30 @@
 export const DEFAULT_META = {
-  title: 'KShark',
-  description: 'KShark',
-  image: '/logo.png',
+  title: 'HanaGold',
+  description: 'HanaGold',
+  image: '/hng-logo.png',
 }
 
 export const getCustomMeta = (path, t) => {
   switch (path) {
     case '/':
       return {
-        title: `Home | KShark`,
+        title: `Home | HanaGold`,
       }
     case '/farms':
       return {
-        title: `Farm | KShark`,
+        title: `Farm | HanaGold`,
       }
     case '/pools':
       return {
-        title: `Pool | KShark`,
+        title: `Pool | HanaGold`,
       }
     case '/member':
       return {
-        title: `Member | KShark`,
+        title: `Member | HanaGold`,
     }
     case '/dipo':
       return {
-        title: `DIPO | KShark`,
+        title: `DIPO | HanaGold`,
     }
     default:
       return null

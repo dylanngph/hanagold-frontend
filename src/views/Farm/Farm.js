@@ -30,7 +30,7 @@ const Farm = () => {
   return (
       <Page>
         <PageHeader
-            logo="/logo.png"
+            logo="/hng-logo.png"
             title={`Deposit ${lpTokenName} Tokens and earn LTD`}
         />
         <WrapperFlex justifyContent="center">

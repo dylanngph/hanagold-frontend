@@ -24,7 +24,7 @@ const Trade = () => {
   return (
         <Page>
           <PageHeader
-              logo="/logo.png"
+              logo="/hng-logo.png"
               title="Swap"
           />
           <div className="px-3">
