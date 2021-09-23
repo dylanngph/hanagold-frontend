@@ -1,0 +1,1 @@
+export type Position = "top" | "top-right" | "bottom";

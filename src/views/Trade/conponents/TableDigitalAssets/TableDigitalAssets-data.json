@@ -1,0 +1,46 @@
+[
+    {
+        "id":"1",
+        "icon1":"/icon/LTD.png",
+        "icon2":"/icon/Kai.png",
+        "name":"LTD/KAI",
+        "ath":"110.2",
+        "low":"95.8",
+        "maxpain":"103",
+        "pricenow":"107.5",
+        "hchg":"4.4%"
+    },
+    {
+        "id":"2",
+        "icon1":"/icon/LTD.png",
+        "icon2":"/icon/KUSD-T.png",
+        "name":"LTD/KUSD-T",
+        "ath":"43",
+        "low":"37.4 ",
+        "maxpain":"40.2",
+        "pricenow":"40",
+        "hchg":"-0.5%"
+    },
+    {
+        "id":"3",
+        "icon1":"/icon/DPET.png",
+        "icon2":"/icon/Kai.png",
+        "name":"DPET/KAI",
+        "ath":"89.8",
+        "low":"84.2 ",
+        "maxpain":"90.5",
+        "pricenow":"93.7",
+        "hchg":"3.5%"
+    }, 
+    {
+        "id":"4",
+        "icon1":"/icon/KUSD-T.png",
+        "icon2":"/icon/VNDC.png",
+        "name":"KUSD-T/VNDC",
+        "ath":"94.1",
+        "low":"81.9 ",
+        "maxpain":"88",
+        "pricenow":"88.3",
+        "hchg":"0.3%"
+    }
+]
