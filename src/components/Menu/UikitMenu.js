@@ -14,6 +14,21 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const StyledNav = styled.nav`
+  position: fixed;
+  left: 0;
+  padding: 5px;
+  transition: top 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: ${MENU_HEIGHT}px;
+  z-index: 20;
+  transform: translate3d(0, 0, 0);
+  margin-top: 10px;
+`;
+
 const BodyWrapper = styled.div`
   position: relative;
   display: flex;
@@ -85,15 +100,23 @@ const UikitMenu = ({
     };
   }, []);
 
+  const homeLink = links.find((link) => link.label === 'Home');
 
   return (
       <Wrapper>
+        <StyledNav>
+          <Logo
+              isPushed={isPushed}
+              isMobile={isMobile}
+              togglePush={() => setIsPushed((prevState) => !prevState)}
+              isDark={isDark}
+              href={homeLink?.href ?? '/'}
+          />
+        </StyledNav>
         <BodyWrapper>
           <Panel
               isPushed={isPushed}
-              togglePush={() => setIsPushed((prevState) => !prevState)}
               isMobile={isMobile}
-              showMenu={showMenu}
               isDark={isDark}
               toggleTheme={toggleTheme}
               langs={langs}
@@ -103,7 +126,7 @@ const UikitMenu = ({
               pushNav={setIsPushed}
               links={links}
           />
-          <Inner isPushed={isPushed} showMenu={showMenu}>
+          <Inner isPushed={isPushed} showMenu={showMenu} >
             {children}
           </Inner>
           <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation"/>

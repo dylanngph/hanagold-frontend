@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
       max-width: 100%;
     }
     h2 {
-      font-size: 60px;
       font-family: SFProTextBold;
     }
   }

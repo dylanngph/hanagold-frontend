@@ -36,7 +36,6 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Menu>
-          <Contact/>
           <Route path="/" exact>
             <Home />
           </Route>

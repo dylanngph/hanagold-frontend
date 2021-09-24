@@ -62,25 +62,43 @@ const Farms = () => {
           <div>
             <Flex
                 justifyContent = "space-between"
-                style={{marginBottom: 18, marginRight: '40px', padding: '5px'}}
+                style={{marginBottom: 18, padding: '5px'}}
             >
-              <Flex alignItems="center">
-                <ViewButton/>
-                <FormControlLabel
-                  control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-                  checked={stakeOnly}
-                  onChange={handleChangeStake}
-                  label="Stake Only"
-                />
-                <PoolsLiveTabButtons
-                    onChange={handleChangeTab}
-                    tab={tabLive}
-                />
-              </Flex>
-              <Flex>
-                <FilterBox/>
-                <SearchBox/>
-              </Flex>
+              <FilterSection >
+                <Box className="desktop">
+                  <Flex alignItems="center">
+                    <ViewButton/>
+                    <FormControlLabel
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                      checked={stakeOnly}
+                      onChange={handleChangeStake}
+                      label="Stake Only"
+                    />
+                    <PoolsLiveTabButtons
+                        onChange={handleChangeTab}
+                        tab={tabLive}
+                    />
+                  </Flex>
+                  <Flex mr="40px" alignItems="center">
+                    <FilterBox/>
+                    <SearchBox/>
+                  </Flex>
+                </Box>
+                <Box className="mobile">
+                    <SearchBox/>
+                    <FilterBox/>
+                    <PoolsLiveTabButtons
+                      onChange={handleChangeTab}
+                      tab={tabLive}
+                    />
+                      <FormControlLabel
+                        control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                        checked={stakeOnly}
+                        onChange={handleChangeStake}
+                        label="Stake Only"
+                      />
+                </Box>
+              </FilterSection>
             </Flex>
             <FlexLayout>
               {
@@ -102,6 +120,14 @@ const Farms = () => {
 const Title = styled.div`
   text-align: center;
   margin-bottom: 20px;
+  h2 {
+    font-size: 60px
+  }
+  h4 {
+    font-family: SFProTextBold;
+    color: rgba(255,255,255,.3);
+    font-size: 24px;
+  }
 `
 const Container = styled(Flex)`
   flex-direction: column;
@@ -110,52 +136,74 @@ const Container = styled(Flex)`
 
 const IOSSwitch = MuiStyled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
-  width: 42,
-  height: 26,
-  padding: 0,
-  '& .MuiSwitch-switchBase': {
-    padding: 0,
-    margin: 2,
-    transitionDuration: '300ms',
-    '&.Mui-checked': {
-      transform: 'translateX(16px)',
-      color: '#333',
-      '& + .MuiSwitch-track': {
-        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,.2)' : '#fefefe',
+    ))(({ theme }) => ({
+      width: 42,
+      height: 26,
+      padding: 0,
+      '& .MuiSwitch-switchBase': {
+        padding: 0,
+        margin: 2,
+        transitionDuration: '300ms',
+        '&.Mui-checked': {
+          transform: 'translateX(16px)',
+          color: '#333',
+          '& + .MuiSwitch-track': {
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,.2)' : '#fefefe',
+            opacity: 1,
+            border: 0,
+          },
+          '&.Mui-disabled + .MuiSwitch-track': {
+            opacity: 0.5,
+          },
+        },
+        '&.Mui-focusVisible .MuiSwitch-thumb': {
+          color: '#33cf4d',
+          border: '6px solid #333',
+        },
+        '&.Mui-disabled .MuiSwitch-thumb': {
+          color:
+            theme.palette.mode === 'light'
+              ? theme.palette.grey[100]
+              : theme.palette.grey[600],
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+        },
+      },
+      '& .MuiSwitch-thumb': {
+        boxSizing: 'border-box',
+        width: 22,
+        height: 22,
+      },
+      '& .MuiSwitch-track': {
+        borderRadius: 26 / 2,
+        backgroundColor: theme.palette.mode === 'light' ? 'rgba(255,255,255,.3)' : '#39393D',
         opacity: 1,
-        border: 0,
+        transition: theme.transitions.create(['background-color'], {
+          duration: 500,
+        }),
       },
-      '&.Mui-disabled + .MuiSwitch-track': {
-        opacity: 0.5,
-      },
-    },
-    '&.Mui-focusVisible .MuiSwitch-thumb': {
-      color: '#33cf4d',
-      border: '6px solid #333',
-    },
-    '&.Mui-disabled .MuiSwitch-thumb': {
-      color:
-        theme.palette.mode === 'light'
-          ? theme.palette.grey[100]
-          : theme.palette.grey[600],
-    },
-    '&.Mui-disabled + .MuiSwitch-track': {
-      opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
-    },
-  },
-  '& .MuiSwitch-thumb': {
-    boxSizing: 'border-box',
-    width: 22,
-    height: 22,
-  },
-  '& .MuiSwitch-track': {
-    borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === 'light' ? 'rgba(255,255,255,.3)' : '#39393D',
-    opacity: 1,
-    transition: theme.transitions.create(['background-color'], {
-      duration: 500,
-    }),
-  },
-}));
+    }));
+
+  const FilterSection = styled(Box)`
+    width: 100%;
+    .desktop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      ${`@media (max-width: 800px)`} {
+        display: none;
+      }
+    }
+    .mobile {
+      display: none;
+      ${`@media (max-width: 800px)`} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  `
+
 export default Farms;
