@@ -39,14 +39,15 @@ const MenuEntry = styled.div`
     height: 100%;
     position: absolute;
   }
-
-  ${({isActive}) => (isActive && `
-  svg {
-    fill: #F8CE46;
+  ${({isActive}) => (isActive ? `
+   .mobile-child {
+    color: #FFC247;
   }`
+  :
+  null
   )}
 
-  ${({ isPushed}) => (!isPushed ? `.mobile-child {margin-left: -15px;${({isActive}) => (isActive ? `color: #FFC247` : null)}; }` : `.mobile-child {display: none}`)}
+  ${({ isPushed}) => (!isPushed ? `.mobile-child {margin-left: -15px}` : '.mobile-child {display: none}')}
 
   a {
     display: flex;
