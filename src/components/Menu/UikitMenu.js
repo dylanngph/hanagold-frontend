@@ -41,15 +41,15 @@ const MobileOnlyOverlay = styled(Overlay)`
 `;
 
 const UikitMenu = ({
-                     isDark,
-                     toggleTheme,
-                     langs,
-                     setLang,
-                     currentLang,
-                     tokenPriceUsd,
-                     links,
-                     children
-                   }) => {
+  isDark,
+  toggleTheme,
+  langs,
+  setLang,
+  currentLang,
+  tokenPriceUsd,
+  links,
+  children
+  }) => {
   const {isXl} = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);

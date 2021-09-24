@@ -30,7 +30,8 @@ const PanelBody = ({ isPushed, pushNav, isMobile, links }) => {
 
         return (
           <MenuEntry key={entry.label} isActive={entry.href === location.pathname} isPushed={isPushed} >
-            <MenuLink href={entry.href} onClick={handleClick} target={entry.label === 'Trade' ? "_blank" : ""}>
+            {/* <MenuLink href={entry.href} onClick={handleClick} target={entry.label === 'Trade' ? "_blank" : ""}> */}
+            <MenuLink href={entry.href} onClick={handleClick}>
             <div className="mobile-child">{iconElement}</div>
               <LinkLabel
                 isActive={entry.href === location.pathname}

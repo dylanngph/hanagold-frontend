@@ -14,8 +14,8 @@ export const TABS_LIVE = {
 }
 
 export const TABS = {
-  assets: 'assets',
-  stocks: 'stocks'
+  swap: 'swap',
+  liquidity: 'liquidity'
 }
 
 export const EXTERNAL_LINK_KAI = 'https://kaidex.io/';

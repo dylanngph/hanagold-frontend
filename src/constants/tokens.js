@@ -1,5 +1,6 @@
 import address from 'constants/contracts'
 
+import { ChainId, Token } from 'kshark-sdk'
 const tokens = {
   kai: {
     symbol: 'KAI',
@@ -152,6 +153,59 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://nami.io/',
   },
+  chat: {
+    symbol: 'CHAT',
+    address: '0x274064d87952e4782150396153b50b1ab3a81Ca2',
+    decimals: 18,
+    projectLink: '#',
+  },
+  xChat: {
+    symbol: 'XCHAT',
+    address: '0x3d255696Fe96cA5EeD3e16cF25AB3301EbCC2f98',
+    decimals: 18,
+    projectLink: '#',
+  },
 }
+
+export const WKAI = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.wkai.address, 18, 'WKAI', 'Wrapped KAI')
+}
+export const BECO = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.beco.address, 18, 'BECO', 'BECO')
+}
+
+export const CHAT = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.chat.address, 18, 'CHAT', 'Chat Token'),
+}
+
+export const xCHAT = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.xChat.address, 18, 'xCHAT', 'xCHAT'),
+}
+
+export const BOSSDOGE = {
+  [ChainId.MAINNET]: new Token(
+    ChainId.MAINNET,
+    '0x5995F16246DfA676A44B8bD7E751C1226093dcd7',
+    9,
+    'BossDoge',
+    'BossDoge',
+  )
+}
+
+export const VNDC = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.vndc.address, 0, 'VNDC', 'VNDC')
+}
+
+export const DFL = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.defily.address, 18, 'DFL', 'Defily'),
+}
+
+export const DRAGON = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.dragon.address, 18, 'DRAGON', 'Defily'),
+}
+export const KUSD = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.kusd.address, 6, 'KUSD-T', 'KUSD-T'),
+}
+
 
 export default tokens

@@ -147,8 +147,8 @@ const FarmCard = ({farm}) => {
         <ParameterSection>
           <Text color="primary">APR:</Text>
           <Box display= "flex" alignItems="center">
-            <NumberOptionInput/>
-            <Box ml="10px" color="#85D7B6" >54.12%</Box>
+            <NumberOptionInput onClick={onPresentApyModal} />
+            <Box ml="10px" color="#85D7B6" >{ apr?.yearlyAPR }%</Box>
           </Box>
         </ParameterSection>
         <ParameterSection>

@@ -1,5 +1,5 @@
 import Flex from 'components/Box/Flex';
-import QuestionHelper from 'components/QuestionHelper/QuestionHelper';
+import QuestionHelper from 'components/QuestionHelper';
 import { KAI_BLOCK_TIME } from 'config/index'
 import useKardiachain from 'hooks/useKardiachain'
 import Countdown, { zeroPad } from 'react-countdown'

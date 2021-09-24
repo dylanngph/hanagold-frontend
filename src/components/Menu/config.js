@@ -12,7 +12,7 @@ const config =  (t) => [
   {
     label: t('Trade'),
     icon: "TradeIcon",
-    href: "https://kaidex.io/exchange",
+    href: "/trade",
   },
   {
     label: ('Farms'),

@@ -2,7 +2,7 @@ import Flex from 'components/Box/Flex';
 import Button from 'components/Button/Button';
 import CardLogo, { CardLogoPool } from 'components/Card/CardLogo';
 import ExpandableSectionButton from 'components/ExpandableSectionButton/ExpandableSectionButton';
-import QuestionHelper from 'components/QuestionHelper/QuestionHelper';
+import QuestionHelper from 'components/QuestionHelper';
 import Text from 'components/Text/Text';
 import UnlockButton from 'components/UnlockButton/UnlockButton';
 import Value from 'components/Value/Value';

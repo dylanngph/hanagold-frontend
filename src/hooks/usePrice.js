@@ -5,7 +5,7 @@ import { getParameterCaseInsensitive } from 'utils/index'
 export const useKscPrice = () => {
   const prices = usePrices()
 
-  return getParameterCaseInsensitive(prices, address.ksc)
+  return getParameterCaseInsensitive(prices, address.ltd)
 }
 
 export const usePriceByTokenAddress = (address) => {

@@ -14,6 +14,8 @@ import Home from 'views/Home/Home'
 import Farm from 'views/Farm/Farm';
 import Farms from 'views/Farms/Farms';
 import Contact from 'components/Contact/Contact';
+import Swap from 'views/Swap/Swap'
+import { RedirectToSwap } from 'views/Swap/redirects'
 // import Member from 'views/Member/Member';
 // import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
@@ -25,7 +27,7 @@ BigNumber.config({
 })
 
 function App() {
-  // useFetchPublicData()
+  useFetchPublicData()
   usePollBlockNumber()
 
   return (
@@ -63,6 +65,10 @@ function App() {
           {/*  <DIPO />*/}
           {/*</Route>*/}
           {/*<Route path="/demotest" component={DipoOutside} />*/}
+          <Route path="/swap">
+            <Swap />
+          </Route>
+          <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
         </Menu>
       </Switch>
       <ToastListener />
