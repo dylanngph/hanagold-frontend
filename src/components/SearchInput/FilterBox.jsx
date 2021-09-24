@@ -11,7 +11,14 @@ const FilterBox = () => {
 
     return (
         <Box display="flex" flexDirection="column">
-            <div>SORT BY</div>
+            <Box sx={{
+                '@media only screen and (max-width: 600px)': {
+                    display: 'none'
+                }
+            }} 
+            >
+                SORT BY
+            </Box>
             <Autocomplete
                 sx= {{
                     background: "rgba(255,255,255, .2)",
@@ -21,7 +28,11 @@ const FilterBox = () => {
                     marginRight: '15px',
                     '& input' : {
                         color: '#fff'
-                    }
+                    },
+                    '@media only screen and (max-width: 600px)' : {
+                        width: '300px',
+                        marginRight: 0
+                    },
                 }}
                 value={value}
                 onChange={(event, newValue) => {

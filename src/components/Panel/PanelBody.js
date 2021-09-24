@@ -4,12 +4,12 @@ import { useLocation } from "react-router-dom";
 import { MenuEntry, LinkLabel } from "components/Menu/MenuEntry";
 import MenuLink from "components/Menu/MenuLink";
 import * as IconModule from "components/Menu/icons/index";
+import { Box } from "@mui/material";
 
 
 const Icons = IconModule;
 
 const Container = styled.div`
-  display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
@@ -27,11 +27,11 @@ const PanelBody = ({ isPushed, pushNav, isMobile, links }) => {
       {links.map((entry) => {
         const Icon = Icons[entry.icon];
         const iconElement = <Icon width="17px" height="18px" mr="8px" />;
-
+        
         return (
           <MenuEntry key={entry.label} isActive={entry.href === location.pathname} isPushed={isPushed} >
             <MenuLink href={entry.href} onClick={handleClick} target={entry.label === 'Trade' ? "_blank" : ""}>
-            <div className="mobile-child">{iconElement}</div>
+            <Box className="mobile-child">{iconElement}</Box>
               <LinkLabel
                 isActive={entry.href === location.pathname}
                 isPushed={isPushed}

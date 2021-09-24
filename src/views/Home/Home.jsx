@@ -13,18 +13,40 @@ import Box from 'components/Box/Box';
 const Wrapper = styled(Flex)`
   justify-content: center;
   align-items: center;
-  height: 759px;
-  margin-top: 100px;
+  height: 900px;
+  width: 100%;
+  ${`@media only screen and (max-width: 600px)`} {
+      flex-direction: column;
+      height: 100%;
+  }
 `
 const LeftBox = styled(Box)`
-  width: 50%;
-  padding-right:180px;
+  width: 40%;
+  ${`@media only screen and (max-width: 600px)`} {
+      display: none;
+  }
 `
 const RightBox = styled(Box)`
-  width: 50%;
+  width: 60%;
+  padding: 30px;
   p {
     font-size: 18px;
     line-height: 32px;
+  }
+  h2 {
+    font-size: 60px
+  }
+  ${`@media (max-width: 800px)`} {
+    width: 100%;
+    padding: 10px;
+    margin-top: 50px;
+    h2 {
+      font-size: 40px;
+    }
+    p {
+      font-size: 12px;
+      line-height: 22px;
+    }
   }
 `
 const DownloadSection = styled(Box)`
@@ -41,9 +63,7 @@ const DownloadButton = styled(Flex)`
   }
 `
 const Container = styled(Flex)`
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0 100px 0 50px;
+
 `
 const Home = () => {
   return (

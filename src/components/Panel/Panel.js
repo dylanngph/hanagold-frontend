@@ -7,14 +7,14 @@ import Logo from 'components/Logo/Logo';
 
 const StyledPanel = styled.div`
   position: fixed;
+  padding-top: 80px;
   top: 0;
   left: 0;
-  display: flex;
+  display: ${({isPushed , isMobile}) => (!isPushed && isMobile) ? 'none' : 'flex' };
   flex-direction: column;
   justify-content: space-between;
   flex-shrink: 0;
-  background-color: "${({ theme }) => theme.nav.background}";
-  width: ${({ isPushed }) => (isPushed ? `300px` : 0)};
+  background-color: ${({isPushed , isMobile}) => (isMobile && !isPushed) ? 'transparent' : '#202125' };
   height: 100vh;
   z-index: 11;
   overflow: ${({ isPushed }) => (isPushed ? "initial" : "hidden")};
@@ -22,7 +22,6 @@ const StyledPanel = styled.div`
 
   ${({ theme }) => theme.mediaQueries.nav} {
     width: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
-    background-color: #202125;
   }
 
   svg {
@@ -32,17 +31,9 @@ const StyledPanel = styled.div`
 `;
 
 const Panel = (props) => {
-  const { isPushed , links } = props;
-  const homeLink = links.find((link) => link.label === 'Home');
-
+  const { isPushed ,showMenu, links , isMobile } = props;
   return (
-      <StyledPanel isPushed={isPushed}>
-        <Logo
-              isPushed={isPushed}
-              togglePush = {props.togglePush}
-              isDark={props.isDark}
-              href={homeLink?.href ?? '/'}
-          />
+      <StyledPanel isPushed={isPushed} showMenu={showMenu} isMobile={isMobile} >
         <PanelBody {...props} />
       </StyledPanel>
   );
