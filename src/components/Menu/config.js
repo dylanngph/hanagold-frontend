@@ -7,7 +7,7 @@ const config =  (t) => [
   {
     label: t('LaunchPad'),
     icon: "ExchangeIcon",
-    href: "#",
+    href: "/launchpad",
   },
   {
     label: t('Trade'),

@@ -13,6 +13,7 @@ import history from './routerHistory'
 import Home from 'views/Home/Home'
 import Farm from 'views/Farm/Farm';
 import Farms from 'views/Farms/Farms';
+import Launchpad from 'views/Launchpad/Launchpad';
 // import Member from 'views/Member/Member';
 // import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
@@ -36,9 +37,12 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/trade">
-            <Trade />
+          <Route path="/launchpad">
+            <Launchpad />
           </Route>
+          {/* <Route path="/trade">
+            <Trade />
+          </Route> */}
           <Route path="/farms">
             <Farms />
           </Route>        

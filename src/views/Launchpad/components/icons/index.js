@@ -1,0 +1,5 @@
+export {default as FacebookIcon} from './Facebook'
+export {default as TumblerIcon} from './Tumbler'
+export {default as TwitterIcon} from './Twitter'
+export {default as HomeIcon} from './Home'
+export {default as StarIcon} from './Star'
