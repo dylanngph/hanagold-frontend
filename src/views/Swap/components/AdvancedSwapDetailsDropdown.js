@@ -7,10 +7,6 @@ export default function AdvancedSwapDetailsDropdown({ trade, ...rest }) {
   const lastTrade = useLastTruthy(trade)
 
   return (
-    <Card
-      className={classnames('max-w-md mx-auto mt-4 p-5 rounded-2xl bg-blue1 ', Boolean(trade) ? 'block' : 'hidden')}
-    >
-      <AdvancedSwapDetails {...rest} trade={trade ?? lastTrade ?? undefined} />
-    </Card>
+    <AdvancedSwapDetails {...rest} trade={trade ?? lastTrade ?? undefined} className={classnames(Boolean(trade) ? 'block' : 'hidden')} />
   )
 }

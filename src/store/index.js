@@ -14,6 +14,8 @@ import lists from './lists/reducer'
 import multicall from './multicall/reducer'
 import application from './application/reducer'
 import swap from './swap/reducer'
+import mint from './mint/reducer'
+import burn from './burn/reducer'
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
@@ -28,6 +30,8 @@ const store = configureStore({
     transactions,
     lists,
     swap,
+    mint,
+    burn,
     application,
     multicall,
   },

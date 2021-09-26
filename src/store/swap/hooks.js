@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import tokens from 'constants/tokens';
-import { useCurrency } from 'hooks/Tokens';
+import { parseUnits } from '@ethersproject/units'
+import tokens from 'constants/tokens'
+import { CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from 'kshark-sdk'
+import useKardiachain from 'hooks/useKardiachain'
+import { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useCurrency } from 'hooks/Tokens'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
-import useKardiachain from 'hooks/useKardiachain';
-import { useCurrencyBalances } from 'hooks/wallet';
-import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { isAddress } from 'utils/index'
 import useParsedQueryString from 'hooks/useParsedQueryString'
-import { Field, replaceSwapState, selectCurrency, switchCurrencies, typeInput } from 'store/swap/actions';
+import { isAddress } from 'utils/index'
+import { computeSlippageAdjustedAmounts } from 'utils/prices'
+import { useCurrencyBalances } from 'store/wallet/hooks'
+import { Field, replaceSwapState, selectCurrency, setRecipient, switchCurrencies, typeInput } from './actions'
 import { useUserSlippageTolerance } from 'store/user/hooks'
 
 export function useSwapState() {
@@ -17,17 +19,16 @@ export function useSwapState() {
 
 export function useSwapActionHandlers() {
   const dispatch = useDispatch()
-
   const onCurrencySelection = useCallback(
-      (field, currency) => {
-        dispatch(
-            selectCurrency({
-              field,
-              currencyId: currency instanceof Token ? currency.address : currency === ETHER ? 'KAI' : '',
-            }),
-        )
-      },
-      [dispatch],
+    (field, currency) => {
+      dispatch(
+        selectCurrency({
+          field,
+          currencyId: currency instanceof Token ? currency.address : currency === ETHER ? 'KAI' : '',
+        }),
+      )
+    },
+    [dispatch],
   )
 
   const onSwitchTokens = useCallback(() => {
@@ -35,19 +36,28 @@ export function useSwapActionHandlers() {
   }, [dispatch])
 
   const onUserInput = useCallback(
-      (field, typedValue) => {
-        dispatch(typeInput({ field, typedValue }))
-      },
-      [dispatch],
+    (field, typedValue) => {
+      dispatch(typeInput({ field, typedValue }))
+    },
+    [dispatch],
+  )
+
+  const onChangeRecipient = useCallback(
+    (recipient) => {
+      dispatch(setRecipient({ recipient }))
+    },
+    [dispatch],
   )
 
   return {
     onSwitchTokens,
     onCurrencySelection,
     onUserInput,
+    onChangeRecipient,
   }
 }
 
+// try to parse a user entered amount for a given token
 export function tryParseAmount(value, currency) {
   if (!value || !currency) {
     return undefined
@@ -70,6 +80,18 @@ export function tryParseAmount(value, currency) {
 const BAD_RECIPIENT_ADDRESSES = [
   '0x64203f29f4d6a7e199b6f6afbe65f1fa914c7c4e', // v2 factory
 ]
+
+/**
+ * Returns true if any of the pairs or tokens in a trade have the given checksummed address
+ * @param trade to check for the given address
+ * @param checksummedAddress address to check in the pairs and tokens
+ */
+function involvesAddress(trade, checksummedAddress) {
+  return (
+    trade.route.path.some((token) => token.address === checksummedAddress) ||
+    trade.route.pairs.some((pair) => pair.liquidityToken.address === checksummedAddress)
+  )
+}
 
 // from the current swap inputs, compute the best trade and return it.
 export function useDerivedSwapInfo() {
@@ -156,25 +178,6 @@ export function useDerivedSwapInfo() {
   }
 }
 
-
-export const useDefaultsFromTrade = (trade) => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-
-    dispatch(
-        replaceSwapState({
-          typedValue: '0',
-          field: Field.OUTPUT,
-          inputCurrencyId: tokens.kusd.address,
-          outputCurrencyId: trade.address,
-          recipient: null,
-        }),
-    )
-
-  }, [dispatch, trade.address])
-}
-
 function parseCurrencyFromURLParameter(urlParam) {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
@@ -232,6 +235,7 @@ export function queryParametersToSwapState(parsedQs) {
   }
 }
 
+// updates the swap state to use the defaults for a given network
 export function useDefaultsFromURLSearch() {
   const { chainId } = useKardiachain()
   const dispatch = useDispatch()
@@ -256,4 +260,22 @@ export function useDefaultsFromURLSearch() {
   }, [dispatch, chainId])
 
   return result
+}
+
+export const useDefaultsFromTrade = (trade) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+
+    dispatch(
+        replaceSwapState({
+          typedValue: '0',
+          field: Field.OUTPUT,
+          inputCurrencyId: tokens.kusd.address,
+          outputCurrencyId: trade.address,
+          recipient: null,
+        }),
+    )
+
+  }, [dispatch, trade.address])
 }

@@ -15,7 +15,7 @@ const LogoSwap = ({ srcs, alt, className, ...rest }) => {
   if (src) {
     return (
       <img
-        className={classnames(className, 'w-8 h-8 rounded-50 bg-white shadow-md p-1')}
+        className={classnames(className, 'w-6 h-6 rounded-50 bg-white shadow-md p-1')}
         {...rest}
         alt={alt}
         src={src}

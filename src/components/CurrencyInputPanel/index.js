@@ -48,16 +48,16 @@ export default function CurrencyInputPanel({
         showCommonBases={showCommonBases}
         listHideTokens={listHideTokens}
       />
-      <div className="flex flex-nowrap flex-col bg-blue2 p-2 rounded-2xl" id={id}>
+      <div className="flex flex-nowrap flex-col border-solid border-2 p-2 rounded-lg border-gray-300" id={id}>
         <div className="rounded-2xl">
           {!hideInput && (
             <div className="flex flex-nowrap items-center justify-between text-white mb-2">
-              <p>{translatedLabel}</p>
+              <p className="text-sm">{translatedLabel}</p>
               <div className="flex items-center cursor-pointer">
                 {account && (
-                  <p onClick={onMax}>
+                  <p className="text-sm" onClick={onMax}>
                     {!hideBalance && !!currency && selectedCurrencyBalance
-                      ? `Balance ${selectedCurrencyBalance?.toSignificant(6)}`
+                      ? `Balance: ${selectedCurrencyBalance?.toSignificant(6)}`
                       : ' -'}
                   </p>
                 )}
@@ -87,27 +87,25 @@ export default function CurrencyInputPanel({
                 <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} />
               </div>
             )}
-            <Button
-              size="sm"
-              className="ml-2 whitespace-nowrap"
-              onClick={() => {
+            <div className="bg-blue1 rounded-xl">
+              <div
+                className="flex items-center justify-between"
+                onClick={() => {
                 if (!disableCurrencySelect) {
                   toggleCurrencyModal()
                 }
-              }}
-            >
-              <div className="flex items-center justify-between">
+              }}>
                 {pair ? (
                   <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
                 ) : currency ? (
                   <CurrencyLogo currency={currency} />
                 ) : null}
                 {pair ? (
-                  <p id="pair" className="ml-1">
+                  <p id="pair" className="ml-1 text-xs">
                     {pair?.token0.symbol}:{pair?.token1.symbol}
                   </p>
                 ) : (
-                  <p id="pair" className="ml-1">
+                  <p id="pair" className="ml-1 text-xs">
                     {(currency && currency.symbol && currency.symbol.length > 20
                       ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
                           currency.symbol.length - 5,
@@ -118,7 +116,7 @@ export default function CurrencyInputPanel({
                 )}
                 {!disableCurrencySelect && <ChevronDown />}
               </div>
-            </Button>
+            </div>
           </div>
         </div>
       </div>

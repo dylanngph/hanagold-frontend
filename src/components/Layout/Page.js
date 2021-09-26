@@ -16,7 +16,7 @@ const StyledPage = styled(Container)`
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  padding: 40px;
+  padding: 20px;
   
   ${({ theme }) => theme.mediaQueries.sm} {
     padding-top: 24px;

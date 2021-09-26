@@ -1,6 +1,6 @@
 import Button from 'components/Button/Button'
-import Modal from 'components/Modal/Modal'
-import ModalTitle from 'components/Modal/ModalTitle'
+import Modal from 'components/ModalSwap/Modal'
+import ModalTitle from 'components/ModalSwap/ModalTitle'
 import useKardiachain from 'hooks/useKardiachain'
 import { useMemo, useCallback } from 'react'
 import { useDispatch } from 'react-redux'

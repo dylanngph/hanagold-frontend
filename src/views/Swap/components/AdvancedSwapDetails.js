@@ -12,8 +12,8 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade, allowedSlippag
   const slippageAdjustedAmounts = computeSlippageAdjustedAmounts(trade, allowedSlippage)
 
   return (
-    <div style={{ padding: '0 16px' }}>
-      <div className="flex items-center justify-between flex-wrap mb-1">
+    <div style={{ padding: '16px 0' }}>
+      <div className="flex items-center justify-between flex-wrap mb-3">
         <div className="flex items-center">
           <p>{isExactIn ? 'Minimum received' : 'Maximum sold'}</p>
           <QuestionHelper
@@ -34,7 +34,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade, allowedSlippag
           </p>
         </div>
       </div>
-      <div className="flex items-center justify-between flex-wrap mb-1">
+      <div className="flex items-center justify-between flex-wrap mb-3">
         <div className="flex items-center">
           <p>Price Impact</p>
           <QuestionHelper
@@ -49,7 +49,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade, allowedSlippag
         <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
       </div>
 
-      <div className="flex items-center justify-between flex-wrap mb-1">
+      <div className="flex items-center justify-between flex-wrap mb-3">
         <div className="flex items-center">
           <p>Liquidity Provider Fee</p>
           <QuestionHelper

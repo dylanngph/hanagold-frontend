@@ -10,11 +10,12 @@ const StyledTooltip = styled.div`
 
 const QuestionHelper = ({text, width}) => {
   return (
-       <ToolTipCustom toolTipText={text}>
-         <StyledTooltip>
-           <QuestionMarkCircleIcon width={width || '20'} />
-         </StyledTooltip>
-       </ToolTipCustom>
+      //  <ToolTipCustom toolTipText={text}>
+      //    <StyledTooltip>
+      //      <QuestionMarkCircleIcon width={width || '20'} />
+      //    </StyledTooltip>
+      //  </ToolTipCustom>
+    <ToolTipCustom toolTipText={text}></ToolTipCustom>
   );
 };
 

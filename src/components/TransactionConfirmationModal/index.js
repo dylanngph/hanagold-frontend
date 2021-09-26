@@ -33,11 +33,11 @@ function TransactionSubmittedContent({ onDismiss, hash }) {
         <div className="text-center">
           <p>Transaction Submitted</p>
           {hash && (
-            <a className="text-primary" target="_blank" href={getKardiachainLink(hash, 'transaction')}>
+            <a className="text-primary flex justify-center py-3" target="_blank" href={getKardiachainLink(hash, 'transaction')}>
               View on kardiachain
             </a>
           )}
-          <Button onClick={onDismiss} className="mx-auto mt-4">
+          <Button onClick={onDismiss} className="mx-auto flex">
             Close
           </Button>
         </div>

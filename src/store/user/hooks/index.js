@@ -1,4 +1,5 @@
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'constants/swap'
+import { Pair, Token } from 'kshark-sdk'
 import { useAllTokens } from 'hooks/Tokens'
 import useKardiachain from 'hooks/useKardiachain'
 import { useCallback, useMemo } from 'react'
@@ -106,7 +107,6 @@ export function toV2LiquidityToken([tokenA, tokenB]) {
 export function useTrackedTokenPairs() {
   const { chainId } = useKardiachain()
   const tokens = useAllTokens()
-
   // pinned pairs
   const pinnedPairs = useMemo(() => (chainId ? PINNED_PAIRS[chainId] ?? [] : []), [chainId])
 

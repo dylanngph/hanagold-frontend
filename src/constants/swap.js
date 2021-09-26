@@ -36,15 +36,15 @@ export const TOKENS_HOT = [
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], VNDC, KUSD[ChainId.MAINNET], DFL[ChainId.MAINNET], BOSSDOGE],
+  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], VNDC[ChainId.MAINNET], KUSD[ChainId.MAINNET], DFL[ChainId.MAINNET], BOSSDOGE[ChainId.MAINNET]],
 }
 
 export const PINNED_PAIRS = {
   [ChainId.MAINNET]: [
-    [DFL[ChainId.MAINNET], WKAI],
+    [DFL[ChainId.MAINNET], WKAI[ChainId.MAINNET]],
     [DFL[ChainId.MAINNET], KUSD[ChainId.MAINNET]],
-    [KUSD[ChainId.MAINNET], VNDC],
-    [BOSSDOGE, WKAI],
+    [KUSD[ChainId.MAINNET], VNDC[ChainId.MAINNET]],
+    [BOSSDOGE[ChainId.MAINNET], WKAI[ChainId.MAINNET]],
   ],
 }
 

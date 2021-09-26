@@ -1,10 +1,14 @@
+import AppHeader from 'components/AppHeader/AppHeader'
 import Page from 'components/Layout/Page';
 import PageHeader from 'components/PageHeader/PageHeader';
 import { TABS } from 'constants/index';
 import Button from 'components/Button/Button'
+import Card from 'components/Card/Card'
 import UnlockButton from 'components/UnlockButton/UnlockButton'
 import { useMemo, useState, useCallback, useEffect } from 'react';
 import { INITIAL_ALLOWED_SLIPPAGE } from 'constants/swap'
+import { CHAT, DFL, DRAGON, xCHAT } from 'constants/tokens'
+import { CurrencyAmount, JSBI, Percent } from 'kshark-sdk'
 import TradeTabButtons from 'views/Trade/conponents/TradeTabButtons/TradeTabButtons';
 import CurrencyInputPanel from 'components/CurrencyInputPanel/index'
 import { ApprovalState, useApproveCallbackFromTrade } from 'hooks/useApproveCallback'
@@ -25,11 +29,11 @@ import { computeFiatValuePriceImpact } from 'utils/computeFiatValuePriceImpact'
 import maxAmountSpend from 'utils/maxAmountSpend'
 import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 import AdvancedSwapDetailsDropdown from 'views/Swap/components/AdvancedSwapDetailsDropdown'
-// import confirmPriceImpactWithoutFee from 'views/Swap/components/confirmPriceImpactWithoutFee'
+import confirmPriceImpactWithoutFee from 'views/Swap/components/confirmPriceImpactWithoutFee'
 import ConfirmSwapModal from 'views/Swap/components/ConfirmSwapModal'
 import PercentPicker from 'components/PercentPicker/PercentPicker'
-// import { SwapCallbackError } from 'views/Swap/components/SwapCallbackError'
-// import TradePrice from 'views/Swap/components/TradePrice'
+import { SwapCallbackError } from 'views/Swap/components/SwapCallbackError'
+import TradePrice from 'views/Swap/components/TradePrice'
 
 const Swap = () => {
 	const { account, chainId } = useKardiachain()
@@ -302,162 +306,144 @@ const Swap = () => {
   return (
 		<>
 			<ConfirmSwapModal
-        open={showConfirm}
-        onDismiss={handleConfirmDismiss}
-        trade={trade}
-        originalTrade={tradeToConfirm}
-        onAcceptChanges={handleAcceptChanges}
-        attemptingTxn={attemptingTxn}
-        txHash={txHash}
-        allowedSlippage={allowedSlippage}
-        onConfirm={handleSwap}
-        swapErrorMessage={swapErrorMessage}
-      />
-			<Page>
-				<PageHeader
-						logo="/hng-logo.png"
-						title="Swap"
+				open={showConfirm}
+				onDismiss={handleConfirmDismiss}
+				trade={trade}
+				originalTrade={tradeToConfirm}
+				onAcceptChanges={handleAcceptChanges}
+				attemptingTxn={attemptingTxn}
+				txHash={txHash}
+				allowedSlippage={allowedSlippage}
+				onConfirm={handleSwap}
+				swapErrorMessage={swapErrorMessage}
+			/>
+			<Card className="max-w-md mx-auto p-5 border-2 border-primary">
+				<AppHeader title="Swap" />
+				<CurrencyInputPanel
+					label={independentField === Field.OUTPUT && !showWrap && !showToken && trade ? 'From (estimated)' : 'From'}
+					value={formattedAmounts[Field.INPUT]}
+					onMax={handleMaxInput}
+					currency={currencies[Field.INPUT]}
+					onUserInput={handleTypeInput}
+					onCurrencySelect={handleInputSelect}
+					otherCurrency={currencies[Field.OUTPUT]}
+					fiatValue={fiatValueInput ?? undefined}
+					id="swap-currency-input"
 				/>
-				<div className="px-3">
-					<TradeTabButtons tab={tab} setTab={setTab}/>
+				<PercentPicker onChangePercentInput={handlePercentInput} />
+				<div className="flex justify-center" style={{ padding: '0 1rem' }}>
+					<div className="rounded-lg p-1 cursor-pointer my-2 hover:bg-blue2">
+						<ArrowDown
+							size={20}
+							onClick={() => {
+								setApprovalSubmitted(false) // reset 2 step UI for approvals
+								onSwitchTokens()
+							}}
+							color="white"
+						/>
+					</div>
 				</div>
-				<div>
-					<CurrencyInputPanel
-						label={independentField === Field.OUTPUT && !showWrap && !showToken && trade ? 'From (estimated)' : 'From'}
-						value={formattedAmounts[Field.INPUT]}
-						onMax={handleMaxInput}
-						currency={currencies[Field.INPUT]}
-						onUserInput={handleTypeInput}
-						onCurrencySelect={handleInputSelect}
-						otherCurrency={currencies[Field.OUTPUT]}
-						fiatValue={fiatValueInput ?? undefined}
-						id="swap-currency-input"
-					/>
-					<PercentPicker onChangePercentInput={handlePercentInput} />
-					<CurrencyInputPanel
-						value={formattedAmounts[Field.OUTPUT]}
-						onUserInput={handleTypeOutput}
-						label={independentField === Field.INPUT && !showWrap && !showToken && trade ? 'To (estimated)' : 'To'}
-						showMaxButton={false}
-						currency={currencies[Field.OUTPUT]}
-						onCurrencySelect={handleOutputSelect}
-						otherCurrency={currencies[Field.INPUT]}
-						fiatValue={fiatValueOutput ?? undefined}
-						priceImpact={priceImpact}
-						id="swap-currency-output"
-					/>
-					{showWrap ? null : (
-          <div className="mt-2 text-white">
-            {Boolean(trade) && (
-              <div className="flex items-center justify-between flex-wrap">
-                <p>Price</p>
-                <TradePrice
-                  price={trade?.executionPrice}
-                  showInverted={showInverted}
-                  setShowInverted={setShowInverted}
-                />
-              </div>
-            )}
-            {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
-              <div className="flex items-center justify-center">
-                <p>Slippage Tolerance:</p>
-                <p className="font-bold primary ml-2">{allowedSlippage / 100}%</p>
-              </div>
-            )}
-          </div>
+				<CurrencyInputPanel
+					value={formattedAmounts[Field.OUTPUT]}
+					onUserInput={handleTypeOutput}
+					label={independentField === Field.INPUT && !showWrap && !showToken && trade ? 'To (estimated)' : 'To'}
+					showMaxButton={false}
+					currency={currencies[Field.OUTPUT]}
+					onCurrencySelect={handleOutputSelect}
+					otherCurrency={currencies[Field.INPUT]}
+					fiatValue={fiatValueOutput ?? undefined}
+					priceImpact={priceImpact}
+					id="swap-currency-output"
+				/>
+
+				{showWrap ? null : (
+				<div className="mt-2 text-white">
+					{Boolean(trade) && (
+						<div className="flex items-center justify-between flex-wrap my-5">
+							<p>Price</p>
+							<TradePrice
+								price={trade?.executionPrice}
+								showInverted={showInverted}
+								setShowInverted={setShowInverted}
+							/>
+						</div>
 					)}
-					<div className="mt-2">
-						{!account ? (
-							<UnlockButton />
-						) : showWrap || showToken ? (
-							<>
-								{showWrap && (
+					{allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
+						<div className="flex items-center justify-center">
+							<p>Slippage Tolerance:</p>
+							<p className="font-bold primary ml-2">{allowedSlippage / 100}%</p>
+						</div>
+					)}
+				</div>
+				)}
+
+				<div className="mt-5">
+					{!account ? (
+						<UnlockButton />
+					) : showWrap || showToken ? (
+						<>
+							{showWrap && (
+								<Button
+									isLoading={isLoadingWrap}
+									className="w-full"
+									disabled={Boolean(wrapInputError) || isLoadingWrap}
+									onClick={handleWrap}
+								>
+									{wrapInputError ??
+										(wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
+								</Button>
+							)}
+							{showToken && (
+								<>
+									{!approvalToken && (
+										<Button
+											isLoading={isLoadingApproveToken}
+											className="w-full mb-2"
+											disabled={isLoadingApproveToken}
+											onClick={onApproveToken}
+										>
+											Approve Contract
+										</Button>
+									)}
 									<Button
-										isLoading={isLoadingWrap}
+										isLoading={isLoadingWrapToken}
 										className="w-full"
-										disabled={Boolean(wrapInputError) || isLoadingWrap}
+										disabled={Boolean(wrapTokenInputError) || isLoadingWrapToken || !approvalToken}
 										onClick={handleWrap}
 									>
-										{wrapInputError ??
-											(wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
+										{wrapTokenInputError ??
+											(wrapTypeToken === WrapType.WRAP ? 'Wrap' : wrapTypeToken === WrapType.UNWRAP ? 'Unwrap' : null)}
 									</Button>
-								)}
-								{showToken && (
-									<>
-										{!approvalToken && (
-											<Button
-												isLoading={isLoadingApproveToken}
-												className="w-full mb-2"
-												disabled={isLoadingApproveToken}
-												onClick={onApproveToken}
-											>
-												Approve Contract
-											</Button>
-										)}
-										<Button
-											isLoading={isLoadingWrapToken}
-											className="w-full"
-											disabled={Boolean(wrapTokenInputError) || isLoadingWrapToken || !approvalToken}
-											onClick={handleWrap}
-										>
-											{wrapTokenInputError ??
-												(wrapTypeToken === WrapType.WRAP ? 'Wrap' : wrapTypeToken === WrapType.UNWRAP ? 'Unwrap' : null)}
-										</Button>
-									</>
-								)}
-							</>
-						) : noRoute && userHasSpecifiedInputOutput ? (
-							<Button className="w-full">
-								<p>
-									Insufficient liquidity for this trade.
-									{singleHopOnly && <span className="mb-2 block">Try enabling multi-hop trades.</span>}
-								</p>
-							</Button>
-						) : showApproveFlow ? (
-							<>
-								<Button
-									className="w-full"
-									variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
-									onClick={approveCallback}
-									disabled={approval !== ApprovalState.NOT_APPROVED}
-									isLoading={approval === ApprovalState.PENDING}
-								>
-									{approval === ApprovalState.PENDING ? (
-										<div>Approving...</div>
-									) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
-										`You can now trade ${currencies[Field.INPUT]?.symbol}`
-									) : (
-										`Approve ${currencies[Field.INPUT]?.symbol ?? ''}`
-									)}
-								</Button>
-								<Button
-									className="w-full mt-2"
-									color={priceImpactSeverity > 2 || priceImpactSeverity > 3 ? 'red' : 'primary'}
-									onClick={() => {
-										if (isExpertMode) {
-											handleSwap()
-										} else {
-											setSwapState({
-												tradeToConfirm: trade,
-												attemptingTxn: false,
-												swapErrorMessage: undefined,
-												showConfirm: true,
-												txHash: undefined,
-											})
-										}
-									}}
-									disabled={!isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)}
-								>
-									{priceImpactSeverity > 3 && !isExpertMode
-										? 'Price Impact High'
-										: priceImpactSeverity > 2
-										? 'Swap Anyway'
-										: 'Swap'}
-								</Button>
-							</>
-						) : (
+								</>
+							)}
+						</>
+					) : noRoute && userHasSpecifiedInputOutput ? (
+						<Button className="w-full">
+							<p>
+								Insufficient liquidity for this trade.
+								{singleHopOnly && <span className="mb-2 block">Try enabling multi-hop trades.</span>}
+							</p>
+						</Button>
+					) : showApproveFlow ? (
+						<>
 							<Button
-								className="w-full"
+								className="w-full text-black"
+								variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
+								onClick={approveCallback}
+								disabled={approval !== ApprovalState.NOT_APPROVED}
+								isLoading={approval === ApprovalState.PENDING}
+							>
+								{approval === ApprovalState.PENDING ? (
+									<div>Approving...</div>
+								) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
+									`You can now trade ${currencies[Field.INPUT]?.symbol}`
+								) : (
+									`Approve ${currencies[Field.INPUT]?.symbol ?? ''}`
+								)}
+							</Button>
+							<Button
+								className="w-full mt-2 text-black"
+								color={priceImpactSeverity > 2 || priceImpactSeverity > 3 ? 'red' : 'primary'}
 								onClick={() => {
 									if (isExpertMode) {
 										handleSwap()
@@ -471,23 +457,47 @@ const Swap = () => {
 										})
 									}
 								}}
-								id="swap-button"
-								width="100%"
-								disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+								disabled={!isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)}
 							>
-								{swapInputError ||
-									(priceImpactSeverity > 3 && !isExpertMode
-										? `Price Impact Too High`
-										: priceImpactSeverity > 2
-										? 'Swap Anyway'
-										: 'Swap')}
+								{priceImpactSeverity > 3 && !isExpertMode
+									? 'Price Impact High'
+									: priceImpactSeverity > 2
+									? 'Swap Anyway'
+									: 'Swap'}
 							</Button>
-						)}
-						{isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
-					</div>
-					<AdvancedSwapDetailsDropdown trade={trade} />
+						</>
+					) : (
+						<Button
+							className="w-full text-black"
+							onClick={() => {
+								if (isExpertMode) {
+									handleSwap()
+								} else {
+									setSwapState({
+										tradeToConfirm: trade,
+										attemptingTxn: false,
+										swapErrorMessage: undefined,
+										showConfirm: true,
+										txHash: undefined,
+									})
+								}
+							}}
+							id="swap-button"
+							width="100%"
+							disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+						>
+							{swapInputError ||
+								(priceImpactSeverity > 3 && !isExpertMode
+									? `Price Impact Too High`
+									: priceImpactSeverity > 2
+									? 'Swap Anyway'
+									: 'Swap')}
+						</Button>
+					)}
+					{isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
 				</div>
-			</Page>
+				<AdvancedSwapDetailsDropdown trade={trade} />
+			</Card>
 		</>
 	);
 };

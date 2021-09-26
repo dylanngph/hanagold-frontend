@@ -12,7 +12,7 @@ const config =  (t) => [
   {
     label: t('Trade'),
     icon: "TradeIcon",
-    href: "/trade",
+    href: "/swap",
   },
   {
     label: ('Farms'),

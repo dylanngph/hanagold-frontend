@@ -12,7 +12,7 @@ export const Input = React.memo(function InnerInput({ value, onUserInput, placeh
 
   return (
     <input
-      className="bg-transparent text-primary placeholder-blue3 w-full"
+      className="bg-transparent text-primary w-full"
       {...rest}
       value={value}
       onChange={(event) => {

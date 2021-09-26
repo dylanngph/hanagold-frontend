@@ -25,7 +25,7 @@ export default function SwapModalFooter({ trade, onConfirm, allowedSlippage, swa
   return (
     <>
       <div className="mt-4">
-        <div className="flex items-center justify-between flex-wrap">
+        <div className="flex items-center justify-between flex-wrap mb-3">
           <p>Price</p>
           <p className="flex items-center">
             {formatExecutionPrice(trade, showInverted)}
@@ -33,7 +33,7 @@ export default function SwapModalFooter({ trade, onConfirm, allowedSlippage, swa
           </p>
         </div>
 
-        <div className="flex items-center justify-between flex-wrap">
+        <div className="flex items-center justify-between flex-wrap mb-3">
           <div className="flex items-center">
             <p>{trade.tradeType === TradeType.EXACT_INPUT ? 'Minimum received' : 'Maximum sold'}</p>
             <QuestionHelper
@@ -54,14 +54,14 @@ export default function SwapModalFooter({ trade, onConfirm, allowedSlippage, swa
             </o>
           </div>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center">
             <p>Price Impact</p>
             <QuestionHelper text="The difference between the market price and your price due to trade size." ml="4px" />
           </div>
           <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center">
             <p>Liquidity Provider Fee</p>
             <QuestionHelper

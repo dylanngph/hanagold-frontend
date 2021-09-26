@@ -13,7 +13,7 @@ export function FiatValue({ fiatValue, priceImpact }) {
   }, [priceImpact])
 
   return (
-    <div className="text-white flex">
+    <div className="text-gray-300 flex text-sm">
       {fiatValue ? '~$' : ''}
       <HoverInlineText text={fiatValue ? fiatValue?.toSignificant(6, { groupSeparator: ',' }) : ''} />
       {priceImpact ? (
