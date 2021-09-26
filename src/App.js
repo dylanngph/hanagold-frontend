@@ -1,5 +1,6 @@
 import Menu from 'components/Menu/Menu';
-import ToastListener from 'contexts/ToastsContext/Listener';
+// import ToastListener from 'contexts/ToastsContext/Listener';
+import { ToastContainer } from 'react-toastify'
 import LayoutSwap from 'components/Layout/LayoutSwap';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
@@ -22,6 +23,8 @@ import AddLiquidity from 'views/AddLiquidity/AddLiquidity'
 import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from 'views/AddLiquidity/redirects'
 import RemoveLiquidity from 'views/RemoveLiquidity/RemoveLiquidity'
 import PoolFinder from 'views/PoolFinder/index'
+import Launchpad from 'views/Launchpad/Launchpad';
+import ComingSoon from 'views/ComingSoon/ComingSoon'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
@@ -45,9 +48,12 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/trade">
-            <Trade />
+          <Route path="/launchpad">
+            <Launchpad />
           </Route>
+          {/* <Route path="/trade">
+            <Trade />
+          </Route> */}
           <Route path="/farms">
             <Farms />
           </Route>        
@@ -62,6 +68,9 @@ function App() {
           </Route>
           <Route path="/pool/:pid">
             <Pool />
+          </Route>
+          <Route path="/marketplace">
+            <ComingSoon />
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}
@@ -84,7 +93,8 @@ function App() {
           </LayoutSwap>
         </Menu>
       </Switch>
-      <ToastListener />
+      {/* <ToastListener /> */}
+      <ToastContainer newestOnTop />
     </Router>
   )
 }

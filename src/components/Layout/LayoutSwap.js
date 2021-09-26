@@ -23,10 +23,14 @@ const LayoutSwap = ({ children }) => {
     }, [pathname])
 
     return(
-        <Page>
-            { isRouteSwap ? <TabHeader/> : null }
-            { children }
-        </Page>
+        isRouteSwap
+        ?
+            <Page>
+                <TabHeader/>
+                { children }
+            </Page>
+        :
+        null
     )
 }
 

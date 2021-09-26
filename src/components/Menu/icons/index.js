@@ -9,3 +9,4 @@ export { default as DipoIcon } from "./DIPO";
 export { default as CheckmarkIcon } from "./Checkmark";
 export { default as NumberOptionInput } from "./NumberOptionInput";
 export { default as TradeIcon } from "./Trade";
+export { default as MarketPlaceIcon } from "./MarketPlace";

@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 import { HelmetProvider } from 'react-helmet-async'
 import ApplicationUpdater from 'store/application/updater'
 import MulticallUpdater from 'store/multicall/updater'
+import ListsUpdater from './store/lists/updater'
+import TransactionUpdater from 'store/transactions/updater'
 
 import { RefreshContextProvider } from 'contexts/RefreshContext';
 import store from 'store';
@@ -15,8 +17,10 @@ import store from 'store';
 function Updaters() {
   return (
       <>
+        <ListsUpdater />
         <ApplicationUpdater />
         <MulticallUpdater />
+        <TransactionUpdater />
       </>
   )
 }
@@ -34,7 +38,7 @@ const Providers = ({children}) => {
                   <Updaters />
                   {children}
                 </ModalProvider>
-             </RefreshContextProvider>
+              </RefreshContextProvider>
             </LanguageProvider>
           </ThemeContextProvider>
           </HelmetProvider>

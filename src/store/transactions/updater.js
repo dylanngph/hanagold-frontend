@@ -68,7 +68,6 @@ export default function Updater() {
                   },
                 }),
               )
-
               const toast = receipt.status === 1 ? showToastSuccess : showToastError
               toast(
                 'Transaction receipt',
