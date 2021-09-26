@@ -12,6 +12,7 @@ const FlexLayout = styled.div`
   }
   ${`@media (max-width: 800px)`} {
     margin: none;
+    justify-content: center;
   }
 `
 
