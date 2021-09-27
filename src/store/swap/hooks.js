@@ -183,9 +183,9 @@ function parseCurrencyFromURLParameter(urlParam) {
     const valid = isAddress(urlParam)
     if (valid) return valid
     if (urlParam.toUpperCase() === 'KAI') return 'KAI'
-    if (valid === false) return tokens.defily.address
+    if (valid === false) return tokens.chi.address
   }
-  return tokens.defily.address ?? ''
+  return tokens.chi.address ?? ''
 }
 
 export function parseTokenAmountURLParameter(urlParam) {

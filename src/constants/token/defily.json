@@ -7,8 +7,8 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "/tokens/dfl.png",
-  "keywords": ["defily", "default"],
+  "logoURI": "/tokens/chi.png",
+  "keywords": ["chi", "default"],
   "tokens": [
     {
       "name": "WKAI Token",
@@ -18,16 +18,9 @@
       "decimals": 18
     },
     {
-      "name": "Defily",
-      "symbol": "DFL",
-      "address": "0xD675fF2B0ff139E14F86D87b7a6049ca7C66d76e",
-      "chainId": 1,
-      "decimals": 18
-    },
-    {
-      "name": "DRAGON",
-      "symbol": "DRAGON",
-      "address": "0x18f4f7A1fa6F2c93d40d4Fd83c67E93B88d3a0b1",
+      "name": "KShark",
+      "symbol": "KSC",
+      "address": "0x7221B169aD5e8415753ebbC583924519AFc96B26",
       "chainId": 1,
       "decimals": 18
     },
@@ -70,6 +63,20 @@
       "name": "BECO",
       "symbol": "BECO",
       "address": "0x2Eddba8b949048861d2272068A94792275A51658",
+      "chainId": 1,
+      "decimals": 18
+    },
+    {
+      "name": "Defily",
+      "symbol": "DFL",
+      "address": "0xD675fF2B0ff139E14F86D87b7a6049ca7C66d76e",
+      "chainId": 1,
+      "decimals": 18
+    },
+    {
+      "name": "DRAGON",
+      "symbol": "DRAGON",
+      "address": "0x18f4f7A1fa6F2c93d40d4Fd83c67E93B88d3a0b1",
       "chainId": 1,
       "decimals": 18
     },

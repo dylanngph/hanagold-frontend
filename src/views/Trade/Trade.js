@@ -9,15 +9,28 @@ import TableTokenizedStocks from 'views/Trade/conponents/TokenizedStocks/TableTo
 import TradeTabButtons from 'views/Trade/conponents/TradeTabButtons/TradeTabButtons';
 
 const Trade = () => {
-  const [tab, setTab] = useState(TABS.swap)
+  const data = useTrade()
+  const [tab,setTab] = useState(TABS.stocks)
+  const [search, setSearch] = useState('')
+  const debouncedQuery = useDebounce(search, 300)
+
+  const filterDataBySearch = useMemo(() => {
+    return data.filter((trade) => {
+      const nameDisplay = trade?.market?.base
+      return nameDisplay.toLowerCase().includes(debouncedQuery.toLowerCase())
+    })
+  }, [data, debouncedQuery])
+
   return (
         <Page>
           <PageHeader
-              logo="/hng-logo.png"
+              logo="/logo.png"
               title="Swap"
           />
           <div className="px-3">
             <TradeTabButtons tab={tab} setTab={setTab}/>
+            <Search setSearch={setSearch}/>
+            <TableTokenizedStocks data={filterDataBySearch}/>
           </div>
         </Page>
     );

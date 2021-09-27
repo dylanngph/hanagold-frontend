@@ -63,7 +63,7 @@ const Pools = () => {
               flexWrap="wrap"
               style={{marginBottom: 18}}
           >
-            <FarmTabButtons/>
+            {/* <FarmTabButtons/> */}
             <PoolsLiveTabButtons
                 onChange={handleChangeTab}
                 tab={tabLive}

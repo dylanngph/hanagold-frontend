@@ -1,5 +1,5 @@
 import Menu from 'components/Menu/Menu';
-// import ToastListener from 'contexts/ToastsContext/Listener';
+import ToastListener from 'contexts/ToastsContext/Listener';
 import { ToastContainer } from 'react-toastify'
 import LayoutSwap from 'components/Layout/LayoutSwap';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
@@ -93,8 +93,8 @@ function App() {
           </LayoutSwap>
         </Menu>
       </Switch>
-      {/* <ToastListener /> */}
-      <ToastContainer newestOnTop />
+      <ToastListener />
+      {/* <ToastContainer newestOnTop /> */}
     </Router>
   )
 }

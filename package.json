@@ -1,5 +1,5 @@
 {
-  "name": "live-trade",
+  "name": "hanagold-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,7 +33,7 @@
     "bignumber.js": "^9.0.1",
     "classnames": "^2.3.1",
     "ethers": "^5.4.1",
-    "kshark-sdk": "D:\\fork\\kshark-sdk",
+    "kshark-sdk": "git+https://gitlab.com/Kshark2021/kshark-sdk.git",
     "prop-types": "^15.7.2",
     "query-string": "^7.0.1",
     "react": "^17.0.2",

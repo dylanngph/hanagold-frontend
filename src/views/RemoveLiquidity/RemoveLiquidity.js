@@ -367,8 +367,8 @@ export default function RemoveLiquidity({
         </Card>
         <div className="flex items-center justify-between my-4">
           <p className="text-white">Remove Amount</p>
-          <Button variant="text" scale="sm" onClick={() => setShowDetailed(!showDetailed)}>
-            {showDetailed ? 'Simple' : 'Detailed'}
+          <Button scale="sm" onClick={() => setShowDetailed(!showDetailed)}>
+            <span className="text-black">{showDetailed ? 'Simple' : 'Detailed'}</span>
           </Button>
         </div>
         {!showDetailed && (

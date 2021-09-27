@@ -18,7 +18,7 @@ export default function CurrencyLogo({ currency, size = '24px', style, className
   }, [currency])
 
   if (currency === ETHER) {
-    return <img src="/tokens/kai.png" className={classnames(className, 'w-6 h-6 rounded-50 bg-white shadow-md p-1')} />
+    return <img src="/tokens/kai.png" className={classnames(className, 'w-6 h-6 rounded-50 shadow-md p-1')} />
   }
 
   return (

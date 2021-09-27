@@ -1,4 +1,3 @@
-import { showToastError, showToastSuccess } from 'components/CustomToast/CustomToast'
 import useKardiachain from 'hooks/useKardiachain'
 import useRefresh from 'hooks/useRefresh'
 import kardiaClient from 'plugin/kardia-dx'
@@ -7,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import updateBlockNumber from 'store/application/actions'
 import { getKardiachainLink } from 'utils/getUrl'
 import { useBlockNumber } from '../application/hooks'
+import useToast from 'hooks/useToast';
 import { checkedTransaction, finalizeTransaction } from './actions'
 
 export function shouldCheck(lastBlockNumber, tx) {
@@ -28,6 +28,7 @@ export function shouldCheck(lastBlockNumber, tx) {
 }
 
 export default function Updater() {
+  const { toastSuccess, toastError } = useToast();
   const { library, chainId } = useKardiachain()
   const { fastRefresh } = useRefresh()
 
@@ -68,7 +69,7 @@ export default function Updater() {
                   },
                 }),
               )
-              const toast = receipt.status === 1 ? showToastSuccess : showToastError
+              const toast = receipt.status === 1 ? toastSuccess : toastError
               toast(
                 'Transaction receipt',
                 <div>

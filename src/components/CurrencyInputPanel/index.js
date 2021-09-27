@@ -87,7 +87,7 @@ export default function CurrencyInputPanel({
                 <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} />
               </div>
             )}
-            <div className="bg-blue1 rounded-xl">
+            <div className="bg-blue1 rounded-xl px-2">
               <div
                 className="flex items-center justify-between"
                 onClick={() => {
