@@ -10,13 +10,14 @@ const WalletCard = ({ onDismiss, mb, login }) => {
         login();
         onDismiss();
       }}
-      style={{ justifyContent: "space-between" }}
+      style={{ display: 'flex' , justifyContent: "space-between" }}
       mb={mb}
     >
-      <Text bold color="primary" mr="16px">
+      <img className="mr-2" width="32" src="/tokens/kai.png" />
+      <Text bold color="#000" mr="16px">
         Kardia Extension Wallet Connect
       </Text>
-      <img className="mr-2" width="32" src="/tokens/kai.png" />
+      
     </Button>
   );
 };

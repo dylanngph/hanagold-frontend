@@ -12,11 +12,12 @@ import Harvest from 'views/FarmOutside/components/Harvest/Harvest';
 const WrapperFlex = styled(Flex)`
   margin-top: 18px;
   flex-wrap: wrap;
-
+  
   > div {
     min-width: 300px;
     min-height: 320px;
     margin-bottom: 40px;
+    margin-right: 20px;
   }
 `;
 

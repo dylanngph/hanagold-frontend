@@ -102,30 +102,40 @@ const Stake = ({farm, lpTokenName, userData}) => {
               flexDirection="column"
           >
             <div>
-              {
-                farm?.token0?.symbol
-                  ?  <CardLogo
-                        src1={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
-                        src2={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
-                    />
-                    :  <CardLogo
-                        src1={`/tokens/${farm?.symbol?.toLowerCase()}.png`}
-                    />
-              }
-              <Value
-                  color="secondary"
-                  fontSize="32px"
-                  value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
-                  decimals={4}
-              />
-              <Value
-                  fontSize="14px"
-                  prefix="~"
-                  value={account ? usdTokenStaking : 0}
-                  decimals={2}
-                  unit="USD"
-              />
-              <Text>{lpTokenName} Tokens Staked</Text>
+              <div style={{
+              backgroundColor: '#FFC247',
+              padding: '10px',
+              borderTopLeftRadius: '8px',
+              borderTopRightRadius: '8px',
+            }}>
+                {
+                  farm?.token0?.symbol
+                    ?  <CardLogo
+                          src1={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
+                          src2={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
+                      />
+                      :  <CardLogo
+                          src1={`/tokens/${farm?.symbol?.toLowerCase()}.png`}
+                      />
+                }
+              </div>
+              <div style={{padding: '20px'}}>
+                <Value
+                    color="secondary"
+                    fontSize="32px"
+                    value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
+                    decimals={4}
+                />
+                <Value
+                    color="#fff"
+                    fontSize="14px"
+                    prefix="~"
+                    value={account ? usdTokenStaking : 0}
+                    decimals={2}
+                    unit="USD"
+                />
+                <Text color="#fff">{lpTokenName} Tokens Staked</Text>
+              </div>
             </div>
             {account ? (
                 userData.userDataLoaded
