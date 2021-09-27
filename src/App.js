@@ -25,6 +25,7 @@ import RemoveLiquidity from 'views/RemoveLiquidity/RemoveLiquidity'
 import PoolFinder from 'views/PoolFinder/index'
 import Launchpad from 'views/Launchpad/Launchpad';
 import ComingSoon from 'views/ComingSoon/ComingSoon'
+import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/launchpad">
             <Launchpad />
+          </Route>
+          <Route exact path="/launchpad-details">
+            <LaunchpadDetails />
           </Route>
           {/* <Route path="/trade">
             <Trade />

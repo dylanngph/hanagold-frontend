@@ -246,6 +246,7 @@ const AutoButton = styled(Button)`
   border-radius: 4px;
   font-family: SFProTextBold;
   padding: 4px 16.5px;
+  display: flex;
 `
 
 const WalletButton = styled(Button)`

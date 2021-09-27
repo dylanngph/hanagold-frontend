@@ -5,10 +5,11 @@ import Filter from './components/filter/Filter';
 import FlexLayout from './components/layout/FlexLayout'
 import { Box } from '@mui/material'
 import ProjectCard from './components/cards/ProjectCard'
+import MenuLink from "components/Menu/MenuLink";
+
 
 
 const Launchpad = () => {
-  
 
   return (
       <Page>
@@ -18,10 +19,18 @@ const Launchpad = () => {
           </Title>
           <Filter/>
           <FlexLayout>
+            <MenuLink href="/launchpad-details">
               <ProjectCard />
+            </MenuLink>
+            <MenuLink href="/launchpad-details">
               <ProjectCard />
+            </MenuLink>
+            <MenuLink href="/launchpad-details">
               <ProjectCard />
+            </MenuLink>
+            <MenuLink href="/launchpad-details">
               <ProjectCard />
+            </MenuLink>
           </FlexLayout>
         </Container>
       </Page>
