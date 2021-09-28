@@ -17,6 +17,7 @@ const WrapperFlex = styled(Flex)`
     min-width: 300px;
     min-height: 320px;
     margin-bottom: 40px;
+    margin-right: 20px
   }
 `;
 

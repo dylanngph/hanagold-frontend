@@ -56,20 +56,32 @@ const Harvest = ({farm, earnings}) => {
             flexDirection="column"
         >
           <div>
-            <CardLogo src1="/tokens/ltd.png"/>
-            <Value
-                color="secondary"
-                fontSize="32px"
-                value={account ? getBalanceNumber(earnings) : 0}
-            />
-            <Value
-                fontSize="14px"
-                prefix="~"
-                value={account ? usdTokenEarning : 0}
-                decimals={2}
-                unit=" USD"
-            />
-            <Text>LTD Earned</Text>
+            <div style={{
+              padding: '20px',
+              backgroundColor: '#FFC247',
+              borderTopLeftRadius: '8px',
+              borderTopRightRadius: '8px'
+            }}>
+              <CardLogo src1="/tokens/ltd.png"/>
+            </div>
+            <div  style={{
+              padding: '20px',
+            }}>
+              <Value
+                  color="secondary"
+                  fontSize="32px"
+                  value={account ? getBalanceNumber(earnings) : 0}
+              />
+              <Value
+                  color="primary"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenEarning : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+              <Text color="primary">LTD Earned</Text>
+            </div>
           </div>
           {account ? (
               <Button
