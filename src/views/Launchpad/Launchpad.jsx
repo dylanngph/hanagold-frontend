@@ -6,10 +6,14 @@ import FlexLayout from './components/layout/FlexLayout'
 import { Box } from '@mui/material'
 import ProjectCard from './components/cards/ProjectCard'
 import MenuLink from "components/Menu/MenuLink";
+import useMatchBreakpoints from 'hooks/useMatchBreakpoints';
+
 
 
 
 const Launchpad = () => {
+  const {isXl} = useMatchBreakpoints();
+  const isMobile = isXl === false;
 
   return (
       <Page>
@@ -17,7 +21,7 @@ const Launchpad = () => {
           <Title>
             <h2>Launchpad</h2>
           </Title>
-          <Filter/>
+          <Filter isMobile={isMobile} />
           <FlexLayout>
             <MenuLink href="/launchpad-details">
               <ProjectCard />
@@ -52,9 +56,8 @@ const Title = styled.div`
 `
 const Container = styled(Flex)`
   flex-direction: column;
-  margin-top: 100px;
-  align-items: center;
   width: 100%;
+  align-items: center;
 `
 
 export default Launchpad;

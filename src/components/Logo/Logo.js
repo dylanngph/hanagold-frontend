@@ -23,7 +23,6 @@ const Logo = ({ isPushed, togglePush, isDark, href , isMobile }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
       <>
-        {console.log(isMobile)}
         {isPushed && <img src="/hng-logo.png" width={isMobile ? "100px" : "140px"} />}
       </>
   );

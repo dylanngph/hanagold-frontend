@@ -9,7 +9,6 @@ import Container from './Container'
 
 const StyledPage = styled(Container)`
   min-height: 100vh;
-  padding: 0px;
   color: #fff;
   background-color: #16171B;
   background-repeat: no-repeat;
@@ -18,6 +17,9 @@ const StyledPage = styled(Container)`
   background-attachment: fixed;
   padding: 20px;
   
+  ${({ theme }) => theme.mediaQueries.xs} {
+    padding-top: 100px;
+  }
   ${({ theme }) => theme.mediaQueries.sm} {
     padding-top: 24px;
     padding-bottom: 24px;
