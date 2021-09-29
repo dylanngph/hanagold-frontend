@@ -58,6 +58,7 @@ const Container = styled(Flex)`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-top: 80px;
 `
 
 export default Launchpad;

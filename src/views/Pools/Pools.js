@@ -67,17 +67,19 @@ const Pools = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 80px;
     ${`@media only screen and (max-width: 800px)`} {
       flex-direction: column;
       .earned-section {
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
-      }
+      };
       .earned-box {
         width: 100%;
         margin-top: 10px;
-      }
+      };
+      margin-top: 20px;
     }
   `
   const HelpButton = MuiStyled(Button)(({ theme }) => ({
