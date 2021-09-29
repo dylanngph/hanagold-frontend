@@ -25,7 +25,7 @@ const UserBlock = () => {
             onPresentConnectModal();
           }}
         >
-          Connect Wallet
+          Connect
         </Button>
       )}
     </div>

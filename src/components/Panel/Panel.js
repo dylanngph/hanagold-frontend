@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PanelBody from "components/Panel/PanelBody";
+import PanelFooter from "components/Panel/PanelFooter";
 import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "config/index";
 import Logo from 'components/Logo/Logo';
 
@@ -35,6 +36,7 @@ const Panel = (props) => {
   return (
       <StyledPanel isPushed={isPushed} showMenu={showMenu} isMobile={isMobile} >
         <PanelBody {...props} />
+        <PanelFooter {...props} />
       </StyledPanel>
   );
 };

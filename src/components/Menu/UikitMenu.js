@@ -112,6 +112,11 @@ const UikitMenu = ({
               isDark={isDark}
               href={homeLink?.href ?? '/'}
           />
+          <div style={{
+            marginRight: isMobile ? '10px' : '80px'
+          }}>
+            <UserBlock/>
+          </div>
         </StyledNav>
         <BodyWrapper>
           <Panel

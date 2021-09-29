@@ -1,10 +1,9 @@
 import Flex from 'components/Box/Flex';
 import Page from 'components/Layout/Page';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 import { styled as MuiStyled } from '@mui/material/styles';
 import {Box , LinearProgress , Button} from '@mui/material'
-import {FacebookIcon , TumblerIcon , TwitterIcon , HomeIcon, StarIcon} from './components/icons/index'
+import {FacebookIcon , TumblerIcon , TwitterIcon , HomeIcon} from './components/icons/index'
 import Info from './components/cards/Info';
 import Description from './components/cards/Description';
 import useMatchBreakpoints from 'hooks/useMatchBreakpoints';

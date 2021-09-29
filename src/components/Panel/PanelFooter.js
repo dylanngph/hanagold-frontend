@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { MENU_ENTRY_HEIGHT } from 'config/index';
 import ThemeSwitcher from 'components/Menu/ThemeSwitcher';
 import LangSelector from 'components/Menu/LangSelector';
+import {Box} from '@mui/material'
 
 const Container = styled.div`
   flex: none;
@@ -32,6 +33,7 @@ const SocialEntry = styled.div`
   justify-content: center;
   height: ${MENU_ENTRY_HEIGHT}px;
   padding: 0 16px;
+  width: 100%;
 `;
 
 const PanelFooter = ({
@@ -57,11 +59,11 @@ const PanelFooter = ({
         <SocialEntry>
           <Price tokenPriceUsd={tokenPriceUsd}/>
         </SocialEntry>
-        <SettingsEntry>
-          {/*<ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme}/>*/}
+        {/* <SettingsEntry>
+          <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme}/>
           <LangSelector currentLang={currentLang} langs={langs} setLang={setLang}/>
           <SocialLinks />
-        </SettingsEntry>
+        </SettingsEntry> */}
       </Container>
   );
 };
