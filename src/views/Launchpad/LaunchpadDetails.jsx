@@ -7,81 +7,31 @@ import {Box , LinearProgress , Button} from '@mui/material'
 import {FacebookIcon , TumblerIcon , TwitterIcon , HomeIcon, StarIcon} from './components/icons/index'
 import Info from './components/cards/Info';
 import Description from './components/cards/Description';
+import useMatchBreakpoints from 'hooks/useMatchBreakpoints';
 
+const Title = styled(Box)`
+    color: #FFC247;
+    font-size: 24px;
+    font-family: SFProTextBold;
+    margin-bottom: 10px;
+`
 
-
-const LaunchpadDetails = () => {
-    const {details} = useParams()
-
-  
-  return (
-      <Page>
-        <Box width="100%" display="flex" justifyContent="center" padding="10px">
-        <Container>
-          <DetailContainer>
-            <ImageSection>
-                <img src="/images/projectShowRoom/hotungmau-detail.png" alt="Feature Image" width="100%" /> 
-            </ImageSection>
-            <MetaSection>
-                <Box color="#FFC247" fontSize="24px" fontFamily="SFProTextBold" mb="10px" >Show Room Hồ Tùng Mậu</Box>
-                <Section>
-                    <Box display="flex" mr="30px">
-                        <Box mr="5px"> <FacebookIcon/> </Box>
-                        <Box mr="5px"> <TumblerIcon/> </Box>
-                        <Box mr="5px"> <TwitterIcon/> </Box>
-                        <Box mr="5px"> <HomeIcon/> </Box>
-                    </Box>
-                    <Box p="10px 40px 10px 40px" backgroundColor="rgba(255,255,255, .3)" borderRadius="20px" fontSize="14px">OPENING/ UPCOMING/ CLOSED</Box>
-                </Section>
-                <Section>
-                    <Box display="flex" mr="30px" alignItems="center">
-                        <Box mr="5px" fontSize="14px"> Raised: </Box>
-                        <Box mr="5px" fontSize="24px" fontFamily="SFProTextBold"> 2.000.000.000 </Box>
-                        <Box color="rgba(255,255,255, .5)" fontSize="14px"> VNDC </Box>
-                    </Box>
-                    <Box p="10px 40px 10px 40px" backgroundColor="rgba(255,255,255, .3)" borderRadius="20px" fontSize="14px">SUCCESS/ FAIL</Box>
-                </Section>
-                <Box mb="10px">Interest: 20%</Box>
-                <Box display="flex">
-                    <Box mr="5px">Progress: </Box>
-                    <Box fontSize="16px" fontFamily="SFProTextBold">50% </Box>
-                </Box>
-                <Box sx={{ width: '100%', marginTop:'20px', marginBottom: '10px' }}>
-                        <LinearProgress 
-                        sx={{
-                            height: "12.67px",
-                            backgroundColor: "#16171B",
-                            [`& .MuiLinearProgress-bar`] : {
-                                backgroundColor: '#FFC247'
-                            }
-                        }} 
-                        variant="determinate" value={50}
-                        />
-                </Box>
-                <Box mb="10px">Investors: 5,000</Box>
-                <Box mb="10px" color="rgba(255,255,255, .5)">Close time: 2021-12-12 22:00:00 UTC +7. </Box>
-                <Box p="10px 0 10px 0" width="100%" backgroundColor="rgba(255,255,255, .3)" textAlign="center" borderRadius="20px" mb="10px">10 days 2 hours 30 minutes 10 seconds left</Box>
-                <Box width="100%" display="flex" justifyContent="space-between">
-                    <StyledButton variant="contained">Approve Token</StyledButton>
-                    <OutLinedStyledButton variant="contained">Join Pool</OutLinedStyledButton>
-                </Box>
-            </MetaSection>
-          </DetailContainer>
-          <Info/>
-          <Description/>
-        </Container>
-        </Box>
-      </Page>
-  );
-};
-
+const ButtonSection = styled(Box)`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    ${`@media only screen and (max-width: 600px)`} {
+        flex-direction: column;
+    }
+`
 const Container = styled(Flex)`
   flex-direction: column;
   margin-top: 100px;
-  padding: 24px;
+  padding: 20px;
   background-color: rgba(255,255,255, .1);
   border-radius: 8px;
-  width: 1132px;
+  width: 100%;
 `
 const DetailContainer = styled(Box)`
     display: flex;
@@ -94,17 +44,17 @@ const DetailContainer = styled(Box)`
     }
 `
 const ImageSection = styled(Box)`
-    width: 50%;
-    margin-right: 20px;
+    width: 35%;
+    display: flex;
+    margin-right: 10px;
     ${`@media only screen and (max-width: 600px)`} {
         width: 100%;
-        margin-right: 0;
     }
 `
 const MetaSection = styled(Box)`
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 65%;
     ${`@media only screen and (max-width: 600px)`} {
         width: 100%;
         margin-top: 20px;
@@ -118,6 +68,10 @@ const Section = styled(Box)`
     ${`@media only screen and (max-width: 600px)`} {
         width: 100%;
         flex-direction: column;
+        align-items: start;
+        & > div {
+            margin-bottom: 10px;
+        }
     }
 `
 const StyledButton = MuiStyled(Button)({
@@ -133,6 +87,10 @@ const StyledButton = MuiStyled(Button)({
         backgroundColor: '#FFC247',
         opacity: .8,
         boxShadow: 'none',
+    },
+    '@media only screen and (max-width: 600px)' : {
+        width: '100%',
+        marginBottom: '10px'
     }
   });
 
@@ -153,7 +111,77 @@ const OutLinedStyledButton = MuiStyled(Button)({
     },
     '&:focus': {
         borderColor: 'none'
+    },
+    '@media only screen and (max-width: 600px)' : {
+        width: '100%',
+        marginBottom: '10px'
     }
   });
+
+const LaunchpadDetails = () => {
+    const {isXl} = useMatchBreakpoints();
+    const isMobile = isXl === false;
+
+  return (
+      <Page>
+        <Box width="100%" display="flex" justifyContent="center" padding="10px">
+        <Container>
+          <DetailContainer>
+            <ImageSection>
+                <img src="/images/projectShowRoom/hotungmau-detail.png" alt="Feature Image" height="100%" /> 
+            </ImageSection>
+            <MetaSection>
+                <Title>Show Room Hồ Tùng Mậu</Title>
+                <Section>
+                    <Box display="flex" mr="30px">
+                        <Box mr="5px"> <FacebookIcon/> </Box>
+                        <Box mr="5px"> <TumblerIcon/> </Box>
+                        <Box mr="5px"> <TwitterIcon/> </Box>
+                        <Box mr="5px"> <HomeIcon/> </Box>
+                    </Box>
+                    <Box p="10px" backgroundColor="rgba(255,255,255, .3)" borderRadius="20px" fontSize="14px">OPENING/ UPCOMING/ CLOSED</Box>
+                </Section>
+                <Section>
+                    <Box display="flex" mr="30px" alignItems="center">
+                        <Box mr="5px" fontSize="14px"> Raised: </Box>
+                        <Box mr="5px" fontSize={isMobile ? "14px" : "24px"} fontFamily="SFProTextBold"> 2.000.000.000 </Box>
+                        <Box color="rgba(255,255,255, .5)" fontSize="14px"> VNDC </Box>
+                    </Box>
+                    <Box p="10px" backgroundColor="rgba(255,255,255, .3)" borderRadius="20px" fontSize="14px">SUCCESS/ FAIL</Box>
+                </Section>
+                <Box mb="10px">Interest: 20%</Box>
+                <Box display="flex">
+                    <Box mr="5px">Progress: </Box>
+                    <Box fontSize="16px" fontFamily="SFProTextBold">50% </Box>
+                </Box>
+                <Box sx={{ width: '100%', marginTop:'20px', marginBottom: '10px' }}>
+                        <LinearProgress 
+                        sx={{
+                            height: "12.67px",
+                            backgroundColor: "#16171B",
+                            [`& .MuiLinearProgress-bar`] : {
+                                backgroundColor: '#FFC247'
+                            }
+                        }} 
+                        variant="determinate" value={50}
+                        />
+                </Box>
+                <Box mb="10px">Investors: 5,000</Box>
+                <Box mb="10px" color="rgba(255,255,255, .5)">Close time: 2021-12-12 22:00:00 UTC +7. </Box>
+                <Box p="10px" width="100%" backgroundColor="rgba(255,255,255, .3)" textAlign="center" borderRadius="20px" mb="10px">10 days 2 hours 30 minutes 10 seconds left</Box>
+                <ButtonSection>
+                    <StyledButton variant="contained">Approve Token</StyledButton>
+                    <OutLinedStyledButton variant="contained">Join Pool</OutLinedStyledButton>
+                </ButtonSection>
+            </MetaSection>
+          </DetailContainer>
+          <Info isMobile={isMobile}/>
+          <Description/>
+        </Container>
+        </Box>
+      </Page>
+  );
+};
+
 
 export default LaunchpadDetails;

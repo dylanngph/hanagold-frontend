@@ -1,92 +1,98 @@
 import { Box } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
+import InfoMobile from './InfoMobile'
 
-const Info = () => {
+const Info = ({isMobile}) => {
+
     return (
-        <Wrapper>
-            <Row>
-                <Col>
-                 <ItemRow>
-                    <Title>
-                        IDO Information
-                    </Title>
-                 </ItemRow>
-                 <ItemRow>
-                    <Paragraph>
-                        Token release
-                    </Paragraph>
-                    <Paragraph>
-                        1,000,000,000 TOKEN
-                    </Paragraph>
-                 </ItemRow>
-                 <ItemRow>
-                    <Paragraph>
-                        Swap Rate
-                    </Paragraph>
-                    <Paragraph>
-                        1 VNDC = 10 TOKEN
-                    </Paragraph>
-                 </ItemRow>
-                 <ItemRow>
-                    <Paragraph>
-                        Min - Max Cap
-                    </Paragraph>
-                    <Paragraph>
-                        50,000 - 70,000 VNDC
-                    </Paragraph>
-                 </ItemRow>
-                 <ItemRow>
-                    <Paragraph>
-                        Release Date
-                    </Paragraph>
-                    <Paragraph>
-                        Release Date
-                    </Paragraph>
-                 </ItemRow>
-                </Col>
-                
-                <Col>
-                    <ItemRow>
+        <>
+        {
+            isMobile ? <InfoMobile/> :
+            <Wrapper>
+                <Row>
+                    <Col>
+                        <ItemRow>
                         <Title>
-                            Tier Rank
+                            IDO Information
                         </Title>
-                    </ItemRow>
-                    <ItemRow>
+                        </ItemRow>
+                        <ItemRow>
                         <Paragraph>
-                            VIP 7
+                            Token release
                         </Paragraph>
                         <Paragraph>
-                            1%
+                            1,000,000,000 TOKEN
                         </Paragraph>
-                    </ItemRow>
-                    <ItemRow>
+                        </ItemRow>
+                        <ItemRow>
                         <Paragraph>
-                            VIP 8
-                        </Paragraph>
-                        <Paragraph>
-                            2%
-                        </Paragraph>
-                    </ItemRow>
-                    <ItemRow>
-                        <Paragraph>
-                            VIP 9
+                            Swap Rate
                         </Paragraph>
                         <Paragraph>
-                            3%
+                            1 VNDC = 10 TOKEN
                         </Paragraph>
-                    </ItemRow>
-                    <ItemRow>
+                        </ItemRow>
+                        <ItemRow>
                         <Paragraph>
-                            VIP 10
+                            Min - Max Cap
                         </Paragraph>
                         <Paragraph>
-                            4%
+                            50,000 - 70,000 VNDC
                         </Paragraph>
-                    </ItemRow>
-                </Col>
-            </Row>
-        </Wrapper>
+                        </ItemRow>
+                        <ItemRow>
+                        <Paragraph>
+                            Release Date
+                        </Paragraph>
+                        <Paragraph>
+                            Release Date
+                        </Paragraph>
+                        </ItemRow>
+                    </Col>
+                    <Col>
+                        <ItemRow>
+                            <Title>
+                                Tier Rank
+                            </Title>
+                        </ItemRow>
+                        <ItemRow>
+                            <Paragraph>
+                                VIP 7
+                            </Paragraph>
+                            <Paragraph>
+                                1%
+                            </Paragraph>
+                        </ItemRow>
+                        <ItemRow>
+                            <Paragraph>
+                                VIP 8
+                            </Paragraph>
+                            <Paragraph>
+                                2%
+                            </Paragraph>
+                        </ItemRow>
+                        <ItemRow>
+                            <Paragraph>
+                                VIP 9
+                            </Paragraph>
+                            <Paragraph>
+                                3%
+                            </Paragraph>
+                        </ItemRow>
+                        <ItemRow>
+                            <Paragraph>
+                                VIP 10
+                            </Paragraph>
+                            <Paragraph>
+                                4%
+                            </Paragraph>
+                        </ItemRow>
+                    </Col>
+                </Row>
+            </Wrapper>
+            }
+        </>
     )
 }
 
@@ -101,7 +107,6 @@ const Row = styled(Box)`
     align-items: center;
     width: 100%;
     justify-content: space-between;
-
 `
 const Col = styled(Box)`
     display: flex;

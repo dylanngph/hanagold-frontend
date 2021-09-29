@@ -63,7 +63,7 @@ const ProjectCard = () => {
         <PCard>
             <Container>
                 <Detail>
-                    <Box mr="20px">
+                    <Box mr="20px" width="100%">
                         <img src="/images/projectShowRoom/hotungmau.png" width="100%"/> 
                     </Box>
                     <Box display="flex" flexDirection="column">

@@ -8,10 +8,12 @@ const FlexLayout = styled.div`
     max-width: 100%;
     margin-bottom: 16px;
     margin: 10px;
+    ${`@media (max-width: 800px)`} {
+      margin: none;
+      width: 100%;
+    }
   }
-  ${`@media (max-width: 800px)`} {
-    margin: none;
-  }
+  
 `
 
 export default FlexLayout

@@ -26,6 +26,8 @@ import PoolFinder from 'views/PoolFinder/index'
 import Launchpad from 'views/Launchpad/Launchpad';
 import ComingSoon from 'views/ComingSoon/ComingSoon'
 import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
+
+
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
