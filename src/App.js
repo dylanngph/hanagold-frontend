@@ -52,28 +52,28 @@ function App() {
             <Home />
           </Route>
           <Route path="/launchpad">
-            <Launchpad />
+            <ComingSoon />
           </Route>
           <Route exact path="/launchpad-details">
-            <LaunchpadDetails />
+            <ComingSoon />
           </Route>
           {/* <Route path="/trade">
             <Trade />
           </Route> */}
           <Route path="/farms">
-            <Farms />
+            <ComingSoon />
           </Route>        
           <Route path="/farm/:lpAddress">
-            <Farm />
+            <ComingSoon />
           </Route>
           <Route path="/farmOutside/:lpAddress">
-            <FarmOutside />
+            <ComingSoon />
           </Route>
           <Route path="/pools">
-            <Pools />
+            <ComingSoon />
           </Route>
           <Route path="/pool/:pid">
-            <Pool />
+            <ComingSoon />
           </Route>
           <Route path="/marketplace">
             <ComingSoon />
