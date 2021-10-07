@@ -1,4 +1,4 @@
-import address from 'constants/contracts'
+ import address from 'constants/contracts'
 
 import { ChainId, Token } from 'kshark-sdk'
 const tokens = {
@@ -162,6 +162,12 @@ const tokens = {
   xChat: {
     symbol: 'XCHAT',
     address: '0x3d255696Fe96cA5EeD3e16cF25AB3301EbCC2f98',
+    decimals: 18,
+    projectLink: '#',
+  },
+  ksc: {
+    symbol: 'KSC',
+    address: '0x7221B169aD5e8415753ebbC583924519AFc96B26',
     decimals: 18,
     projectLink: '#',
   },

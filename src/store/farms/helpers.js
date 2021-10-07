@@ -179,10 +179,12 @@ export const getFarms = async (farmsToFetch, masterChefAddress, pricesFetch, rew
   const poolInfosFetch = await Promise.all(
       farmsToFetch.map(async (pool) => {
         const poolToken = await getToken(pool.lpAddress, masterChefAddress)
-
+        const allocPoints = await callHelpers(masterChefContract, masterChefAddress, 'poolInfo' , [pool.pid])
+        
         return {
           ...pool,
           ...poolToken,
+          allocPoint: allocPoints.allocPoint
         }
       }),
   )

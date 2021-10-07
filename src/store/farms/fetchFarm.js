@@ -7,4 +7,5 @@ const fetchFarms = async (pricesFetch) => {
   return await getFarms(farmsConfig, address.masterChef, pricesFetch, tokens.ltd)
 }
 
+
 export default fetchFarms
