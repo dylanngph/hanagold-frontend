@@ -9,7 +9,7 @@ const Price = React.memo(({tokenPriceUsd}) => {
   return tokenPriceUsd ? (
       <Box display="flex" justifyContent="center" width="100%" alignItems="center">
         <img
-            src="tokens/chi.png"
+            src="tokens/hng.png"
             width="32"
             height="32"
         />
