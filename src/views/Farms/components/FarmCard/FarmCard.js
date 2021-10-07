@@ -17,13 +17,10 @@ import styled from 'styled-components';
 import AprRow from 'views/Farms/components/AprRow';
 import DetailsSection from 'views/Farms/components/FarmCard/DetailsSection';
 import TokenPerDayRow from 'views/Farms/components/TokenPerDayRow';
-import Harvest from 'views/Farm/components/Harvest/Harvest';
-import Stake from 'views/Farm/components/Stake/Stake';
 import TvlRow from 'views/Farms/components/TvlRow';
 import {Box} from '@mui/material'
 import {CheckmarkIcon , NumberOptionInput} from "../../../../components/Menu/icons/index";
 import Divider from '@mui/material/Divider';
-import { useFarmFromLpAddress, useFarmUser } from 'store/hooks';
 
 
 const FCard = styled.div`
@@ -83,10 +80,6 @@ const FarmCard = ({farm}) => {
   const stakedTvl = farm?.stakedTvl || 0
   const apr = farm?.apr
   const kscPrice = useKscPrice()
-
-  const farmIn = useFarmFromLpAddress(farm.lpAddress);
-  const userData = useFarmUser(farmIn?.pid);
-  const lpTokenNameIn = getTokenName(farmIn.symbol, farmIn?.t0?.symbol, farmIn?.t1?.symbol);
 
   const [onPresentApyModal] = useModal(
       <ApyCalculatorModal
@@ -164,28 +157,30 @@ const FarmCard = ({farm}) => {
             <Text color="primary">HNG + Fees</Text>
           </Box>
         </ParameterSection>
-        
-
-        
+        <ParameterSection>
+          <Box display="flex" flexDirection="column" textAlign="left">
+            <Text bold color="primary">HNG Earn:</Text>
+            <Box sx = {{
+              fontSize: "28px",
+              fontWeight: "900"
+            }}
+            >
+              0.000
+            </Box>
+          </Box>
+          <Box display= "flex" alignItems="center">
+            <HarvestButton disabled>Harvest</HarvestButton>
+          </Box>
+        </ParameterSection>
+        <Text color="primary">COIN CC LP STAKED</Text>
         {
           account
-              ? 
-              <div>
-                <Harvest farm={farmIn} earnings={userData.earnings}/>
-                <Stake farm={farmIn} lpTokenName={lpTokenNameIn} userData={userData}/>
-                {/* <WalletButton
-                    width="100%"
-                    mt="9px" mb="16px"
-                    onClick={() => history.push(`/farm/${farm.lpAddress}`)}
-                >
-                  Select
-                </WalletButton> */}
-              </div>
-              : 
-              <div>
-              <Text color="primary">COIN CC LP STAKED</Text>
-              <UnlockWalletButton mt="9px" mb="16px" width="100%"/>
-              </div> 
+              ? <WalletButton
+                  width="100%"
+                  mt="9px" mb="16px"
+                  onClick={() => history.push(`/farm/${farm.lpAddress}`)}
+              >Select</WalletButton>
+              : <UnlockWalletButton mt="9px" mb="16px" width="100%"/>
         }
         <Divider variant="middle" color="#fff" sx={{marginBottom: "16px"}} />
         {/* <TokenPerDayRow userDailyRewards={apr?.userDailyRewards} tokenSymbol={tokens.ltd.symbol}/>
