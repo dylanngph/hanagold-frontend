@@ -39,8 +39,8 @@ export const useFetchPublicData = () => {
   }, [dispatch, slowRefresh])
 }
 
-export const useFetchUserData = () => {
-  const { lpAddress } = useParams()
+export const useFetchUserData = (lpAddress) => {
+  // const { lpAddress } = useParams()
   const dispatch = useDispatch()
   const { account } = useKardiachain()
   const { slowRefresh } = useRefresh()
@@ -118,6 +118,7 @@ export const useFarms = () => {
 export const useFarmFromLpAddress = (lpAddress) => {
   const farms = useFarms()
   const farm = farms.find((farm) => {
+    console.log(farm?.lpAddress, lpAddress)
     return farm?.lpAddress.toLowerCase() === lpAddress.toLowerCase()
   })
 

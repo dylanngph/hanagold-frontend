@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import Flex from 'components/Box/Flex';
+import {Box} from '@mui/material'
 import IconButton from 'components/Button/IconButton';
 import CardLogo from 'components/Card/CardLogo';
 import CurrencyModal from 'components/CurrencyModal/CurrencyModal';
@@ -96,7 +97,7 @@ const Stake = ({farm, lpTokenName, userData}) => {
 
   return (
       <>
-        <Card>
+        {/* <Card>
           <Wrapper
               justifyContent="space-between"
               flexDirection="column"
@@ -182,11 +183,86 @@ const Stake = ({farm, lpTokenName, userData}) => {
                 />
             )}
           </Wrapper>
-        </Card>
+        </Card> */}
+
+        <ParameterSection>
+          <Box display="flex" flexDirection="column" textAlign="left">
+            <Text bold color="primary">Token Earn:</Text>
+            <Box>
+              <Value
+                color="primary"
+                fontSize="28px"
+                value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
+                decimals={4}
+              />
+              <Value
+                  color="rgba(255,255,255, .5)"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenStaking : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+            </Box>
+          </Box>
+          <Box display= "flex" alignItems="center">
+            {account ? (
+              userData.userDataLoaded
+                  ? isApproved ? (
+                      <Flex alignItems="center" justifyContent="center">
+                        <Button
+                            mt="20px"
+                            mr="10px"
+                            style={{flex: 1}}
+                            disabled={stakedBalance.eq(new BigNumber(0))}
+                            onClick={onPresentUnstakeModal}
+                        >
+                          Unstake
+                        </Button>
+                        <IconButton
+                            onClick={onPresentStakeModal}
+                            mt="20px"
+
+                        >
+                          <Text color="black" fontSize="32px" bold>+</Text>
+                        </IconButton>
+                      </Flex>
+                  ) : (
+                      <Button
+                          width="100%"
+                          mt="20px"
+                          disabled={requestedApproval}
+                          onClick={handleApprove}
+                      >
+                        Approve Contract
+                      </Button>
+                  )
+                  : <Button
+                      width="100%"
+                      mt="20px"
+                      disabled
+                  >...</Button>
+          ) : (
+              <UnlockButton
+                  mt="20px"
+                  width="100%"
+              />
+            )}
+          </Box>
+        </ParameterSection>
       </>
   );
 };
-
+const ParameterSection = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px
+`
+const HarvestButton = styled(Button)`
+  background-color: #31D0AA;
+  color: #000;
+  border-radius: 4px;
+`
 Stake.propTypes = {
   farm: PropTypes.object.isRequired,
   lpTokenName: PropTypes.string.isRequired,

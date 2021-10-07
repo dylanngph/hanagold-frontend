@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js';
 import Flex from 'components/Box/Flex';
 import Button from 'components/Button/Button';
+import {Box} from '@mui/material'
 import Card from 'components/Card/Card';
 import CardLogo from 'components/Card/CardLogo';
 import Text from 'components/Text/Text';
@@ -50,8 +51,8 @@ const Harvest = ({farm, earnings}) => {
   }, [account, dispatch, farm, onHarvest, toastError, toastSuccess]);
 
   return (
-      <Card>
-        <Wrapper
+      <>
+        {/* <Wrapper
             justifyContent="space-between"
             flexDirection="column"
         >
@@ -98,10 +99,50 @@ const Harvest = ({farm, earnings}) => {
                   width="100%"
               />
           )}
-        </Wrapper>
-      </Card>
+        </Wrapper> */}
+        <ParameterSection>
+          <Box display="flex" flexDirection="column" textAlign="left">
+            <Text bold color="primary">HNG Earn:</Text>
+            <Box>
+              <Value
+                  color="primary"
+                  fontSize="28px"
+                  value={account ? getBalanceNumber(earnings) : 0}
+              />
+              <Value
+                  color="rgba(255,255,255, .5)"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenEarning : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+            </Box>
+          </Box>
+          <Box display= "flex" alignItems="center">
+            <HarvestButton
+                  mt="20px"
+                  width="100%"
+                  disabled={pendingTx || earnings.eq(new BigNumber(0))}
+                  onClick={handleHarvest}
+              >
+                {pendingTx ? 'Collecting LTD' : 'Harvest'}
+              </HarvestButton>
+          </Box>
+        </ParameterSection>
+      </>
   );
 };
+const ParameterSection = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px
+`
+const HarvestButton = styled(Button)`
+  background-color: #31D0AA;
+  color: #000;
+  border-radius: 4px;
+`
 
 Harvest.propTypes = {
   farm: PropTypes.object.isRequired,
