@@ -26,10 +26,12 @@ import PoolFinder from 'views/PoolFinder/index'
 import Launchpad from 'views/Launchpad/Launchpad';
 import ComingSoon from 'views/ComingSoon/ComingSoon'
 import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
+import MarketplaceDetails from 'views/Marketplace/MarketplaceDetails'
 
 
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
+import Marketplace from 'views/Marketplace/Marketplace';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
 // import Trade from 'views/Trade/Trade';
 // This config is required for number formatting
@@ -76,7 +78,10 @@ function App() {
             <Pool />
           </Route>
           <Route path="/marketplace">
-            <ComingSoon />
+            <Marketplace />
+          </Route>
+          <Route path="/marketplace-details">
+            <MarketplaceDetails />
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}
