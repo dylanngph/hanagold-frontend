@@ -7,19 +7,18 @@ const SearchBox = () => {
 
     return (
         <Box display="flex" flexDirection="column">
-            <Box sx={{
+            {/* <Box sx={{
                 '@media only screen and (max-width: 600px)': {
                     display: 'none'
                 }
             }} 
             >
                 SEARCH
-            </Box>
+            </Box> */}
             <Autocomplete
                 sx= {{
                     background: "rgba(255,255,255, .2)",
                     borderRadius: '4px',
-                    marginTop: '10px',
                     width: '500px',
                     '& input' : {
                         color: '#fff'

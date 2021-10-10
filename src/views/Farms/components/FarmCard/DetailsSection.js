@@ -33,7 +33,6 @@ const DetailsSection = ({
   stakingToken,
   stakedTvl
 }) => {
-  console.log("stakedTvl", stakedTvl)
   const {t} = useTranslation();
   return (
       <Wrapper>

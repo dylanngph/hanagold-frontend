@@ -9,9 +9,8 @@ import styled from 'styled-components';
 
 const StyledFlex = styled(Flex)`
   cursor: pointer;
-  // border-radius: 43px;
-  // padding: 15px 21px;
-  // border: 1px solid ${({theme, isFinished}) => isFinished ? theme.colors.text : theme.colors.secondary};
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   color: ${({theme}) => theme.colors.text};
   flex-wrap: wrap;

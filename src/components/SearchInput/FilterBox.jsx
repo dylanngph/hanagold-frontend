@@ -11,20 +11,19 @@ const FilterBox = () => {
 
     return (
         <Box display="flex" flexDirection="column">
-            <Box sx={{
+            {/* <Box sx={{
                 '@media only screen and (max-width: 600px)': {
                     display: 'none'
                 }
             }} 
             >
                 SORT BY
-            </Box>
+            </Box> */}
             <Autocomplete
                 sx= {{
                     background: "rgba(255,255,255, .2)",
                     borderRadius: '4px',
                     width: '170px',
-                    marginTop: '10px',
                     marginRight: '15px',
                     '& input' : {
                         color: '#fff'

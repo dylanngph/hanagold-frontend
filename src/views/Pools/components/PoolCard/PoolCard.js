@@ -87,7 +87,6 @@ const PoolCard = ({pool}) => {
   const {account} = useKardiachain();
   const {poolLimit, stakingLimit} = pool;
   const [isView, setIsView] = useState(false);
-  console.log("pool", pool)
   const poolName = getPoolName(pool.isV2 ? pool.earningTokens : [pool.earningToken]);
 
   return (

@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   
-  padding: 10px;
+  margin: 10px;
 
   a {
     padding-left: 12px;
