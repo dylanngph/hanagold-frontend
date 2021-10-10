@@ -49,7 +49,7 @@ const BulletList = styled.ul`
 
 const ApyCalculatorModal = ({
     onDismiss,
-    earningTokenSymbol = 'LTD',
+    earningTokenSymbol = 'HNG',
     apr,
     tokenPrice,
     data,
