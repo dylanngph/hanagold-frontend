@@ -107,7 +107,7 @@ const Harvest = ({farm, earnings}) => {
               <Value
                   color="primary"
                   fontSize="28px"
-                  value={account ? getBalanceNumber(earnings) : 0}
+                  value={account ? getBalanceNumber(earnings, 6) : 0}
                   decimals={6}
               />
               <Value
