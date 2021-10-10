@@ -33,7 +33,7 @@ const Harvest = ({farm, earnings}) => {
   const [pendingTx, setPendingTx] = useState(false);
   const {onHarvest} = useHarvest(pid, address.masterChef);
 
-  const usdTokenEarning = earnings ? new BigNumber(getFullDisplayBalance(earnings)).times(farm.earningTokenPrice).toNumber() : 0;
+  const usdTokenEarning = earnings ? new BigNumber(getFullDisplayBalance(earnings, 6)).times(farm.earningTokenPrice).toNumber() : 0;
 
   const handleHarvest = useCallback(async () => {
     try {
