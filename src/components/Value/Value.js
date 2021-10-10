@@ -23,7 +23,7 @@ const Value = ({ value, decimals, prefix = '', className, unit, onClick, ...prop
           {...props}
       >
         {prefix}
-        {countUp}
+        {countUp}&nbsp;
         {unit}
       </Text>
   )

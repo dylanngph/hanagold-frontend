@@ -100,12 +100,12 @@ const FarmCard = ({farm}) => {
           <LogoContainer>
               <img
                   width="38"
-                  src={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
+                  src={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
                   alt="logo"
               />
               <img
                   width="38"
-                  src={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
+                  src={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
                   alt="logo"
               />
           </LogoContainer>
@@ -115,7 +115,7 @@ const FarmCard = ({farm}) => {
             alignItems = "flex-end"
             flexDirection = "column"
           >
-            <Text bold color="primary" fontSize="14px">{farm.token1.symbol} - {farm.token0.symbol}</Text>
+            <Text bold color="primary" fontSize="14px">{farm.token0.symbol} - {farm.token1.symbol}</Text>
             <Box display="flex" mt="10px">
               <Box sx = {{
                 backgroundColor: "rgba(216, 216, 216, .8)",
@@ -174,8 +174,8 @@ const FarmCard = ({farm}) => {
               // </WalletButton>
               : 
               <>
-              <Text color="primary">COIN CC LP STAKED</Text>
-              <UnlockWalletButton mt="9px" mb="16px" width="100%"/>
+                <Text color="primary">COIN CC LP STAKED</Text>
+                <UnlockWalletButton mt="9px" mb="16px" width="100%"/>
               </>
         }
         <Divider variant="middle" color="#fff" sx={{marginBottom: "16px"}} />
@@ -188,14 +188,17 @@ const FarmCard = ({farm}) => {
       </CardContainer>
         <ExpandingWrapper expanded={isView}>
           <DetailsSection
-              kaiAddress={getUrlAddress(farm.lpAddress)}
-              linkExchange={getUrlPair(farm.lpAddress)}
-              lpLabel={                farm?.t0?.symbol && farm?.t1?.symbol
-                  ? `Get ${farm?.t0?.symbol}-${farm?.t1?.symbol} LP`
-                  : ''
-              }
-              addLiquidityUrl={`https://kaidex.io/portfolio/add/${farm.lpAddress}`}
-          />
+            kaiAddress={getUrlAddress(farm.lpAddress)}
+            linkExchange={getUrlPair(farm.lpAddress)}
+            lpLabel={                farm?.t0?.symbol && farm?.t1?.symbol
+                ? `Get ${farm?.t0?.symbol}-${farm?.t1?.symbol} LP`
+                : ''
+            }
+            addLiquidityUrl={`/#/add/${farm.token0.address}/${farm.token1.address}`}
+            stakingToken={farm.stakingToken}
+            totalStaked={farm.totalStaked}
+            stakedTvl={farm.stakedTvl}
+        />
         </ExpandingWrapper>
       </FCard>
   );

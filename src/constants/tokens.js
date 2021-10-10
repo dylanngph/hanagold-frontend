@@ -171,6 +171,12 @@ const tokens = {
     decimals: 18,
     projectLink: '#',
   },
+  hng: {
+    symbol: 'HNG',
+    address: '0x148De93957ED77f8D5546323b1EdA0Bf06eB52f3',
+    decimals: 6,
+    projectLink: 'https://hanagold.finance',
+  },
 }
 
 export const WKAI = {
@@ -200,6 +206,10 @@ export const BOSSDOGE = {
 
 export const VNDC = {
   [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.vndc.address, 0, 'VNDC', 'VNDC')
+}
+
+export const HNG = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, tokens.hng.address, 6, 'HNG', 'HanaGold'),
 }
 
 export const DFL = {

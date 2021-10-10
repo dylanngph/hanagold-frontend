@@ -39,6 +39,13 @@
       "decimals": 0
     },
     {
+      "name": "Hana Gold Token",
+      "symbol": "HNG",
+      "address": "0x148De93957ED77f8D5546323b1EdA0Bf06eB52f3",
+      "chainId": 1,
+      "decimals": 6
+    },
+    {
       "name": "Tether USD",
       "symbol": "USDT",
       "address": "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b",

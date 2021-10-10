@@ -54,7 +54,7 @@ export const useFetchUserData = (lpAddress) => {
     if (account && farm) {
       dispatch(fetchFarmUserDataAsync(account, farm))
     }
-  }, [slowRefresh, account, farm, dispatch])
+  }, [slowRefresh, account, farm, dispatch, lpAddress])
 }
 
 export const useFetchUserDataOutside = () => {
@@ -118,7 +118,6 @@ export const useFarms = () => {
 export const useFarmFromLpAddress = (lpAddress) => {
   const farms = useFarms()
   const farm = farms.find((farm) => {
-    console.log(farm?.lpAddress, lpAddress)
     return farm?.lpAddress.toLowerCase() === lpAddress.toLowerCase()
   })
 
@@ -169,8 +168,8 @@ export const useFarmOutsideUser = (pid) => {
 
 // pools
 
-export const useFetchPoolUserData = () => {
-  const { pid } = useParams()
+export const useFetchPoolUserData = (pid) => {
+  // const { pid } = useParams()
   const dispatch = useDispatch()
   const { account } = useKardiachain()
   const { slowRefresh } = useRefresh()
@@ -184,7 +183,7 @@ export const useFetchPoolUserData = () => {
     if (account && pool) {
       dispatch(fetchPoolUserDataAsync(account, pool))
     }
-  }, [dispatch, slowRefresh, account, pool])
+  }, [dispatch, slowRefresh, account, pool, pid])
 }
 
 export const usePools = () => {

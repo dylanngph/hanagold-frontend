@@ -9,9 +9,9 @@ import styled from 'styled-components';
 
 const StyledFlex = styled(Flex)`
   cursor: pointer;
-  border-radius: 43px;
-  padding: 15px 21px;
-  border: 1px solid ${({theme, isFinished}) => isFinished ? theme.colors.text : theme.colors.secondary};
+  // border-radius: 43px;
+  // padding: 15px 21px;
+  // border: 1px solid ${({theme, isFinished}) => isFinished ? theme.colors.text : theme.colors.secondary};
   justify-content: space-between;
   color: ${({theme}) => theme.colors.text};
   flex-wrap: wrap;
@@ -36,13 +36,13 @@ const AprRow = ({pool}) => {
         if (!pool.isV2){
           onPresentApyModal()
         }
-      }}
-                  isFinished={pool.isFinished}
+        }}
+        isFinished={pool.isFinished}
       >
-        <Text>APR</Text>
-        <Flex alignItems="center">
-          {pool?.apr ? <Value value={pool.apr || 0} unit="%" decimals={0}/> : '- - -%'}
-          <ClipboardIcon width="20px"/>
+        <Text color="textWhite">APR:</Text>
+        <Flex alignItems="center" >
+          <span className="text-green-300">{pool?.apr ? <Value value={pool.apr || 0} unit="%" decimals={0}/> : '- - -%'}</span>
+          <ClipboardIcon color="#fff" width="20px"/>
         </Flex>
       </StyledFlex>
   );

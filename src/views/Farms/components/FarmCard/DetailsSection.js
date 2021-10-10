@@ -30,22 +30,35 @@ const DetailsSection = ({
   addLiquidityUrl,
   lpLabel,
   totalStaked,
-  stakingToken
+  stakingToken,
+  stakedTvl
 }) => {
+  console.log("stakedTvl", stakedTvl)
   const {t} = useTranslation();
   return (
       <Wrapper>
         <PairSection>
           <Box>Total Value Locked:</Box>
-          <Box color="#85D7B6">$609,973,486</Box>
+          <Box color="#85D7B6">
+            <Value bold color={ isFinished ? 'text' : 'secondary' } value={Number.isNaN(stakedTvl) ? 0 : stakedTvl} prefix="$"/>
+          </Box>
         </PairSection>
+        {
+          stakingToken && <div className="flex justify-between">
+            <Text fontSize="15px" color={ isFinished ? 'text' : 'secondary' }>Total Staked: </Text>
+            <div className="flex">
+              <Value color={ isFinished ? 'text' : 'secondary' } value={Number.isNaN(totalStaked) ? 0 : totalStaked}/>
+              <Text color={ isFinished ? 'text' : 'secondary'}>{ stakingToken.symbol }</Text>
+            </div>
+          </div>
+        }
         <PairSection>
           {
             linkExchange && (
-                <StyledLinkExternal href='#'>Get COIN CC LP</StyledLinkExternal>
+                <StyledLinkExternal href={addLiquidityUrl}>{ lpLabel }</StyledLinkExternal>
             )
           }
-           <StyledLinkExternal href='#'>See Pair Infor</StyledLinkExternal>
+          <StyledLinkExternal href='#'>See Pair Infor</StyledLinkExternal>
         </PairSection>
         {
           kaiAddress && (

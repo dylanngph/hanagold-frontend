@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import { useFarms, useFarmsOutside, usePools } from 'store/hooks';
 import FarmTabButtons from 'views/Farms/components/FarmTabButtons/FarmTabButtons';
 import FarmCard from 'views/Pools/components/FarmCard/FarmCard';
-// import PoolCard from 'views/Pools/components/PoolCard/PoolCard';
+import PoolCard from 'views/Pools/components/PoolCard/PoolCard';
 import PoolsLiveTabButtons from 'views/Pools/components/PoolsLiveTabButtons';
 import {Box , Button} from '@mui/material'
 import styled from 'styled-components'
@@ -36,15 +36,15 @@ const Pools = () => {
     }
   };
 
-  // const poolsDisplay = useMemo(()=>{
-  //   const poolsActive = pools.filter((pool) => !pool.isFarm)
+  const poolsDisplay = useMemo(()=>{
+    const poolsActive = pools.filter((pool) => !pool.isFarm)
 
-  //   const poolsLive = poolsActive.filter((pool) => !pool.isFinished);
+    const poolsLive = poolsActive.filter((pool) => !pool.isFinished);
 
-  //   const poolsFinished = poolsActive.filter((pool) => pool.isFinished);
+    const poolsFinished = poolsActive.filter((pool) => pool.isFinished);
 
-  //   return tabLive === TABS_LIVE.live ? poolsLive : poolsFinished
-  // },[pools, tabLive])
+    return tabLive === TABS_LIVE.live ? poolsLive : poolsFinished
+  },[pools, tabLive])
 
 
   // const farmsDisplay = useMemo(() => {
@@ -113,7 +113,7 @@ const Pools = () => {
             <Box fontSize="24px" fontFamily="SFProTextBold" color="rgba(255,255,255, .3)" mb="10px">Just stake some tokens to earn</Box>
             <Box fontSize="24px" fontFamily="SFProTextBold" color="rgba(255,255,255, .3)" mb="10px">High APR, low risk.  </Box>
           </Box>
-          <Box className="earned-section" display="flex" alignItems="center">
+          {/* <Box className="earned-section" display="flex" alignItems="center">
             <Box mr="20px">
               <HelpButton variant="contained" startIcon={<InstructionLogo />}>
                 Help
@@ -129,7 +129,7 @@ const Pools = () => {
                 <HarvestButton disabled>Harvest</HarvestButton>
               </Box>
             </Box>
-          </Box>
+          </Box> */}
         </Header>
         
         <div style={{height: '100vh'}}>
@@ -174,23 +174,23 @@ const Pools = () => {
               </FilterSection>
             </Flex>
           <FlexLayout>
-            {/* {
+            {
               poolsDisplay.map((pool, index) => (
                   <PoolCard key={index} pool={pool}/>
               ))
-            } */}
+            }
             {/* {
               farmsDisplay.map((farm, index) => (
                   <FarmCard key={index} farm={farm}/>
               ))
             } */}
-            {
+            {/* {
               farmsOutsideDisplay.map((farm, index) => (
                   <FarmCard
                       isOutside
                       key={index} farm={farm}/>
               ))
-            }
+            } */}
           </FlexLayout>
         </div>
       </Page>

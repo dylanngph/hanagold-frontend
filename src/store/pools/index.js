@@ -4,7 +4,8 @@ import { poolsConfig, poolsV2Config } from 'constants/pools';
 import {
    fetchPoolsLimits,
   fetchPoolsStakingLimits,
-  fetchPoolsTotalStaking
+  fetchPoolsTotalStaking,
+  fetchPoolsBlockLimits
 } from 'store/pools/fetchPools';
 import { fetchPoolUser, fetchPoolV2User } from 'store/pools/fetchPoolsUser';
 import { getPoolApr, getPoolAprV2 } from 'utils/apr';
@@ -48,16 +49,19 @@ export const poolsSlice = createSlice({
 })
 
 export const fetchPoolsPublicDataAsync = (currentBlock) => async (dispatch, getState) => {
+  const blockLimits = await fetchPoolsBlockLimits()
   const totalStakings = await fetchPoolsTotalStaking(poolsConfig)
 
   const prices = getState()?.prices?.data || (await getPrices())
 
   const liveData = poolsConfig.map((pool) => {
+    const blockLimit = blockLimits.find((entry) => entry.sousId === pool.sousId)
     const totalStaking = totalStakings.find((entry) => entry.sousId === pool.sousId)
     const tokenPerBlock = pool.sousId === 4 ? '0.05' : pool?.tokenPerBlock
-    const isPoolEndBlockExceeded = currentBlock > 0 && currentBlock > Number(pool.endBlock)
-    const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
-
+    // const isPoolEndBlockExceeded = currentBlock > 0 && currentBlock > Number(pool.endBlock)
+    const isPoolEndBlockExceeded = currentBlock > 0 && currentBlock > Number(blockLimit.endBlock)
+    // const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
+    const isPoolFinished = isPoolEndBlockExceeded || pool.isFinished    
     const stakingTokenPrice = getParameterCaseInsensitive(prices, pool.stakingToken.address) || 0
 
     const earningTokenPrice = getParameterCaseInsensitive(prices, pool.earningToken.address) || 0
@@ -79,6 +83,7 @@ export const fetchPoolsPublicDataAsync = (currentBlock) => async (dispatch, getS
         .toJSON()
 
     return {
+      ...blockLimit,
       ...totalStaking,
       stakingTokenPrice,
       earningTokenPrice,

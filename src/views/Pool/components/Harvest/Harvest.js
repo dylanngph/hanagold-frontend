@@ -52,8 +52,36 @@ const Harvest = ({ pool, earnings }) => {
   }, [account, dispatch, onReward, pool, toastError, toastSuccess])
 
   return (
-    <Card>
-      <Wrapper
+    <div className="flex justify-between">
+      <div className="text-left mt-3">
+        <Text color="textWhite">{pool.earningToken.symbol} EARNED</Text>
+        <Value
+          color="textWhite"
+          fontSize="20px"
+          value={earningTokenBalance} decimals={4}
+        />
+        {pool.earningTokenPrice ? (
+          <Value
+            color="textWhite"
+            fontSize="14px"
+            prefix="~" value={account ? usdTokenEarning : 0} decimals={4} unit="USD" />
+        ) : (
+            '~??? USD'
+        )}
+      </div>
+      <div>
+      {
+        account && <Button
+            mt="20px"
+            width="100%"
+            disabled={pendingTx || earnings.eq(new BigNumber(0))}
+            onClick={handleReward}
+        >
+          {pendingTx ? `Collecting ${pool.earningToken.symbol}` : 'Harvest'}
+        </Button>
+      }
+      </div>
+      {/* <Wrapper
           justifyContent="space-between"
           flexDirection="column"
       >
@@ -89,8 +117,8 @@ const Harvest = ({ pool, earnings }) => {
                 width="100%"
             />
         )}
-      </Wrapper>
-    </Card>
+      </Wrapper> */}
+    </div>
   )
 }
 

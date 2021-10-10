@@ -5,11 +5,6 @@ const config =  (t) => [
     href: "/",
   },
   {
-    label: t('LaunchPad'),
-    icon: "ExchangeIcon",
-    href: "/launchpad",
-  },
-  {
     label: t('Trade'),
     icon: "TradeIcon",
     href: "/swap",
@@ -23,6 +18,11 @@ const config =  (t) => [
     label: "Pool",
     icon: "StakeIcon",
     href: "/pools",
+  },
+  {
+    label: t('LaunchPad'),
+    icon: "ExchangeIcon",
+    href: "/launchpad",
   },
   {
     label: t("NFT Market Place"),

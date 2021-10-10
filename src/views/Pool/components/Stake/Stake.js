@@ -118,125 +118,182 @@ const Stake = ({pool, userData}) => {
   };
 
   return (
-      <Card>
-        <Wrapper
-            justifyContent="space-between"
-            flexDirection="column"
-        >
-          <div>
-            <div className="h-20">
-              {
-                pool?.stakingToken.token0
-                  ?   <CardLogo
-                        src1={`/tokens/${pool?.stakingToken.token0.toLowerCase()}.png`}
-                        src2={`/tokens/${pool?.stakingToken.token1.toLowerCase()}.png`}
-                    />
-                    :   <CardLogo
-                        src1={`/tokens/${pool?.stakingToken.token1 ? 'kai' : pool?.stakingToken.symbol.toLowerCase()}.png`}
-                    />
-              }
+      <div>
+        {
+          isApproved ? (
+            pool.tag === POOLS_TAGS.ifo ? (
+                <Button
+                    mt="20px"
+                    mr="10px"
+                >
+                  Stake
+                </Button>
+            ) : (
+              <div className="flex justify-between mt-5">
+                <div className="text-left">
+                  <Text color="textWhite">{pool.stakingToken.symbol} Tokens Staked</Text>
+                  <Value
+                    color="textWhite"
+                    fontSize="20px"
+                    value={account ? getBalanceNumber(stakedBalance, pool.stakingToken.decimals) : 0}
+                    decimals={4}
+                  />
+                  <Value
+                    fontSize="14px"
+                    prefix="~"
+                    color="textWhite"
+                    value={account ? usdTokenStaking : 0}
+                    decimals={4}
+                    unit="USD"
+                  />
+                </div>
+                <Flex alignItems="center" justifyContent="center">
+                  <Button
+                      width="100%"
+                      mt="20px"
+                      mr="10px"
+                      disabled={stakedBalance.eq(new BigNumber(0))}
+                      onClick={onPresentUnstakeModal}
+                  >
+                    <span className="text-black">Unstake</span>
+                  </Button>
+                  <IconButton
+                      onClick={toggleDeposit}
+                      mt="20px"
+                  >
+                    <Text color="black" fontSize="32px" bold>+</Text>
+                  </IconButton>
+                </Flex>
+              </div>
+            )
+        ) : (
+            <Button
+                width="100%"
+                mt="20px"
+                disabled={requestedApproval} onClick={handleApprove}>
+              Approve Contract
+            </Button>
+        )}
+      </div>
+      // <Card>
+      //   <Wrapper
+      //       justifyContent="space-between"
+      //       flexDirection="column"
+      //   >
+      //     <div>
+      //       <div className="h-20">
+      //         {
+      //           pool?.stakingToken.token0
+      //             ?   <CardLogo
+      //                   src1={`/tokens/${pool?.stakingToken.token0.toLowerCase()}.png`}
+      //                   src2={`/tokens/${pool?.stakingToken.token1.toLowerCase()}.png`}
+      //               />
+      //               :   <CardLogo
+      //                   src1={`/tokens/${pool?.stakingToken.token1 ? 'kai' : pool?.stakingToken.symbol.toLowerCase()}.png`}
+      //               />
+      //         }
 
-            </div>
-            <Value
-                color="secondary"
-                fontSize="32px"
-                value={account ? getBalanceNumber(stakedBalance, pool.stakingToken.decimals) : 0}
-                decimals={4}
-            />
-            <Value
-                fontSize="14px"
-                prefix="~"
-                value={account ? usdTokenStaking : 0}
-                decimals={2}
-                unit="USD"
-            />
-            <Text>{pool.stakingToken.symbol} Tokens Staked</Text>
-          </div>
-          <UnstakingFeeCountdownRow
-              fees={pool.fees}
-              blockPeriod={pool.blockPeriod}
-              lastStakingBlock={userData.lastStakingBlock}
-          />
-          {account ? (
-              <>
-                {
-                  userData.userDataLoaded
-                    ? pool.isFinished ? (
-                          pool?.isEmergencyWithdraw ? (
-                              <Button
-                                  mt="20px"
-                                  width="100%"
-                                  disabled={stakedBalance.eq(new BigNumber(0))}
-                                  onClick={handleUnstakeEmergency}
-                              >
-                                Unstake
-                              </Button>
-                          ) : (
-                              <Button
-                                  mt="20px"
-                                  width="100%"
-                                  disabled={stakedBalance.eq(new BigNumber(0))}
-                                  onClick={onPresentUnstakeModal}
-                              >
-                                Unstake
-                              </Button>
-                          )
-                      ) : (
-                          <>
-                            {isApproved ? (
-                                pool.tag === POOLS_TAGS.ifo ? (
-                                    <Button
-                                        mt="20px"
-                                        mr="10px"
-                                    >
-                                      Stake
-                                    </Button>
-                                ) : (
-                                    <Flex alignItems="center" justifyContent="center">
-                                      <Button
-                                          width="100%"
-                                          mt="20px"
-                                          mr="10px"
-                                          disabled={stakedBalance.eq(new BigNumber(0))}
-                                          onClick={onPresentUnstakeModal}
-                                      >
-                                        Unstake
-                                      </Button>
-                                      <IconButton
-                                          onClick={toggleDeposit}
-                                          mt="20px"
-                                      >
-                                        <Text color="black" fontSize="32px" bold>+</Text>
-                                      </IconButton>
-                                    </Flex>
-                                )
-                            ) : (
-                                <Button
-                                    width="100%"
-                                    mt="20px"
-                                    disabled={requestedApproval} onClick={handleApprove}>
-                                  Approve Contract
-                                </Button>
-                            )}
-                          </>
-                      )
-                      :  <Button
-                          width="100%"
-                          mt="20px"
-                          disabled
-                      >
-                        ...
-                      </Button>
-                }
-              </>
-          ) : (
-              <UnlockButton
-                  mt="20px"
-                  width="100%"
-              />
-          )}
-        </Wrapper>
-      </Card>
+      //       </div>
+      //       <Value
+      //           color="secondary"
+      //           fontSize="32px"
+      //           value={account ? getBalanceNumber(stakedBalance, pool.stakingToken.decimals) : 0}
+      //           decimals={4}
+      //       />
+      //       <Value
+      //           fontSize="14px"
+      //           prefix="~"
+      //           value={account ? usdTokenStaking : 0}
+      //           decimals={2}
+      //           unit="USD"
+      //       />
+      //       <Text>{pool.stakingToken.symbol} Tokens Staked</Text>
+      //     </div>
+      //     <UnstakingFeeCountdownRow
+      //         fees={pool.fees}
+      //         blockPeriod={pool.blockPeriod}
+      //         lastStakingBlock={userData.lastStakingBlock}
+      //     />
+      //     {account ? (
+      //         <>
+      //           {
+      //             userData.userDataLoaded
+      //               ? pool.isFinished ? (
+      //                     pool?.isEmergencyWithdraw ? (
+      //                         <Button
+      //                             mt="20px"
+      //                             width="100%"
+      //                             disabled={stakedBalance.eq(new BigNumber(0))}
+      //                             onClick={handleUnstakeEmergency}
+      //                         >
+      //                           Unstake
+      //                         </Button>
+      //                     ) : (
+      //                         <Button
+      //                             mt="20px"
+      //                             width="100%"
+      //                             disabled={stakedBalance.eq(new BigNumber(0))}
+      //                             onClick={onPresentUnstakeModal}
+      //                         >
+      //                           Unstake
+      //                         </Button>
+      //                     )
+      //                 ) : (
+      //                     <>
+      //                       {isApproved ? (
+      //                           pool.tag === POOLS_TAGS.ifo ? (
+      //                               <Button
+      //                                   mt="20px"
+      //                                   mr="10px"
+      //                               >
+      //                                 Stake
+      //                               </Button>
+      //                           ) : (
+      //                               <Flex alignItems="center" justifyContent="center">
+      //                                 <Button
+      //                                     width="100%"
+      //                                     mt="20px"
+      //                                     mr="10px"
+      //                                     disabled={stakedBalance.eq(new BigNumber(0))}
+      //                                     onClick={onPresentUnstakeModal}
+      //                                 >
+      //                                   Unstake
+      //                                 </Button>
+      //                                 <IconButton
+      //                                     onClick={toggleDeposit}
+      //                                     mt="20px"
+      //                                 >
+      //                                   <Text color="black" fontSize="32px" bold>+</Text>
+      //                                 </IconButton>
+      //                               </Flex>
+      //                           )
+      //                       ) : (
+      //                           <Button
+      //                               width="100%"
+      //                               mt="20px"
+      //                               disabled={requestedApproval} onClick={handleApprove}>
+      //                             Approve Contract
+      //                           </Button>
+      //                       )}
+      //                     </>
+      //                 )
+      //                 :  <Button
+      //                     width="100%"
+      //                     mt="20px"
+      //                     disabled
+      //                 >
+      //                   ...
+      //                 </Button>
+      //           }
+      //         </>
+      //     ) : (
+      //         <UnlockButton
+      //             mt="20px"
+      //             width="100%"
+      //         />
+      //     )}
+      //   </Wrapper>
+      // </Card>
   );
 };
 

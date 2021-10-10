@@ -217,7 +217,7 @@ const Stake = ({farm, lpTokenName, userData}) => {
                             disabled={stakedBalance.eq(new BigNumber(0))}
                             onClick={onPresentUnstakeModal}
                         >
-                          Unstake
+                          <span className="text-black">Unstake</span>
                         </Button>
                         <IconButton
                             onClick={onPresentStakeModal}
@@ -234,7 +234,7 @@ const Stake = ({farm, lpTokenName, userData}) => {
                           disabled={requestedApproval}
                           onClick={handleApprove}
                       >
-                        Approve Contract
+                        <span className="text-black">Approve Contract</span>
                       </Button>
                   )
                   : <Button

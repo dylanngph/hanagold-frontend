@@ -7,7 +7,7 @@ import Card from 'components/Card/Card'
 import UnlockButton from 'components/UnlockButton/UnlockButton'
 import { useMemo, useState, useCallback, useEffect } from 'react';
 import { INITIAL_ALLOWED_SLIPPAGE } from 'constants/swap'
-import { CHAT, DFL, DRAGON, xCHAT } from 'constants/tokens'
+import { CHAT, HNG, DRAGON, xCHAT } from 'constants/tokens'
 import { CurrencyAmount, JSBI, Percent } from 'kshark-sdk'
 import TradeTabButtons from 'views/Trade/conponents/TradeTabButtons/TradeTabButtons';
 import CurrencyInputPanel from 'components/CurrencyInputPanel/index'
@@ -238,7 +238,7 @@ const Swap = () => {
         inputCurrency,
         currencies[Field.OUTPUT],
         onCurrencySelection,
-        DFL[chainId],
+        HNG[chainId],
         DRAGON[chainId],
         Field.OUTPUT,
       )
@@ -263,7 +263,7 @@ const Swap = () => {
         outputCurrency,
         currencies[Field.INPUT],
         onCurrencySelection,
-        DFL[chainId],
+        HNG[chainId],
         DRAGON[chainId],
         Field.INPUT,
       )

@@ -63,25 +63,25 @@ function App() {
             <Trade />
           </Route> */}
           <Route path="/farms">
-            <ComingSoon />
+            <Farms />
           </Route>        
           <Route path="/farm/:lpAddress">
-            <ComingSoon />
+            <Farm />
           </Route>
           <Route path="/farmOutside/:lpAddress">
             <ComingSoon />
           </Route>
           <Route path="/pools">
-            <ComingSoon />
+            <Pools />
           </Route>
           <Route path="/pool/:pid">
-            <ComingSoon />
+            <Pool />
           </Route>
           <Route path="/marketplace">
-            <Marketplace />
+            <ComingSoon />
           </Route>
           <Route path="/marketplace-details">
-            <MarketplaceDetails />
+            <ComingSoon />
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}

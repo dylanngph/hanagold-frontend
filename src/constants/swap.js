@@ -1,4 +1,4 @@
-import tokens, { BOSSDOGE, DFL, KUSD, VNDC, WKAI } from 'constants/tokens'
+import tokens, { BOSSDOGE, HNG, KUSD, VNDC, WKAI } from 'constants/tokens'
 import { ChainId, JSBI, Percent, WETH } from 'kshark-sdk'
 
 export const ROUTER_ADDRESS = '0x66153fDc998252C0A98764933e2fC8D1B1009C2B'
@@ -36,13 +36,13 @@ export const TOKENS_HOT = [
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], VNDC[ChainId.MAINNET], KUSD[ChainId.MAINNET], DFL[ChainId.MAINNET], BOSSDOGE[ChainId.MAINNET]],
+  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], VNDC[ChainId.MAINNET], KUSD[ChainId.MAINNET], HNG[ChainId.MAINNET], BOSSDOGE[ChainId.MAINNET]],
 }
 
 export const PINNED_PAIRS = {
   [ChainId.MAINNET]: [
-    [DFL[ChainId.MAINNET], WKAI[ChainId.MAINNET]],
-    [DFL[ChainId.MAINNET], KUSD[ChainId.MAINNET]],
+    [HNG[ChainId.MAINNET], WKAI[ChainId.MAINNET]],
+    [HNG[ChainId.MAINNET], KUSD[ChainId.MAINNET]],
     [KUSD[ChainId.MAINNET], VNDC[ChainId.MAINNET]],
     [BOSSDOGE[ChainId.MAINNET], WKAI[ChainId.MAINNET]],
   ],
@@ -50,7 +50,7 @@ export const PINNED_PAIRS = {
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], DFL[ChainId.MAINNET], KUSD[ChainId.MAINNET], WKAI],
+  [ChainId.MAINNET]: [WETH[ChainId.MAINNET], HNG[ChainId.MAINNET], KUSD[ChainId.MAINNET], WKAI],
 }
 
 /**
@@ -76,7 +76,7 @@ export const BETTER_TRADE_LESS_HOPS_THRESHOLD = new Percent(JSBI.BigInt(50), JSB
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES = {
-  [ChainId.MAINNET]: [KUSD[ChainId.MAINNET], DFL[ChainId.MAINNET]],
+  [ChainId.MAINNET]: [KUSD[ChainId.MAINNET], HNG[ChainId.MAINNET]],
 }
 
 export const swapSupportFeesTokens = [BOSSDOGE]
