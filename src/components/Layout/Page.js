@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
-import { useKscPrice } from 'hooks/usePrice';
+import { usePriceByTokenAddress } from 'hooks/usePrice';
+import address from 'constants/contracts'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { Helmet } from 'react-helmet-async'
@@ -35,7 +36,7 @@ const PageMeta = () => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
 
-  const kscPriceUsd = new BigNumber(useKscPrice())
+  const kscPriceUsd = new BigNumber(usePriceByTokenAddress(address.hng))
   const cakePriceUsdDisplay = kscPriceUsd.gt(0)
     ? `$${kscPriceUsd.toNumber().toLocaleString(undefined, {
         minimumFractionDigits: 3,

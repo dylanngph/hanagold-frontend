@@ -11,8 +11,8 @@ const Menu = (props) => {
   const { isDark, toggleTheme } = useTheme()
   const {account, onConnect, onLogout} = useKardiachain()
   const { currentLanguage, setLanguage, t } = useTranslation()
-  const chiPrice = usePriceByTokenAddress(address.hng)
-
+  const hngPrice = usePriceByTokenAddress(address.hng)
+  
   return (
     <UikitMenu
       account={account}
@@ -23,7 +23,7 @@ const Menu = (props) => {
       currentLang={currentLanguage.code}
       langs={languageList}
       setLang={setLanguage}
-      tokenPriceUsd={chiPrice}
+      tokenPriceUsd={hngPrice}
       links={config(t)}
       profile={null}
       {...props}
