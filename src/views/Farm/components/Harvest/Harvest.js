@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 import Flex from 'components/Box/Flex';
-import {Box} from '@mui/material'
 import Button from 'components/Button/Button';
+import {Box} from '@mui/material'
 import Card from 'components/Card/Card';
 import CardLogo from 'components/Card/CardLogo';
 import Text from 'components/Text/Text';
@@ -100,7 +100,6 @@ const Harvest = ({farm, earnings}) => {
               />
           )}
         </Wrapper> */}
-
         <ParameterSection>
           <Box display="flex" flexDirection="column" textAlign="left">
             <Text bold color="primary">HNG Earn:</Text>
@@ -112,7 +111,7 @@ const Harvest = ({farm, earnings}) => {
               />
               <Value
                   color="rgba(255,255,255, .5)"
-                  fontSize="18px"
+                  fontSize="14px"
                   prefix="~"
                   value={account ? usdTokenEarning : 0}
                   decimals={2}
@@ -121,8 +120,7 @@ const Harvest = ({farm, earnings}) => {
             </Box>
           </Box>
           <Box display= "flex" alignItems="center">
-            {account ? (
-              <HarvestButton
+            <HarvestButton
                   mt="20px"
                   width="100%"
                   disabled={pendingTx || earnings.eq(new BigNumber(0))}
@@ -130,12 +128,6 @@ const Harvest = ({farm, earnings}) => {
               >
                 {pendingTx ? 'Collecting LTD' : 'Harvest'}
               </HarvestButton>
-          ) : (
-              <UnlockButton
-                  mt="20px"
-                  width="100%"
-              />
-          )}
           </Box>
         </ParameterSection>
       </>
@@ -147,7 +139,7 @@ const ParameterSection = styled(Box)`
   margin-bottom: 15px
 `
 const HarvestButton = styled(Button)`
-  background-color: #FFC247;
+  background-color: #31D0AA;
   color: #000;
   border-radius: 4px;
 `
