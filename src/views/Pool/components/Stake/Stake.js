@@ -129,7 +129,7 @@ const Stake = ({pool, userData}) => {
                   Stake
                 </Button>
             ) : (
-              <div className="flex justify-between mt-5">
+              <div className="flex justify-between mt-5 flex-wrap">
                 <div className="text-left">
                   <Text color="textWhite">{pool.stakingToken.symbol} Tokens Staked</Text>
                   <Value

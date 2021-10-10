@@ -185,13 +185,13 @@ const Stake = ({farm, lpTokenName, userData}) => {
           </Wrapper>
         </Card> */}
 
-        <ParameterSection>
+        <ParameterSection className="flex flex-wrap">
           <Box display="flex" flexDirection="column" textAlign="left">
             <Text bold color="primary">Token Earn:</Text>
             <Box>
               <Value
                 color="primary"
-                fontSize="28px"
+                fontSize="20px"
                 value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
                 decimals={4}
               />

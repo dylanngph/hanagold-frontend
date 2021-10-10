@@ -106,16 +106,16 @@ const Harvest = ({farm, earnings}) => {
             <Box>
               <Value
                   color="primary"
-                  fontSize="28px"
+                  fontSize="20px"
                   value={account ? getBalanceNumber(earnings, 6) : 0}
-                  decimals={6}
+                  decimals={3}
               />
               <Value
                   color="rgba(255,255,255, .5)"
                   fontSize="14px"
                   prefix="~"
                   value={account ? usdTokenEarning : 0}
-                  decimals={6}
+                  decimals={2}
                   unit=" USD"
               />
             </Box>
@@ -140,7 +140,7 @@ const ParameterSection = styled(Box)`
   margin-bottom: 15px
 `
 const HarvestButton = styled(Button)`
-  background-color: #31D0AA;
+  background-color: ${({ theme }) => theme.colors.secondary};
   color: #000;
   border-radius: 4px;
 `

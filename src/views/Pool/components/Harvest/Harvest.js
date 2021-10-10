@@ -52,7 +52,7 @@ const Harvest = ({ pool, earnings }) => {
   }, [account, dispatch, onReward, pool, toastError, toastSuccess])
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between flex-wrap">
       <div className="text-left mt-3">
         <Text color="textWhite">{pool.earningToken.symbol} EARNED</Text>
         <Value
@@ -77,7 +77,7 @@ const Harvest = ({ pool, earnings }) => {
             disabled={pendingTx || earnings.eq(new BigNumber(0))}
             onClick={handleReward}
         >
-          {pendingTx ? `Collecting ${pool.earningToken.symbol}` : 'Harvest'}
+          <span className="text-black">{pendingTx ? `Collecting ${pool.earningToken.symbol}` : 'Harvest'}</span>
         </Button>
       }
       </div>
