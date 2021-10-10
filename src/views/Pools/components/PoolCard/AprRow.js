@@ -39,8 +39,8 @@ const AprRow = ({pool}) => {
         isFinished={pool.isFinished}
       >
         <Text color="textWhite">APR:</Text>
-        <Flex alignItems="center" >
-          <span className="text-green-300">{pool?.apr ? <Value value={pool.apr || 0} unit="%" decimals={0}/> : '- - -%'}</span>
+        <Flex alignItems="center">
+          <span className="text-green-300">{pool?.apr ? <Value color="textWhite" value={pool.apr || 0} unit="%" decimals={0}/> : '- - -%'}</span>
           <ClipboardIcon color="#fff" width="20px"/>
         </Flex>
       </StyledFlex>

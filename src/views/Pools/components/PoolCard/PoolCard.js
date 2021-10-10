@@ -88,7 +88,6 @@ const PoolCard = ({pool}) => {
   const {poolLimit, stakingLimit} = pool;
   const [isView, setIsView] = useState(false);
   const poolName = getPoolName(pool.isV2 ? pool.earningTokens : [pool.earningToken]);
-
   return (
       <FCard>
         <CardContainer>

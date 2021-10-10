@@ -4,7 +4,7 @@ import tokens from 'constants/tokens'
 import { getFarms } from 'store/farms/helpers';
 
 const fetchFarms = async (pricesFetch) => {
-  return await getFarms(farmsConfig, address.masterChef, pricesFetch, tokens.ltd)
+  return await getFarms(farmsConfig, address.masterChef, pricesFetch, tokens.hng)
 }
 
 

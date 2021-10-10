@@ -25,6 +25,7 @@ const WrapperFlex = styled(Flex)`
 const Farm = ({lpAddress}) => {
   const farm = useFarmFromLpAddress(lpAddress);
   const userData = useFarmUser(farm?.pid);
+  console.log("userData", userData)
   useFetchUserData(lpAddress)
 
 

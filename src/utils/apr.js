@@ -5,7 +5,6 @@ import { BIG_TEN } from 'utils/bigNumber';
 export function getFarmApr(totalAllocPoints, allocPoints, rewardsPerBlock, rewardPrice, stakedTvl) {
   const rewardsPerWeek = rewardsPerBlock.times(604800).div(KAI_BLOCK_TIME);
   const poolWeight = new BigNumber(allocPoints).div(totalAllocPoints);
-
   const userDailyRewards = rewardsPerBlock.times(new BigNumber(86400).div(KAI_BLOCK_TIME)).times(poolWeight);
 
   const poolRewardsPerWeek = poolWeight.times(rewardsPerWeek);
@@ -15,7 +14,6 @@ export function getFarmApr(totalAllocPoints, allocPoints, rewardsPerBlock, rewar
 
   const monthlyAPR = weeklyAPR.times(30 / 7);
   const yearlyAPR = weeklyAPR.times(365 / 7);
-
   return {
     weeklyAPR: weeklyAPR.isNaN() || !weeklyAPR.isFinite() ? '0' : weeklyAPR.toFixed(2),
     yearlyAPR: yearlyAPR.isNaN() || !yearlyAPR.isFinite() ? '0' : yearlyAPR.toFixed(2),

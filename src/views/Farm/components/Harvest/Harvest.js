@@ -39,7 +39,7 @@ const Harvest = ({farm, earnings}) => {
     try {
       setPendingTx(true);
       await onHarvest();
-      toastSuccess('Harvested', `Your LTD earnings have been sent to your wallet!`);
+      toastSuccess('Harvested', `Your token earnings have been sent to your wallet!`);
       dispatch(fetchFarmUserDataAsync(account, farm));
       setPendingTx(false);
     } catch (e) {
@@ -108,13 +108,14 @@ const Harvest = ({farm, earnings}) => {
                   color="primary"
                   fontSize="28px"
                   value={account ? getBalanceNumber(earnings) : 0}
+                  decimals={6}
               />
               <Value
                   color="rgba(255,255,255, .5)"
                   fontSize="14px"
                   prefix="~"
                   value={account ? usdTokenEarning : 0}
-                  decimals={2}
+                  decimals={6}
                   unit=" USD"
               />
             </Box>
@@ -126,7 +127,7 @@ const Harvest = ({farm, earnings}) => {
                   disabled={pendingTx || earnings.eq(new BigNumber(0))}
                   onClick={handleHarvest}
               >
-                {pendingTx ? 'Collecting LTD' : 'Harvest'}
+                {pendingTx ? 'Collecting' : 'Harvest'}
               </HarvestButton>
           </Box>
         </ParameterSection>
