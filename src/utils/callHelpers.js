@@ -245,3 +245,8 @@ export const getStakedV2 = async (masterChefContract, pid, account) => {
 
   return amount
 }
+
+export const fetchBalanceOf = async (contract, addressContract, addressWallet) => {
+  const res = await callHelpers(contract, addressContract, 'balanceOf', [addressWallet])
+  return new BigNumber(res).toJSON()
+}

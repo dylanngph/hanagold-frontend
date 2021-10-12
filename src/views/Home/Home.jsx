@@ -69,7 +69,7 @@ const Home = () => {
   return (
       <Page>
         <PageHeader
-          title="HANA GOLD"
+          title="HANAGOLD"
           subTitle="AMM and yield farm on KardiaChain."
         />
         <Stats/>

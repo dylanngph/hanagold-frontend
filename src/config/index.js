@@ -19,6 +19,8 @@ export const TOTAL_SUPPLY = 30000000
 export const TOTAL_CIRCULATION = 30000000
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
+export const WALLET_COMPANY = '0xb253d0e6d2Fa9f6d6fBa523Fc72732C3d32B8270'
+
 export const socials = [
   {
     label: "Twitter",
