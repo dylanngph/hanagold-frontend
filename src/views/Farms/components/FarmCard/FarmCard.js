@@ -6,7 +6,7 @@ import Text from 'components/Text/Text';
 import UnlockButton from 'components/UnlockButton/UnlockButton';
 import tokens from 'constants/tokens';
 import useKardiachain from 'hooks/useKardiachain';
-import { useKscPrice } from 'hooks/usePrice';
+import { usePrimaryPrice } from 'hooks/usePrice';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -80,13 +80,13 @@ const FarmCard = ({farm}) => {
   const mul = farm?.allocPoint / 100;
   const stakedTvl = farm?.stakedTvl || 0
   const apr = farm?.apr
-  const kscPrice = useKscPrice()
+  const primaryPrice = usePrimaryPrice()
 
 
   
   const [onPresentApyModal] = useModal(
       <ApyCalculatorModal
-          tokenPrice={kscPrice}
+          tokenPrice={primaryPrice}
           data={farm}
           tokenEarnedPerThousandDaily={tokenEarnedPerThousandDaily(stakedTvl, apr)}
           isFarm

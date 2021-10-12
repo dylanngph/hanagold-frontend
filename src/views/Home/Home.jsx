@@ -68,38 +68,13 @@ const Container = styled(Flex)`
 const Home = () => {
   return (
       <Page>
-        <Container>
-          <Wrapper>
-            <LeftBox>
-              <img src="/images/mockup.png" alt="Mockup Image" width="100%" />
-            </LeftBox>
-            <RightBox>
-              <h2 className="title">About HanaGold Token (HNG)</h2>
-              <p>HanaGold jewelry joint stock company was established in 2020, is an innovative start-up enterprise in the field of gold, silver and gemstone. We apply 4.0 technology in business with a pioneering project called HanaGold.
-Potential in the 4.0 technology era along with the need to use and invest in gold, HanaGold quickly flashed the opportunity to develop the gold industry in Vietnam according to an improved model compared to the traditional one, creating a breakthrough for gold business in Vietnam.
-Our mission is to ensure property value and provide peace of mind when attached.
-- Vision: To become the national gold brand by 2025
-- Strategy: Applying 4.0 technology in business development of gold, silver and gemstone industry in Vietnam, make gold more versatile
-- Core values: Safety - Convenience - Fast</p>
-              <DownloadSection>
-                <h4>App is comming soon</h4>
-                <DownloadButton>
-                <div className="item"><img src="./images/appstore.png" alt="App Store Download" /></div>
-                <div className="item"><img src="./images/CHPlay.png" alt="CH Play Download" /></div>
-                </DownloadButton>
-              </DownloadSection>
-            </RightBox>
-          </Wrapper>
-        {/* <PageHeader
-            title="KSHARK"
-            subTitle="AMM and yield farm on Binance Smart Chain."
+        <PageHeader
+          title="HANA GOLD"
+          subTitle="AMM and yield farm on KardiaChain."
         />
         <Stats/>
         <Earn/>
-        <Finance/> */}
-        {/* <ProductsServices/> */}
-        {/* <Community/> */}
-        </Container>
+        <Finance/>
       </Page>
   );
 };

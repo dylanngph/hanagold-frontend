@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '@heroicons/react/solid';
 
 const WrapperCard = styled.div`
   flex: 1;
-  background: linear-gradient(270.15deg, rgb(255 255 248 / 20%) 0.13%,rgb(31 31 31) 99.88%);
+  background: linear-gradient(270.15deg, rgb(255, 248, 225) 0.13%, rgb(255, 254, 244) 99.88%);
   border-radius: 10px;
   padding: 24px;
   position: relative;
@@ -35,7 +35,7 @@ const EarnApr = () => {
           <ArrowRightIcon
               width="40"/>
         </Flex>
-        <Text fontSize="40px" color="textWhite" bold>Earn up to</Text>
+        <Text fontSize="40px" color="text" bold>Earn up to</Text>
         <Value
             value={highestApr}
             bold
@@ -48,7 +48,6 @@ const EarnApr = () => {
             fontSize="30px"
             color="text"
             verticalAligh="top"
-            color="textWhite"
         ><span style={{ verticalAlign: 'top' }}>APR in Farms</span></Text>
       </WrapperCard>
   );

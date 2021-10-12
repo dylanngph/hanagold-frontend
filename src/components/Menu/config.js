@@ -28,6 +28,11 @@ const config =  (t) => [
     label: t("NFT Market Place"),
     icon: "MarketPlaceIcon",
     href: "/marketplace"
+  },
+  {
+    label: t("Info"),
+    icon: "InfoIcon",
+    href: "/info"
   }
   // {
   //   label: "Repo",

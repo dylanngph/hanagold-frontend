@@ -11,7 +11,7 @@ const WrapperCard = styled.div`
   text-align: center;
   > div{
     border-radius: 14px;
-    background: linear-gradient(270.15deg, rgb(166 120 56) 0.13%,rgb(189 155 101) 99.88%);
+    background: #fff;
     padding: 30px;
     min-width: 300px;
 

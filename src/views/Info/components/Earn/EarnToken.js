@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const WrapperCard = styled.div`
   flex: 1;
-  background: linear-gradient(270.15deg, rgb(255 255 248 / 20%) 0.13%,rgb(31 31 31) 99.88%);
+  background: linear-gradient(112.44deg,#ffffffdb 44.76%,#a9c4ff 95.36%);
   border-radius: 10px;
   padding: 24px;
   position: relative;
@@ -26,12 +26,11 @@ const EarnToken = () => {
           <ArrowRightIcon
               width="40"/>
         </Flex>
-        <Text fontSize="40px" bold color="textWhite">Earn</Text>
+        <Text fontSize="40px" bold>Earn</Text>
         <Text fontSize="40px" color="secondary" bold>Extra Tokens</Text>
         <Text
             fontSize="30px"
             verticalAligh="top"
-            color="textWhite"
         ><span style={{verticalAlign: 'top'}}>in Stake</span></Text>
       </WrapperCard>
   );
