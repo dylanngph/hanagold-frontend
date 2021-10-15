@@ -28,7 +28,7 @@ import ComingSoon from 'views/ComingSoon/ComingSoon'
 import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
 import MarketplaceDetails from 'views/Marketplace/MarketplaceDetails'
 import Info from 'views/Info/Info'
-
+import Bounty from 'views/Bounty/Bounty'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 import Marketplace from 'views/Marketplace/Marketplace';
@@ -85,6 +85,9 @@ function App() {
           </Route>
           <Route path="/info">
             <Info/>
+          </Route>
+          <Route path="/bounty">
+            <Bounty/>
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}

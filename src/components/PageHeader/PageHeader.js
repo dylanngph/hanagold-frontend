@@ -42,7 +42,7 @@ const PageHeader = ({ title, subTitle, fontSizeTitle = "30px" , styleTitle}) => 
           as="h1"
           style={styleTitle}
           fontSize={fontSizeTitle} bold color="#fff">{title}</Text>
-      <Text fontSize="16px" color="#fff">{subTitle}</Text>
+      <Text fontSize="16px" color="#ffffff4d">{subTitle}</Text>
     </StyledPageHeader>
   )
 }

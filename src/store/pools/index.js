@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import { poolsConfig, poolsV2Config } from 'constants/pools';
 import {
-   fetchPoolsLimits,
+  fetchPoolsLimits,
   fetchPoolsStakingLimits,
   fetchPoolsTotalStaking,
   fetchPoolsBlockLimits,

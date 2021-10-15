@@ -171,7 +171,7 @@ const Stake = ({pool, userData}) => {
                 width="100%"
                 mt="20px"
                 disabled={requestedApproval} onClick={handleApprove}>
-              Approve Contract
+              <span className="text-black">Approve Contract</span>
             </Button>
         )}
       </div>

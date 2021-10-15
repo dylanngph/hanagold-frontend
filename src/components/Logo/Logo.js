@@ -10,7 +10,6 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   padding: 15px;
-  margin-top: 10px;
 `;
 const FlexWrapper = styled(Box)`
   display: flex;

@@ -250,3 +250,10 @@ export const fetchBalanceOf = async (contract, addressContract, addressWallet) =
   const res = await callHelpers(contract, addressContract, 'balanceOf', [addressWallet])
   return new BigNumber(res).toJSON()
 }
+
+export const claimNFTVoucher = async(contract, addressContract, account) => {
+  const txData = contract.invokeContract('claimBounty', []).txData()
+  const response = await sendTransactionToExtension(account, txData, addressContract)
+
+  return response.transactionHash
+}

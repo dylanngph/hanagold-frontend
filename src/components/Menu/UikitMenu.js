@@ -113,7 +113,7 @@ const UikitMenu = ({
               href={homeLink?.href ?? '/'}
           />
           <div style={{
-            marginRight: isMobile ? '10px' : '80px'
+            marginRight: isMobile ? '10px' : '20px'
           }}>
             <UserBlock/>
           </div>
