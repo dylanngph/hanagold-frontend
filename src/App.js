@@ -29,6 +29,7 @@ import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
 import MarketplaceDetails from 'views/Marketplace/MarketplaceDetails'
 import Info from 'views/Info/Info'
 import Bounty from 'views/Bounty/Bounty'
+import Mint from 'views/Mint/Mint'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 import Marketplace from 'views/Marketplace/Marketplace';
@@ -88,6 +89,9 @@ function App() {
           </Route>
           <Route path="/bounty">
             <Bounty/>
+          </Route>
+          <Route path="/mint">
+            <Mint/>
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}

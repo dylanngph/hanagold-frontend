@@ -5,6 +5,7 @@
   "scripts": {
     "start": "craco start",
     "build": "GENERATE_SOURCEMAP=false craco build && rm -rf build-nginx && mv build build-nginx",
+    "build:win": "set GENERATE_SOURCEMAP=false && craco build",
     "test": "craco test",
     "eject": "craco eject"
   },
