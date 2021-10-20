@@ -82,7 +82,7 @@ Our mission is to ensure property value and provide peace of mind when attached.
 - Strategy: Applying 4.0 technology in business development of gold, silver and gemstone industry in Vietnam, make gold more versatile
 - Core values: Safety - Convenience - Fast</p>
               <DownloadSection>
-                <h4>App is comming soon</h4>
+                <h4>App is coming soon</h4>
                 <DownloadButton>
                 <div className="item"><img src="./images/appstore.png" alt="App Store Download" /></div>
                 <div className="item"><img src="./images/CHPlay.png" alt="CH Play Download" /></div>
