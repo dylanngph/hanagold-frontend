@@ -177,6 +177,19 @@ const tokens = {
     decimals: 6,
     projectLink: 'https://hanagold.finance',
   },
+
+  t_lgl: {
+    symbol: 'LGL',
+    address: '0x94899AB173d1400d80C06e904839f717d8F7EC18',
+    decimals: 18,
+    projectLink: 'https://hanagold.finance',
+  },
+  t_thg: {
+    symbol: 'THG',
+    address: '0xFf8A96980Ec27D22fBeF7f3861aA76c590da04Ed',
+    decimals: 18,
+    projectLink: 'https://hanagold.finance',
+  },
 }
 
 export const WKAI = {

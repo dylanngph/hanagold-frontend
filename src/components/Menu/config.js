@@ -10,6 +10,11 @@ const config =  (t) => [
     href: "/bounty",
   },
   {
+    label: "Mint Gold NFT",
+    icon: "StakeIcon",
+    href: "/mint",
+  },
+  {
     label: t('Trade'),
     icon: "TradeIcon",
     href: "/swap",

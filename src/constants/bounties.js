@@ -1,7 +1,7 @@
 const bouties = [
     {
         id: 1,
-        image: "images/bounties/hanagold_gift_voucher_300.png",
+        image: "images/bounties/hanagold_gift_voucher_300_kaimond.png",
         title: "HanaGold NFT Voucher",
         details: [
             "Special for Kaimond member.",

@@ -1,15 +1,22 @@
+import { useEffect, useState } from 'react';
 import Page from 'components/Layout/Page';
 import PageHeader from 'components/PageHeader/PageHeader';
 import Card from './components/Card'
 import mints from 'constants/mints';
 import useKardiachain from 'hooks/useKardiachain';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import useRefresh from 'hooks/useRefresh'
+import fetchUserMintNft from "./hooks/fetchUserMintNft"
 
 const Mint = () => {
 	const { account } = useKardiachain();
-	// const { fastRefresh } = useRefresh()
+	const { fastRefresh } = useRefresh()
+	const [userData, setUserData] = useState(mints)
+	useEffect(async() => {
+		if (account) {
+			const data = await fetchUserMintNft(account)
+			setUserData(data)
+		}
+	}, [account, fastRefresh])
 	// const [bountyList, setBountyList] = useState(bouties)
 
 	// useEffect(async() => {
@@ -19,19 +26,19 @@ const Mint = () => {
 	// 	}
 	// }, [account, fastRefresh])
 
-  return (
-      <Page>
-        <PageHeader
-          title="Mint NFT"
-          subTitle="Mint HNG NFT"
-        />
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-5">
-				{
-					mints.map((d, i) => <Card data={d} key={i} />)
-				}
-				</div>
-      </Page>
-  );
+	return (
+		<Page style={{ backgroundImage: `url('/images/mint/bg_mint.png')`}}>
+			<PageHeader
+				title="Mint NFT"
+				subTitle="Mint HNG NFT"
+			/>
+					<div className="flex justify-center items-center">
+					{
+						userData.map((d, i) => <Card data={d} key={i} />)
+					}
+					</div>
+		</Page>
+	);
 };
 
 export default Mint;

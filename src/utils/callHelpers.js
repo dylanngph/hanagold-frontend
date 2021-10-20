@@ -257,3 +257,10 @@ export const claimNFTVoucher = async(contract, addressContract, account) => {
 
   return response.transactionHash
 }
+
+export const mintNft = async(contract, addressContract, account) => {
+  const txData = contract.invokeContract('exchangeNFT', []).txData()
+  const response = await sendTransactionToExtension(account, txData, addressContract)
+
+  return response.transactionHash
+}
