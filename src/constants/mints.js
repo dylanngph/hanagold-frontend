@@ -3,7 +3,7 @@ import tokens from "constants/tokens"
 const mints = [
     {
         id: 1,
-        title: "Dong Vang HNG",
+        title: "DONG VANG HANAGOLD",
         listTokens: [
             {
                 token: tokens.hng,

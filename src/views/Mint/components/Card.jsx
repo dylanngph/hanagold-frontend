@@ -75,7 +75,7 @@ const Card = ({ data }) => {
                     })
                 }
                 </ListItems>
-                <div className="mt-5">
+                {/* <div className="mt-5">
                 {
                     account
                     ?
@@ -85,7 +85,7 @@ const Card = ({ data }) => {
                     :
                         <UnlockButton className="text-black p-2 w-full" scale="sm" />
                 }
-                </div>
+                </div> */}
             </CardBody>
         </CardWrap>
     )
