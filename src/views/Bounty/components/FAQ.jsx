@@ -14,7 +14,7 @@ const FAQ = () => {
                             </Text>
                         </div>
                         <div className="pl-10 text-gray-400 leading-5">
-                            HANAGOLD comes from Japan, based on the A (Animation) C (Comic) G (Game) N (Novel) culture that originated in Japan and is widely loved all over the world, combined with the leading NFT and DeFi technologies in the blockchain, by introducing a large number of ACGN Well-known IP and designers in the field, make full use of the “interoperability” advantage of blockchain technology, allowing toy figures in the real world to interact with NFT’s in the virtual world in the JOJO.FUN metaverse, breaking the dimensional barriers. Finally, a world-class pan-entertainment platform based on blockchain technology will be built.
+                        Established in 2020, HanaGold Jewelry Joint Stock Company is an innovative start-up enterprise in the sector of gold, silver, and gemstones. We apply technology in the jewelry business with a pioneering project called HanaGold. With the potential of the 4.0 technology era along with the demand of gold consuming and investing, HanaGold quickly seizes the opportunity to develop the jewelry industry in Vietnam by a trailblazing model, creating a breakthrough for the jewelry business in Vietnam.
                         </div>
                     </div>
                     <div className="mb-6">
@@ -25,7 +25,7 @@ const FAQ = () => {
                             </Text>
                         </div>
                         <div className="pl-10 text-gray-400 leading-5">
-                            In HANAGOLD Tokenomic, 10% of each HANAGOLD transaction amount on the blockchain will be deducted and redistributed, 3% of it will be allocated to NFT Pool. We will set up a special “HANAGOLD Bounty Pool”, after completing HANAGOLD Bounty, the users can get NFT rewards with corresponding HashRate, and stake NFT in the “HANAGOLD Bounty Pool” to earnHANAGOLD rewards.
+                            Bounty NFTs are NFTs that users can obtain by completing specific tasks set out by HanaGold, following hanaGold's communication channels for the latest and most accurate information.
                         </div>
                     </div>
                     <div>
@@ -36,7 +36,7 @@ const FAQ = () => {
                             </Text>
                         </div>
                         <div className="pl-10 text-gray-400 leading-5">
-                        HANAGOLD Bounty NFT is divided into 2 types, including “HANAGOLD Routine Bounty NFT” and “HANAGOLD SSR Bounty NFT”.
+                            The vouchers NFT will have different values, for the voucher received in the whitelist will be worth 300k, in addition, there are other vouchers worth from 50-300k
                         </div>
                     </div>
                 </FaqWrap>
