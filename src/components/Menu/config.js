@@ -15,11 +15,6 @@ const config =  (t) => [
     href: "/mint",
   },
   {
-    label: "Pool Voucher NFT",
-    icon: "PoolNftIcon",
-    href: "/pool-nft",
-  },
-  {
     label: t('Trade'),
     icon: "TradeIcon",
     href: "/swap",
@@ -33,6 +28,11 @@ const config =  (t) => [
     label: "Pool",
     icon: "StakeIcon",
     href: "/pools",
+  },
+  {
+    label: "Pool Voucher NFT",
+    icon: "PoolNftIcon",
+    href: "/pool-nft",
   },
   {
     label: t('LaunchPad'),
