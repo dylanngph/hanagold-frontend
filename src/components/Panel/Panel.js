@@ -9,8 +9,8 @@ import Logo from 'components/Logo/Logo';
 const StyledPanel = styled.div`
   position: fixed;
   padding-top: 80px;
-  top: 0;
-  left: 0;
+  // top: 0;
+  // left: 0;
   display: ${({isPushed , isMobile}) => (!isPushed && isMobile) ? 'none' : 'flex' };
   flex-direction: column;
   justify-content: space-between;

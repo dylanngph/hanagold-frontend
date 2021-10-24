@@ -12,11 +12,14 @@ import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from 'config/i
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
+  max-width: 1920px;
+  display: block;
+  margin: 0 auto;
 `;
 
 const StyledNav = styled.nav`
   position: fixed;
-  left: 0;
+  // left: 0;
   padding: 5px;
   transition: top 0.2s;
   display: flex;
@@ -27,6 +30,8 @@ const StyledNav = styled.nav`
   z-index: 20;
   transform: translate3d(0, 0, 0);
   margin-top: 10px;
+  width: 100%;
+  max-width: 1920px;
 `;
 
 const BodyWrapper = styled.div`

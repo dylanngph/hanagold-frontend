@@ -264,3 +264,24 @@ export const mintNft = async(contract, addressContract, account) => {
 
   return response.transactionHash
 }
+
+export const stakePoolNft = async(contract, addressContract, account) => {
+  const txData = contract.invokeContract('stake', []).txData()
+  const response = await sendTransactionToExtension(account, txData, addressContract)
+
+  return response.transactionHash
+}
+
+export const claimPoolNft = async(contract, addressContract, account) => {
+  const txData = contract.invokeContract('claimNFT', []).txData()
+  const response = await sendTransactionToExtension(account, txData, addressContract)
+
+  return response.transactionHash
+}
+
+export const withdrawPoolNft = async(contract, addressContract, account) => {
+  const txData = contract.invokeContract('userWithdraw', []).txData()
+  const response = await sendTransactionToExtension(account, txData, addressContract)
+
+  return response.transactionHash
+}

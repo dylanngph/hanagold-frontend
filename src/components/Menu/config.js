@@ -15,6 +15,11 @@ const config =  (t) => [
     href: "/mint",
   },
   {
+    label: "Pool Voucher NFT",
+    icon: "PoolNftIcon",
+    href: "/pool-nft",
+  },
+  {
     label: t('Trade'),
     icon: "TradeIcon",
     href: "/swap",

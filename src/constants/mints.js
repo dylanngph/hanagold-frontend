@@ -3,7 +3,8 @@ import tokens from "constants/tokens"
 const mints = [
     {
         id: 1,
-        title: "DONG VANG HANAGOLD",
+        title: "HANAGOLD NFT 24K",
+        description: "One HANAGOLD NFT 24K equivalent to 1 gold thread",
         listTokens: [
             {
                 token: tokens.hng,
@@ -14,7 +15,7 @@ const mints = [
                 required: 1
             }
         ],
-        contractAddress: "0x5717C508B91d4d03E9Ce07AC5270d17FF1fD70f0",
+        contractAddress: "0x85E1d047d68B940ff334Ce0e5Aad5F2004B625D6",
         video: "https://slate.textile.io/ipfs/bafybeigng3wtan7zvp5nvammpknvgsnohhxikpffymsot3yhlp4sgnhvse"
     }
 ]

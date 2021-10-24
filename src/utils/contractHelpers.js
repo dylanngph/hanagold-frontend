@@ -15,6 +15,7 @@ import { KardiaContract } from 'kardia-js-sdk'
 import sousChefV2Abi from 'config/abi/sousChefV2.json'
 import bountyAbi from 'config/abi/bounty.json'
 import mintNFTAbi from 'config/abi/mintnft.json'
+import poolNftAbi from 'config/abi/poolNft.json'
 
 export const getContract = (abi) => {
   const contract = new KardiaContract({
@@ -70,4 +71,8 @@ export function getBountyNftVoucher() {
 
 export function getMintNftContract() {
   return getContract(mintNFTAbi)
+}
+
+export function getPoolNftContract() {
+  return getContract(poolNftAbi)
 }

@@ -30,6 +30,7 @@ import MarketplaceDetails from 'views/Marketplace/MarketplaceDetails'
 import Info from 'views/Info/Info'
 import Bounty from 'views/Bounty/Bounty'
 import Mint from 'views/Mint/Mint'
+import PoolNft from 'views/PoolNft/PoolNft'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 import Marketplace from 'views/Marketplace/Marketplace';
@@ -92,6 +93,9 @@ function App() {
           </Route>
           <Route path="/mint">
             <Mint/>
+          </Route>
+          <Route path="/pool-nft">
+            <PoolNft/>
           </Route>
           {/*<Route path="/member">*/}
           {/*  <Member />*/}

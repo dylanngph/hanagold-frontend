@@ -27,16 +27,14 @@ const Mint = () => {
 	// }, [account, fastRefresh])
 
 	return (
-		<Page style={{ backgroundImage: `url('/images/mint/bg_mint.png')`}}>
+		<Page>
 			<PageHeader
-				title="Mint NFT"
-				subTitle="Mint HNG NFT"
+				title="Mint Gold NFT"
+				subTitle="Mint HNG Gold NFT"
 			/>
-					<div className="flex justify-center items-center">
-					{
-						userData.map((d, i) => <Card data={d} key={i} />)
-					}
-					</div>
+			{
+				userData.map((d, i) => <Card data={d} key={i} />)
+			}
 		</Page>
 	);
 };

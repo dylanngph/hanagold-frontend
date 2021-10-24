@@ -12,3 +12,4 @@ export { default as TradeIcon } from "./Trade";
 export { default as MarketPlaceIcon } from "./MarketPlace";
 export { default as InfoIcon } from "./Info";
 export { default as BountyIcon } from "./Bounty";
+export { default as PoolNftIcon } from "./PoolNft";
