@@ -54,7 +54,7 @@ const Card = ({ data }) => {
                 <div className="w-full md:w-2/3">
                     <CardWrap className="p-5">
                         <div className="md:flex gap-5">
-                            <div className="w-full md:w-1/3">
+                            <div className="w-full md:w-1/3 bg-black rounded-xl">
                                 <video autoPlay loop muted className="h-full">
                                     <source src={video} type="video/mp4"></source>
                                 </video>
