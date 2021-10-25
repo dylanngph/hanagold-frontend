@@ -10,6 +10,7 @@ import bouties from 'constants/bounties';
 import { fetchBounty } from '../hooks/fetchUserBounty'
 import useToast from 'hooks/useToast';
 import { useClaimBounty } from '../hooks/useClaimBounty';
+import useRefresh from 'hooks/useRefresh'
 
 const DetailBounty = ({
     match: {
@@ -21,6 +22,7 @@ const DetailBounty = ({
     const [dataBounty, setDataBounty] = useState(data)
     const { account } = useKardiachain()
     const [pendingTx, setPendingTx] = useState(false);
+    const { fastRefresh } = useRefresh()
     const {toastSuccess, toastError} = useToast();
     const { title, details, voucherImage, isWhiteList, contractAddress, totalSupply } = dataBounty
     const { onClaim } = useClaimBounty(contractAddress)
@@ -29,7 +31,7 @@ const DetailBounty = ({
         try {
             setPendingTx(true);
             await onClaim();
-            await fetchUserBounty(account)
+            await fetchBounty(account, id)
             toastSuccess('Claimed', `Your just claim ${title}`);
             setPendingTx(false);
         } catch (e) {
@@ -44,7 +46,7 @@ const DetailBounty = ({
         if (!account) return
         const result = await fetchBounty(account, id)
         setDataBounty(result)
-    }, [account, id])
+    }, [account, id, fastRefresh])
 
 
     return(
