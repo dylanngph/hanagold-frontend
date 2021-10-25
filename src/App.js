@@ -29,6 +29,7 @@ import LaunchpadDetails from 'views/Launchpad/LaunchpadDetails'
 import MarketplaceDetails from 'views/Marketplace/MarketplaceDetails'
 import Info from 'views/Info/Info'
 import Bounty from 'views/Bounty/Bounty'
+import RedirectToDetailBounty from 'views/Bounty/redirects'
 import Mint from 'views/Mint/Mint'
 import PoolNft from 'views/PoolNft/PoolNft'
 // import Member from 'views/Member/Member';
@@ -91,6 +92,7 @@ function App() {
           <Route path="/bounty">
             <Bounty/>
           </Route>
+          <Route exact strict path="/bounty-detail/:id" component={RedirectToDetailBounty} />
           <Route path="/mint">
             <Mint/>
           </Route>

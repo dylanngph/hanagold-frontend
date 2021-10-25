@@ -1,8 +1,9 @@
 import bouties from 'constants/bounties';
 import bountyAbi from 'config/abi/bounty.json'
 import multicall from 'utils/multicall'
+import BigNumber from 'bignumber.js';
 
-const fetchUserBounty = async(account) => {
+export const fetchUserBounty = async(account) => {
     const calls = bouties.map((bounty) => {
         return {
             address: bounty.contractAddress,
@@ -22,7 +23,6 @@ const fetchUserBounty = async(account) => {
     })
     
     const [[isAllow]] = await multicall(bountyAbi, callsWhitelist)
-    console.log(isAllow)
     return bouties.map((bounty) => {
         return {
             ...bounty,
@@ -33,4 +33,26 @@ const fetchUserBounty = async(account) => {
     })
 }
 
-export default fetchUserBounty
+export const fetchBounty = async(account, id) => {
+    if (!account) return
+    const bounty = bouties.find((bounty) => bounty.id === Number(id))
+    const calls = [{
+        address: bounty.contractAddress,
+        name: 'totalSupply',
+        params: []
+    },
+    {
+        address: bounty.contractAddress,
+        name: 'whitelistClaim',
+        params: [account]
+    }]
+
+    const [[totalSupply], [isWhitelist]] = await multicall(bountyAbi, calls)
+
+    return {
+        ...bounty,
+        account,
+        totalSupply: new BigNumber(totalSupply._hex).toJSON(),
+        isWhitelist
+    }
+}  

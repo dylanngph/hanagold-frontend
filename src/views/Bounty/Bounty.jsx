@@ -5,7 +5,7 @@ import FAQ from './components/FAQ'
 import Banner from 'components/Banner/Banner'
 import bouties from 'constants/bounties'
 import useKardiachain from 'hooks/useKardiachain';
-import fetchUserBounty from './hooks/fetchUserBounty'
+import { fetchUserBounty } from './hooks/fetchUserBounty'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import useRefresh from 'hooks/useRefresh'

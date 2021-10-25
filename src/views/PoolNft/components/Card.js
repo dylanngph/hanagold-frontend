@@ -164,8 +164,8 @@ const Card = ({ data }) => {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
                         <img src="/images/vc_50.png"/>
                         <img src="/images/vc_100.png"/>
-                        <img src="/images/vc_150.png"/>
                         <img src="/images/vc_200.png"/>
+                        <img src="/images/vc_300.png"/>
                     </div>
                 </BoxCard>
             </div>
