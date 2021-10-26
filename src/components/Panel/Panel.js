@@ -8,9 +8,7 @@ import Logo from 'components/Logo/Logo';
 
 const StyledPanel = styled.div`
   position: fixed;
-  padding-top: 80px;
-  // top: 0;
-  // left: 0;
+  padding-top: ${({ showMenu }) => (showMenu ? "80px" : 0)};
   display: ${({isPushed , isMobile}) => (!isPushed && isMobile) ? 'none' : 'flex' };
   flex-direction: column;
   justify-content: space-between;
@@ -18,6 +16,7 @@ const StyledPanel = styled.div`
   background-color: ${({isPushed , isMobile}) => (isMobile && !isPushed) ? 'transparent' : '#202125' };
   height: 100vh;
   z-index: 11;
+  transition: padding-top 0.2s, width 0.2s;
   overflow: ${({ isPushed }) => (isPushed ? "initial" : "hidden")};
   transform: translate3d(0, 0, 0);
 

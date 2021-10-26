@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const StyledNav = styled.nav`
   position: fixed;
-  // left: 0;
+  top: ${({showMenu}) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
   padding: 5px;
   transition: top 0.2s;
   display: flex;
@@ -109,7 +109,7 @@ const UikitMenu = ({
 
   return (
       <Wrapper>
-        <StyledNav>
+        <StyledNav showMenu={showMenu}>
           <Logo
               isPushed={isPushed}
               isMobile={isMobile}
@@ -127,6 +127,7 @@ const UikitMenu = ({
           <Panel
               isPushed={isPushed}
               isMobile={isMobile}
+              showMenu={showMenu}
               isDark={isDark}
               toggleTheme={toggleTheme}
               langs={langs}
