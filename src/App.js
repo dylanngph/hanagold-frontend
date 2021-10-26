@@ -35,6 +35,7 @@ import PoolNft from 'views/PoolNft/PoolNft'
 // import Member from 'views/Member/Member';
 import DIPO from 'views/DIPO/dipo';
 import Marketplace from 'views/Marketplace/Marketplace';
+import Account from 'views/Account/Account';
 // import DipoOutside from 'views/DipoOutside/DipoOutside';
 // import Trade from 'views/Trade/Trade';
 // This config is required for number formatting
@@ -104,6 +105,9 @@ function App() {
           {/*</Route>*/}
           <Route path="/dipo">
             <DIPO />
+          </Route>
+          <Route path="/my-account">
+            <Account/>
           </Route>
           {/*<Route path="/demotest" component={DipoOutside} />*/}
           <LayoutSwap>
