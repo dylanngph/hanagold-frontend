@@ -36,8 +36,6 @@ const Account = () => {
     const voucherBalance = accountList?.valueVoucher
     const goldBalance = accountList?.valueGold
     const allNft = accountList?.totalNft
-
-    console.log(type)
        
     return (
         <Wrapper>
