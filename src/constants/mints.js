@@ -5,6 +5,7 @@ const mints = [
         id: 1,
         title: "HANAGOLD NFT 24K",
         description: "One HANAGOLD NFT 24K equivalent to 1 gold thread",
+        image: '/images/mintBannerCard.png',
         listTokens: [
             {
                 token: tokens.hng,

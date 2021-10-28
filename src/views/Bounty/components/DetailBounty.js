@@ -24,7 +24,7 @@ const DetailBounty = ({
     const [pendingTx, setPendingTx] = useState(false);
     const { fastRefresh } = useRefresh()
     const {toastSuccess, toastError} = useToast();
-    const { title, details, voucherImage, isWhiteList, contractAddress, totalSupply } = dataBounty
+    const { title, details, voucherImage, isWhitelist, contractAddress, totalSupply } = dataBounty
     const { onClaim } = useClaimBounty(contractAddress)
 
     const handleClaim = useCallback(async () => {
@@ -86,8 +86,8 @@ const DetailBounty = ({
                                         {
                                             account
                                             ?
-                                                <Button className="w-full text-black" scale="md" onClick={handleClaim} disabled={pendingTx || !isWhiteList}>
-                                                    { isWhiteList ? pendingTx ? "Claiming" : "Claim" : "Be a whitelist user to claim " }
+                                                <Button className="w-full text-black" scale="md" onClick={handleClaim} disabled={pendingTx || !isWhitelist}>
+                                                    { isWhitelist ? pendingTx ? "Claiming" : "Claim" : "Be a whitelist user to claim " }
                                                 </Button>
                                                     // <Button className="w-full text-black" scale="md" onClick={handleClaim} disabled={pendingTx || !whiteList}>
                                                 //     { whiteList ? pendingTx ? "Claiming" : "Claim" : "Be a whitelist user to claim " }

@@ -5,33 +5,40 @@ import { styled as muiStyled} from '@mui/material/styles'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import {ReactComponent as HNGIcon} from '../../hng-account.svg'
 import useKardiachain from 'hooks/useKardiachain'
-import bouties from 'constants/bounties'
-import Card from '../Bounty/components/Card'
-import { fetchUserBounty } from '../Bounty/hooks/fetchUserBounty'
+// import bouties from 'constants/bounties'
+import accountData from 'constants/account'
+import {VoucherCard , GoldCard} from './components/Card/Card'
+import { fetchAccount } from './hooks/fetchAccount'
 
 
 
 const Account = () => {
     const [type, setType] = React.useState('ALL')
     const {account} = useKardiachain()
-    const [bountyList, setBountyList] = useState(bouties)
+    const [accountList, setAccountList] = useState(accountData)
 
     useEffect(async() => {
 		if (account) {
-			const bounties = await fetchUserBounty(account)
-			setBountyList(bounties)
+			const data = await fetchAccount(account)
+			setAccountList(data)
 		}
 	}, [account])
-
 
     const shortenAccount = () => {
         if(account === undefined) return ''
         if (account.length > 20) {
-            return account.substring(0, 20) + '...';
+            return account.substring(0, 20) + '...' + account.substring(account.length - 4) ;
          }
         return {account};
     }
 
+    const balanceOf = accountList?.balanceOf
+    const voucherBalance = accountList?.valueVoucher
+    const goldBalance = accountList?.valueGold
+    const allNft = accountList?.totalNft
+
+    console.log(type)
+       
     return (
         <Wrapper>
             <Box fontSize="30px" fontFamily="SFProTextBold" mb="20px">
@@ -39,10 +46,29 @@ const Account = () => {
             </Box>
            <AccountBox>
                <Flex>
-                    <Box fontSize="16px" textAlign="left" maxWidth="95%">
+                    <Box
+                        fontSize="16px"
+                        textAlign="left"
+                        maxWidth="95%"
+                    >
                         {shortenAccount()}
                     </Box>
-                    <Box><ContentCopyIcon maxWidth="5%" sx={{color:'#A0A0A0'}}/></Box>
+                    <Box
+                        onClick={() => {
+                            navigator.clipboard.writeText(account)
+                        }}
+                        sx={{
+                            cursor: 'pointer',
+                            '& svg': {
+                                color: '#A0A0A0',
+                            },
+                            '& svg:hover' : {
+                                color: '#F0F0F0',
+                            }
+                        }}
+                    >
+                        <ContentCopyIcon maxWidth="5%"/>
+                    </Box>
                </Flex>
                <Flex
                     sx={{
@@ -69,7 +95,7 @@ const Account = () => {
                             <HNGIcon/>
                         </Box>
                         <Box p="10px">
-                            15.00
+                            {balanceOf}
                         </Box>
                     </Box>
                     <Box sx={{
@@ -82,7 +108,7 @@ const Account = () => {
                         gap: '10px',
                         width: '100%'
                     }}>
-                        NFTs: <span style={{color: '#FFC247'}}> 0</span>
+                        NFTs: <span className='text-yellow-400'> {allNft} </span>
                     </Box>
                </Flex>
            </AccountBox>
@@ -100,7 +126,21 @@ const Account = () => {
             </CustomTextField>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-5">
 			{
-				bountyList.map((d, i) => <Card data={d} key={i} />)
+				type === 'ALL' ? 
+                    (
+                        accountList.voucherData.map((d, i) => {
+                            const arr = []
+                            arr.push(<VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
+                            arr.push(accountList.mintData.map((d, i) => <GoldCard goldBalance={goldBalance} data={d} key={i} />))
+                            return arr
+                        })
+                       
+                    )
+                    :
+                type === 'BOUNTY' ?
+                    accountList.voucherData.map((d, i) => <VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
+                    :
+                    accountList.mintData.map((d, i) => <GoldCard goldBalance={goldBalance} data={d} key={i} />)
 			}
 			</div>
         </Wrapper>
