@@ -15,7 +15,7 @@ const config =  (t) => [
     href: "/mint",
   },
   {
-    label: t('Trade'),
+    label: t('Buy Token'),
     icon: "TradeIcon",
     href: "/swap",
   },
