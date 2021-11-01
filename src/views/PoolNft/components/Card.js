@@ -90,7 +90,7 @@ const Card = ({ data }) => {
             <div className="w-full md:w-2/3">
                 <BoxCard className="md:flex p-5 md:p-8 gap-8 md:h-80">
                     <div>
-                        <img src={image} className="rounded-xl h-full w-full md:w-auto"/>
+                        <img src="/poolvoucher.png" className="rounded-xl h-full w-full md:w-auto"/>
                     </div>
                     <div className="mt-5 md:mt-0 flex-1 flex flex-col justify-between">
                         <p className="text-primary font-bold text-lg md:text-xl">{ title }</p>
@@ -162,10 +162,10 @@ const Card = ({ data }) => {
                     <p className="text-primary text-lg md:text-xl font-bold mb-3">Random rewards</p>
                     <p className="text-white mb-3">Stake to claim one of the rewards</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
-                        <img src="/images/vc_50.png"/>
-                        <img src="/images/vc_100.png"/>
-                        <img src="/images/vc_200.png"/>
-                        <img src="/images/vc_300.png"/>
+                        <img src="/50k.png"/>
+                        <img src="/100k.png"/>
+                        <img src="/200k.png"/>
+                        <img src="/300k.png"/>
                     </div>
                 </BoxCard>
             </div>
