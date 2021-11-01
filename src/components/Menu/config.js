@@ -5,16 +5,6 @@ const config =  (t) => [
     href: "/",
   },
   {
-    label: t('Bounty NFT'),
-    icon: "BountyIcon",
-    href: "/bounty",
-  },
-  {
-    label: "Mint Gold NFT",
-    icon: "StakeIcon",
-    href: "/mint",
-  },
-  {
     label: t('Buy Token'),
     icon: "TradeIcon",
     href: "/swap",
@@ -28,6 +18,16 @@ const config =  (t) => [
     label: "Pool",
     icon: "StakeIcon",
     href: "/pools",
+  },
+  {
+    label: t('Bounty NFT'),
+    icon: "BountyIcon",
+    href: "/bounty",
+  },
+  {
+    label: "Mint Gold NFT",
+    icon: "StakeIcon",
+    href: "/mint",
   },
   {
     label: "Pool Voucher NFT",

@@ -79,7 +79,7 @@ const UserBlock = () => {
                 handleClose
             }>
               <MenuLink style={{width:'100%', height: '100%'}} href="/my-account">
-                My account
+                My Asset
               </MenuLink>
             </MenuItem>
             <Divider sx={{borderColor:'#454545'}} />
