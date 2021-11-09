@@ -66,6 +66,12 @@ export const fetchFarmUserDataAsync = (account, farm) => async (dispatch) => {
   }
 }
 
+export const updateUserStakingBalance = (account, pid) => async (dispatch) => {
+  const farm = farmsConfig.find((farm) => farm.pid === pid)
+  const tokenBalance = await fetchFarmUserTokenBalance(account, farm.lpAddress)
+  dispatch(updateFarmsUserData({ pid: farm.pid, field: 'stakingTokenBalance', value: tokenBalance }))
+}
+
 // Actions
 export const { setFarmsData, setUserData } = farmsSlice.actions
 export default farmsSlice.reducer

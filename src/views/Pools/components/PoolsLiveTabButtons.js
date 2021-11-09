@@ -7,23 +7,19 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   
-  padding: 10px;
+  margin: 10px;
 
   a {
     padding-left: 12px;
     padding-right: 12px;
   }
-
-  ${({theme}) => theme.mediaQueries.sm} {
-    margin-left: 16px;
-  }
 `;
 
 const Tab = styled.div`
-  background: ${ ({theme, isActive}) => isActive ? theme.colors.secondary : theme.colors.tertiary };
-  color: ${ ({theme, isActive}) => isActive ? theme.colors.invertedContrast : theme.colors.text };
+  background: ${ ({theme, isActive}) => isActive ? '#FFC247' : 'rgba(255, 255, 255, .2)' };
+  color: ${ ({theme, isActive}) => isActive ? '#000' : '#fff' };
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   transform: ${ ({isActive, isRight})=> isActive 
           ? isRight 
                   ? 'translate(0,0)' 
@@ -33,6 +29,7 @@ const Tab = styled.div`
                   : 'translate(10px,0)'
            };
   cursor: pointer;
+  font-family: SFProTextBold
 `
 
 const PoolsLiveTabButtons = ({onChange, tab}) => {
@@ -61,4 +58,3 @@ PoolsLiveTabButtons.propTypes = {
 };
 
 export default PoolsLiveTabButtons;
-

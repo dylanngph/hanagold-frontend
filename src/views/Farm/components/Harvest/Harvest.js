@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js';
 import Flex from 'components/Box/Flex';
 import Button from 'components/Button/Button';
+import {Box} from '@mui/material'
 import Card from 'components/Card/Card';
 import CardLogo from 'components/Card/CardLogo';
 import Text from 'components/Text/Text';
@@ -32,13 +33,13 @@ const Harvest = ({farm, earnings}) => {
   const [pendingTx, setPendingTx] = useState(false);
   const {onHarvest} = useHarvest(pid, address.masterChef);
 
-  const usdTokenEarning = earnings ? new BigNumber(getFullDisplayBalance(earnings)).times(farm.earningTokenPrice).toNumber() : 0;
+  const usdTokenEarning = earnings ? new BigNumber(getFullDisplayBalance(earnings, 6)).times(farm.earningTokenPrice).toNumber() : 0;
 
   const handleHarvest = useCallback(async () => {
     try {
       setPendingTx(true);
       await onHarvest();
-      toastSuccess('Harvested', `Your LTD earnings have been sent to your wallet!`);
+      toastSuccess('Harvested', `Your token earnings have been sent to your wallet!`);
       dispatch(fetchFarmUserDataAsync(account, farm));
       setPendingTx(false);
     } catch (e) {
@@ -50,26 +51,38 @@ const Harvest = ({farm, earnings}) => {
   }, [account, dispatch, farm, onHarvest, toastError, toastSuccess]);
 
   return (
-      <Card>
-        <Wrapper
+      <>
+        {/* <Wrapper
             justifyContent="space-between"
             flexDirection="column"
         >
           <div>
-            <CardLogo src1="/tokens/ltd.png"/>
-            <Value
-                color="secondary"
-                fontSize="32px"
-                value={account ? getBalanceNumber(earnings) : 0}
-            />
-            <Value
-                fontSize="14px"
-                prefix="~"
-                value={account ? usdTokenEarning : 0}
-                decimals={2}
-                unit=" USD"
-            />
-            <Text>LTD Earned</Text>
+            <div style={{
+              padding: '20px',
+              backgroundColor: '#FFC247',
+              borderTopLeftRadius: '8px',
+              borderTopRightRadius: '8px'
+            }}>
+              <CardLogo src1="/tokens/ltd.png"/>
+            </div>
+            <div  style={{
+              padding: '20px',
+            }}>
+              <Value
+                  color="secondary"
+                  fontSize="32px"
+                  value={account ? getBalanceNumber(earnings) : 0}
+              />
+              <Value
+                  color="primary"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenEarning : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+              <Text color="primary">LTD Earned</Text>
+            </div>
           </div>
           {account ? (
               <Button
@@ -86,10 +99,51 @@ const Harvest = ({farm, earnings}) => {
                   width="100%"
               />
           )}
-        </Wrapper>
-      </Card>
+        </Wrapper> */}
+        <ParameterSection>
+          <Box display="flex" flexDirection="column" textAlign="left">
+            <Text bold color="primary">HNG Earn:</Text>
+            <Box>
+              <Value
+                  color="primary"
+                  fontSize="20px"
+                  value={account ? getBalanceNumber(earnings, 6) : 0}
+                  decimals={3}
+              />
+              <Value
+                  color="rgba(255,255,255, .5)"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenEarning : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+            </Box>
+          </Box>
+          <Box display= "flex" alignItems="center">
+            <HarvestButton
+                  mt="20px"
+                  width="100%"
+                  disabled={pendingTx || earnings.eq(new BigNumber(0))}
+                  onClick={handleHarvest}
+              >
+                {pendingTx ? 'Collecting' : 'Harvest'}
+              </HarvestButton>
+          </Box>
+        </ParameterSection>
+      </>
   );
 };
+const ParameterSection = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px
+`
+const HarvestButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: #000;
+  border-radius: 4px;
+`
 
 Harvest.propTypes = {
   farm: PropTypes.object.isRequired,

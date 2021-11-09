@@ -1,30 +1,28 @@
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
 
-const WrapperCard = styled.div`
-  flex: 1;
-  background: ${(props) => props.theme.card.background};
-  border-radius: ${({ theme, isPromotedFarm }) => (isPromotedFarm ? '31px' : theme.radii.card)};
-  box-shadow: 0px 1px 4px rgba(25, 19, 38, 0.15);
-  padding: 24px;
-  position: relative;
-  text-align: center;
-  margin: 0 20px;
-  color: ${ ({theme}) => theme.colors.text };
-`
-
-const Card = ({ children, ...props }) => {
+const Card = ({ children, className, color, minWidth, minHeight, ...props }) => {
   return (
-    <WrapperCard
+    <div
       {...props}
+      className={classNames(className, 'rounded-lg bg-blue1 shadow-lg')}
+      style={{
+        ...(minWidth && { minWidth: minWidth }),
+        ...(minHeight && { minHeight: minHeight }),
+        backgroundColor: color === 'primary' ? 'var(--color-primary)' : '',
+      }}
     >
       {children}
-    </WrapperCard>
+    </div>
   )
 }
 
 Card.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  minWidth: PropTypes.number,
+  minHeight: PropTypes.number,
 }
 
 export default Card

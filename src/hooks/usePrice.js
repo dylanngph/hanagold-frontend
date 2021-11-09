@@ -2,10 +2,10 @@ import address from 'constants/contracts'
 import { usePrices } from 'store/hooks'
 import { getParameterCaseInsensitive } from 'utils/index'
 
-export const useKscPrice = () => {
+export const usePrimaryPrice = () => {
   const prices = usePrices()
 
-  return getParameterCaseInsensitive(prices, address.ksc)
+  return getParameterCaseInsensitive(prices, address.hng)
 }
 
 export const usePriceByTokenAddress = (address) => {

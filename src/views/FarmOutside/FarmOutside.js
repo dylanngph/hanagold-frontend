@@ -12,11 +12,12 @@ import Harvest from 'views/FarmOutside/components/Harvest/Harvest';
 const WrapperFlex = styled(Flex)`
   margin-top: 18px;
   flex-wrap: wrap;
-
+  
   > div {
     min-width: 300px;
     min-height: 320px;
     margin-bottom: 40px;
+    margin-right: 20px;
   }
 `;
 
@@ -30,7 +31,7 @@ const FarmOutside = () => {
   return (
       <Page>
         <PageHeader
-            logo="/logo.png"
+            logo="/hng-logo.png"
             title={`Deposit ${lpTokenName} Tokens and earn ${farm.earningToken.symbol}`}
         />
         <WrapperFlex justifyContent="center">

@@ -6,13 +6,12 @@ const getBackgroundColor = ({ theme, variant }) => {
 };
 
 const StyledButtonMenu = styled.div`
-  background-color: ${getBackgroundColor};
+  background: rgba(255,255,255,.2);
   border-radius: 40px;
   display: inline-flex;
-  padding: 4px;
 
   button{
-    border-radius: 28px;
+    border-radius: 4px;
   }
   
   & > button + button,

@@ -166,10 +166,6 @@ export function useMultipleContractSingleData(addresses, contractInterface, meth
   )
 
   const results = useCallsData(calls, options)
-
-  console.log('results');
-  console.log(results);
-
   const latestBlockNumber = useBlockNumber()
 
   return useMemo(() => {

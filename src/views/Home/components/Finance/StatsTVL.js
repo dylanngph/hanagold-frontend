@@ -8,7 +8,7 @@ const StatsTvl = () => {
 
   return (
       <CardFinance>
-        <Text textAlign="center" fontSize="30px">Total Value Locked</Text>
+        <Text textAlign="center" fontSize="30px" color="textWhite">Total Value Locked</Text>
         <Value
             mt="3"
             mb="3"
@@ -20,7 +20,7 @@ const StatsTvl = () => {
             value={totalValueLocked.toNumber()}
             decimals={2}
         />
-        <Text textAlign="center" bold fontSize="20px">Across all farming pairs and stakings</Text>
+        <Text textAlign="center" bold fontSize="20px" color="textWhite">Across all farming pairs and stakings</Text>
       </CardFinance>
   );
 };

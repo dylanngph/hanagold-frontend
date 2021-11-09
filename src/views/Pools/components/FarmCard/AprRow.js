@@ -4,7 +4,7 @@ import Flex from 'components/Box/Flex';
 import useModal from 'components/Modal/useModal';
 import Text from 'components/Text/Text';
 import Value from 'components/Value/Value';
-import { useKscPrice } from 'hooks/usePrice';
+import { usePrimaryPrice } from 'hooks/usePrice';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { tokenEarnedPerThousandDaily } from 'utils/index';
@@ -24,11 +24,11 @@ const StyledFlex = styled(Flex)`
 `;
 
 const AprRow = ({farm}) => {
-  const kscPrice = useKscPrice()
+  const primaryPrice = usePrimaryPrice()
 
   const [onPresentApyModal] = useModal(
       <ApyCalculatorModal
-          tokenPrice={kscPrice}
+          tokenPrice={primaryPrice}
           data={farm}
           tokenEarnedPerThousandDaily={tokenEarnedPerThousandDaily(farm.stakedTvl, farm.apr)}
           isFarm

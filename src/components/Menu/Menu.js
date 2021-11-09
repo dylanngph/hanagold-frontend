@@ -1,17 +1,18 @@
 import UikitMenu from 'components/Menu/UikitMenu';
 import useKardiachain from 'hooks/useKardiachain';
-import { useKscPrice } from 'hooks/usePrice';
+import { usePriceByTokenAddress } from 'hooks/usePrice';
 import { languageList } from 'config/localization/languages'
 import { useTranslation } from 'contexts/Localization/index'
 import useTheme from 'hooks/useTheme'
 import config from './config'
+import address from '../../constants/contracts';
 
 const Menu = (props) => {
   const { isDark, toggleTheme } = useTheme()
   const {account, onConnect, onLogout} = useKardiachain()
   const { currentLanguage, setLanguage, t } = useTranslation()
-  const kscPrice = useKscPrice()
-
+  const hngPrice = usePriceByTokenAddress(address.hng)
+  
   return (
     <UikitMenu
       account={account}
@@ -22,7 +23,7 @@ const Menu = (props) => {
       currentLang={currentLanguage.code}
       langs={languageList}
       setLang={setLanguage}
-      tokenPriceUsd={kscPrice}
+      tokenPriceUsd={hngPrice}
       links={config(t)}
       profile={null}
       {...props}

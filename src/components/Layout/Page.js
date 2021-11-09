@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
-import { useKscPrice } from 'hooks/usePrice';
+import { usePriceByTokenAddress } from 'hooks/usePrice';
+import address from 'constants/contracts'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { Helmet } from 'react-helmet-async'
@@ -8,16 +9,18 @@ import { DEFAULT_META, getCustomMeta } from 'config/meta'
 import Container from './Container'
 
 const StyledPage = styled(Container)`
-  min-height: calc(100vh - 74px);
-  padding: 0px;
+  min-height: 100vh;
   color: #fff;
-  background-color: #24262D;
+  background-color: #16171B;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-  padding: 30px;
+  padding: 58px 20px;
   
+  ${({ theme }) => theme.mediaQueries.xs} {
+    padding-top: 100px;
+  }
   ${({ theme }) => theme.mediaQueries.sm} {
     padding-top: 24px;
     padding-bottom: 24px;
@@ -26,6 +29,8 @@ const StyledPage = styled(Container)`
   ${({ theme }) => theme.mediaQueries.lg} {
     padding-top: 32px;
     padding-bottom: 32px;
+    padding-left: 150px;
+    padding-right: 150px;
   }
 `
 
@@ -33,7 +38,7 @@ const PageMeta = () => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
 
-  const kscPriceUsd = new BigNumber(useKscPrice())
+  const kscPriceUsd = new BigNumber(usePriceByTokenAddress(address.hng))
   const cakePriceUsdDisplay = kscPriceUsd.gt(0)
     ? `$${kscPriceUsd.toNumber().toLocaleString(undefined, {
         minimumFractionDigits: 3,

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const WrapperCard = styled.div`
   flex: 1;
-  background: #fff;
+  background: linear-gradient(270.15deg, rgb(255 255 248 / 20%) 0.13%,rgb(31 31 31) 99.88%);
   border-radius: 14px;
-  padding: 35px;
+  padding: 30px;
   position: relative;
   margin: 10px 20px;
   min-width: 300px;

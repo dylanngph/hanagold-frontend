@@ -12,7 +12,7 @@ const withAuthFarmOutside = (Component) => (props) => {
   if (!farm)
     return (
         <div className="container text-center  mx-auto px-3">
-          <PageHeader logo="/logo.png" />
+          <PageHeader logo="/hng-logo.png" />
           <Text>Not found</Text>
           <Button className="mx-auto" onClick={() => history.push('/farms')}>
             Back

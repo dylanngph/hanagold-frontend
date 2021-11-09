@@ -37,10 +37,8 @@ const getOpacity = ({ $isLoading = false }) => {
 const StyledButton = styled.button`
   align-items: center;
   border: 0;
-  border-radius: 45px;
-  box-shadow: 0px -1px 0px 0px rgba(14, 14, 44, 0.4) inset;
+  border-radius: 4px;
   cursor: pointer;
-  display: inline-flex;
   font-family: inherit;
   font-size: 16px;
   font-weight: 600;
@@ -50,14 +48,6 @@ const StyledButton = styled.button`
   opacity: ${getOpacity};
   outline: 0;
   transition: background-color 0.2s;
-
-  &:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-    opacity: 0.65;
-  }
-
-  &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-    opacity: 0.85;
-  }
   
   ${getDisabledStyles}
   ${variant({

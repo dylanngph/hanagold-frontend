@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import Flex from 'components/Box/Flex';
+import {Box} from '@mui/material'
 import IconButton from 'components/Button/IconButton';
 import CardLogo from 'components/Card/CardLogo';
 import CurrencyModal from 'components/CurrencyModal/CurrencyModal';
@@ -96,36 +97,48 @@ const Stake = ({farm, lpTokenName, userData}) => {
 
   return (
       <>
-        <Card>
+        {/* <Card>
           <Wrapper
               justifyContent="space-between"
               flexDirection="column"
           >
             <div>
-              {
-                farm?.token0?.symbol
-                  ?  <CardLogo
-                        src1={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
-                        src2={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
-                    />
-                    :  <CardLogo
-                        src1={`/tokens/${farm?.symbol?.toLowerCase()}.png`}
-                    />
-              }
-              <Value
-                  color="secondary"
-                  fontSize="32px"
-                  value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
-                  decimals={4}
-              />
-              <Value
-                  fontSize="14px"
-                  prefix="~"
-                  value={account ? usdTokenStaking : 0}
-                  decimals={2}
-                  unit=" USD"
-              />
-              <Text>{lpTokenName} Tokens Staked</Text>
+              <div style={{
+              padding: '20px',
+              backgroundColor: '#FFC247',
+              borderTopLeftRadius: '8px',
+              borderTopRightRadius: '8px'
+            }}>
+                {
+                  farm?.token0?.symbol
+                    ?  <CardLogo
+                          src1={`/tokens/${farm?.token0?.symbol?.toLowerCase()}.png`}
+                          src2={`/tokens/${farm?.token1?.symbol?.toLowerCase()}.png`}
+                      />
+                      :  <CardLogo
+                          src1={`/tokens/${farm?.symbol?.toLowerCase()}.png`}
+                      />
+                }
+              </div>
+              <div style={{
+              padding: '20px',
+            }}>
+                <Value
+                    color="secondary"
+                    fontSize="32px"
+                    value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
+                    decimals={4}
+                />
+                <Value
+                    color="primary"
+                    fontSize="14px"
+                    prefix="~"
+                    value={account ? usdTokenStaking : 0}
+                    decimals={2}
+                    unit=" USD"
+                />
+                <Text color="primary">{lpTokenName} Tokens Staked</Text>
+              </div>
             </div>
             {account ? (
                 userData.userDataLoaded
@@ -170,11 +183,86 @@ const Stake = ({farm, lpTokenName, userData}) => {
                 />
             )}
           </Wrapper>
-        </Card>
+        </Card> */}
+
+        <ParameterSection className="flex flex-wrap">
+          <Box display="flex" flexDirection="column" textAlign="left">
+            <Text bold color="primary">Token Earn:</Text>
+            <Box>
+              <Value
+                color="primary"
+                fontSize="20px"
+                value={account ? getBalanceNumber(stakedBalance, farm.decimals) : 0}
+                decimals={4}
+              />
+              <Value
+                  color="rgba(255,255,255, .5)"
+                  fontSize="14px"
+                  prefix="~"
+                  value={account ? usdTokenStaking : 0}
+                  decimals={2}
+                  unit=" USD"
+              />
+            </Box>
+          </Box>
+          <Box display= "flex" alignItems="center">
+            {account ? (
+              userData.userDataLoaded
+                  ? isApproved ? (
+                      <Flex alignItems="center" justifyContent="center">
+                        <Button
+                            mt="20px"
+                            mr="10px"
+                            style={{flex: 1}}
+                            disabled={stakedBalance.eq(new BigNumber(0))}
+                            onClick={onPresentUnstakeModal}
+                        >
+                          <span className="text-black">Unstake</span>
+                        </Button>
+                        <IconButton
+                            onClick={onPresentStakeModal}
+                            mt="20px"
+
+                        >
+                          <Text color="black" fontSize="32px" bold>+</Text>
+                        </IconButton>
+                      </Flex>
+                  ) : (
+                      <Button
+                          width="100%"
+                          mt="20px"
+                          disabled={requestedApproval}
+                          onClick={handleApprove}
+                      >
+                        <span className="text-black">Approve Contract</span>
+                      </Button>
+                  )
+                  : <Button
+                      width="100%"
+                      mt="20px"
+                      disabled
+                  >...</Button>
+          ) : (
+              <UnlockButton
+                  mt="20px"
+                  width="100%"
+              />
+            )}
+          </Box>
+        </ParameterSection>
       </>
   );
 };
-
+const ParameterSection = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px
+`
+const HarvestButton = styled(Button)`
+  background-color: #31D0AA;
+  color: #000;
+  border-radius: 4px;
+`
 Stake.propTypes = {
   farm: PropTypes.object.isRequired,
   lpTokenName: PropTypes.string.isRequired,

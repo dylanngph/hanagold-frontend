@@ -33,7 +33,6 @@ export const fetchFarmUser = async (account, farm) => {
 
   const [[allowance], tokenBalance] = await multicall(erc20Abi, callsErc)
   const [stakedBalance, earnings] = await multicall(masterChefAbi, callsMasterChef)
-
   return {
     allowance: new BigNumber(allowance._hex).toJSON(),
     tokenBalance: new BigNumber(tokenBalance).toJSON(),

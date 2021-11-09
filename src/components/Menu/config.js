@@ -1,4 +1,3 @@
-
 const config =  (t) => [
   {
     label: t('Home'),
@@ -6,17 +5,12 @@ const config =  (t) => [
     href: "/",
   },
   {
-    label: t('LaunchPad'),
-    icon: "ExchangeIcon",
-    href: "#",
+    label: t('Buy Token'),
+    icon: "TradeIcon",
+    href: "/swap",
   },
   {
-    label: t('Trade'),
-    icon: "ExchangeIcon",
-    href: "https://kaidex.io/exchange",
-  },
-  {
-    label: ('Farms'),
+    label: t('Farms'),
     icon: "FarmIcon",
     href: "/farms",
   },
@@ -25,6 +19,36 @@ const config =  (t) => [
     icon: "StakeIcon",
     href: "/pools",
   },
+  {
+    label: t('Bounty NFT'),
+    icon: "BountyIcon",
+    href: "/bounty",
+  },
+  {
+    label: "Mint Gold NFT",
+    icon: "StakeIcon",
+    href: "/mint",
+  },
+  {
+    label: "Pool Voucher NFT",
+    icon: "PoolNftIcon",
+    href: "/pool-nft",
+  },
+  {
+    label: t('LaunchPad'),
+    icon: "ExchangeIcon",
+    href: "/launchpad",
+  },
+  {
+    label: t("NFT Market Place"),
+    icon: "MarketPlaceIcon",
+    href: "/marketplace"
+  },
+  {
+    label: t("Info"),
+    icon: "InfoIcon",
+    href: "/info"
+  }
   // {
   //   label: "Repo",
   //   icon: "RepoIcon",

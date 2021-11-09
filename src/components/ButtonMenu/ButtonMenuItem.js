@@ -4,11 +4,7 @@ import Button from "../Button/Button";
 import { variants } from "../Button/types";
 
 const InactiveButton = styled(Button)`
-  background-color: transparent;
   color: ${({ theme, colorKey }) => theme.colors[colorKey]};
-  &:hover:not(:disabled):not(:active) {
-    background-color: transparent;
-  }
 `;
 
 const ButtonMenuItem  = ({

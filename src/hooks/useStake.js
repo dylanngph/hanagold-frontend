@@ -10,7 +10,6 @@ const useStake = (pid, masterChefAddress) => {
     async (amount, decimals) => {
       const masterChefContract = getMasterChefContract()
       const txHash = await stake(masterChefContract, masterChefAddress, pid, amount, account, decimals)
-      console.log(txHash)
     },
     [account, masterChefAddress, pid],
   )
@@ -25,7 +24,6 @@ export const useSousStake = (poolAddress) => {
     async (amount, decimals) => {
       const souschefContract = getSouschefContract()
       const txHash = await sousStake(souschefContract, poolAddress, amount, decimals, account)
-      console.log(txHash)
     },
     [account, poolAddress],
   )

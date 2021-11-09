@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const ResetCSS = createGlobalStyle`
   /* prettier-ignore */
   html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  h1, h2, h3, h4, h5, h6, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
   del, dfn, em, img, ins, kbd, q, s, samp,
   small, strike, strong, sub, sup, tt, var,
@@ -64,7 +64,7 @@ const ResetCSS = createGlobalStyle`
     box-sizing: border-box;
   }
   * {
-    font-family: 'Kanit', sans-serif;
+    font-family: 'SFProText', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

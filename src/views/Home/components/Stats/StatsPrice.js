@@ -1,28 +1,28 @@
 import Flex from 'components/Box/Flex';
-import { useKaiPrice, useKscPrice } from 'hooks/usePrice';
+import { useKaiPrice, usePrimaryPrice } from 'hooks/usePrice';
 import CardStats, { StyledText, StyledTitle, StyledValue } from 'views/Home/components/Stats/CardStats';
 
 const StatsPrice = () => {
-  const kscPrice = useKscPrice();
+  const hngPrice = usePrimaryPrice();
   const kaiPrice = useKaiPrice() || 0;
-  const ltdKaiPrice = Number.isNaN(kscPrice / kaiPrice) ? 0 : kscPrice / kaiPrice;
+  const pmrKaiPrice = Number.isNaN(hngPrice / kaiPrice) ? 0 : hngPrice / kaiPrice;
 
   return (
       <CardStats isBorderColor>
-        <StyledTitle>LTD Price</StyledTitle>
+        <StyledTitle color="text">HNG Price</StyledTitle>
         <Flex justifyContent="center">
           <StyledValue
-              color="secondary"
-              value={kscPrice || 0}
+              color="text"
+              value={hngPrice || 0}
           />
-          <StyledText ml="1" color="secondary">
+          <StyledText ml="1" color="text">
             USD
           </StyledText>
         </Flex>
         <Flex justifyContent="center">
-          <StyledValue value={ltdKaiPrice} color="secondary" decimals={2} />
+          <StyledValue value={pmrKaiPrice} color="text" decimals={2} />
           <StyledText
-              color="secondary"
+              color="text"
               fontSize="50px"
               ml="1">
             KAI

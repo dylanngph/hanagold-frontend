@@ -10,9 +10,9 @@ import {ClockIcon} from '@heroicons/react/solid';
 import PropTypes from 'prop-types'
 
 const StyledFlex = styled(Flex)`
-  border-radius: 43px;
-  padding: 15px 21px;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  // border-radius: 43px;
+  // padding: 15px 21px;
+  // border: 1px solid ${({ theme }) => theme.colors.secondary};
     justify-content: space-between;
   color: ${({theme}) => theme.colors.text};
   margin-top: 14px;
@@ -42,25 +42,25 @@ const BlockCountdown = ({ pool }) => {
     if (completed) return null
 
     return (
-      <>
+      <span className="text-white">
         {days > 0 ? `${zeroPad(days)}d-` : ''}
         {zeroPad(hours)}h-{zeroPad(minutes)}m-{zeroPad(seconds)}s
-      </>
+      </span>
     )
   }
 
   return (
     <>
       {shouldShowBlockCountdown && (
-        <StyledFlex>
-          <Text>{hasPoolStarted ? 'Rewards end in' : 'Rewards start in'}</Text>
+        <StyledFlex className="px-4">
+          <Text color="textWhite">{hasPoolStarted ? 'Rewards end in' : 'Rewards start in'}</Text>
           <Flex alignItems="center">
             {(blocksRemaining || blocksUntilStart) && currentBlock ? (
-              <Countdown zeroPadTime={2} date={timer} renderer={renderCountdown} />
+              <Countdown color="textWhite" zeroPadTime={2} date={timer} renderer={renderCountdown} />
             ) : (
               '...'
             )}
-            <ClockIcon width="18px" />
+            <ClockIcon color="white" width="18px" />
           </Flex>
         </StyledFlex>
       )}

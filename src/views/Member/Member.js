@@ -20,7 +20,7 @@ function Member() {
               margin: '0 auto'
             }}
             fontSizeTitle="30px"
-            logo="/logo.png"
+            logo="/hng-logo.png"
             title="Hệ thống partner và 
             level user của Livetrade"
         />

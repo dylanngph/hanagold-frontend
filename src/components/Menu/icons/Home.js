@@ -1,10 +1,17 @@
 import React from "react";
-const Icon = (props) => {
+
+function Icon() {
   return (
-  <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.33684 0L8.02895 0.142105L0.45 3.55263L0 3.74211V13.3579L8.33684 18L16.6737 13.3579V3.74211L16.2237 3.55263L8.64474 0.142105L8.33684 0ZM8.33684 1.65789L14.1632 4.26316L8.33684 7.17632L2.51053 4.26316L8.33684 1.65789ZM1.51579 5.47105L7.57895 8.50263V15.8211L1.51579 12.4579V5.47105ZM15.1579 5.47105V12.4579L9.09474 15.8211V8.50263L15.1579 5.47105Z" fill="#202224"/>
-  </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="21"
+      height="17"
+      fill="currentColor"
+      viewBox="0 0 21 17"
+    >
+      <path fill="currentColor" d="M8.972 17v-6h4v6h5V9h3l-10-9-10 9h3v8h5z"></path>
+    </svg>
   );
-};
+}
 
 export default Icon;

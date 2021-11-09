@@ -5,21 +5,23 @@ import Value from 'components/Value/Value';
 import { useTranslation } from 'contexts/Localization';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {Box} from '@mui/material'
 
 const Wrapper = styled.div`
-  padding: 13px;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
 `;
 
 const StyledLinkExternal = styled(LinkExternal)`
   font-weight: 400;
-  justify-content: center;
-
+  color: #fff;
   &:hover {
-    color: ${({theme}) => theme.colors.secondary};
+    color: ${({theme}) => theme.colors.binance};
   }
 `;
-
+const PairSection = styled(Flex)`
+  justify-content: space-between;
+  margin-bottom: 5px
+`
 const DetailsSection = ({
   isFinished,
   linkProject,
@@ -28,53 +30,41 @@ const DetailsSection = ({
   addLiquidityUrl,
   lpLabel,
   totalStaked,
-  stakingToken
+  stakingToken,
+  stakedTvl
 }) => {
   const {t} = useTranslation();
   return (
       <Wrapper>
+        <PairSection>
+          <Box>Total Value Locked:</Box>
+          <Box color="#85D7B6">
+            <Value bold color={ isFinished ? 'text' : 'secondary' } value={Number.isNaN(stakedTvl) ? 0 : stakedTvl} prefix="$"/>
+          </Box>
+        </PairSection>
         {
-          stakingToken && <Flex justifyContent="center">
-            <Text
-                bold
-                color={
-                  isFinished ? 'text' : 'secondary'
-                }
-                  mr="1"
-            >
-              Total Staked: </Text>
-            <Value
-                bold
-                mr="1"
-                color={
-                  isFinished ? 'text' : 'secondary'
-                } value={Number.isNaN(totalStaked) ? 0 : totalStaked}/> <Text
-              bold
-              color={
-            isFinished ? 'text' : 'secondary'
-          }>{stakingToken.symbol}</Text>
-          </Flex>
+          stakingToken && <div className="flex justify-between">
+            <Text fontSize="15px" color={ isFinished ? 'text' : 'secondary' }>Total Staked: </Text>
+            <div className="flex">
+              <Value color={ isFinished ? 'text' : 'secondary' } value={Number.isNaN(totalStaked) ? 0 : totalStaked}/>
+              <Text color={ isFinished ? 'text' : 'secondary'}>{ stakingToken.symbol }</Text>
+            </div>
+          </div>
         }
-        {
-          lpLabel && (
-              <StyledLinkExternal href={addLiquidityUrl}>{lpLabel}</StyledLinkExternal>
-          )
-        }
-        {
-          linkProject && (
-              <StyledLinkExternal href={linkProject}>View Project Site</StyledLinkExternal>
-          )
-        }
+        <PairSection>
+          {
+            linkExchange && (
+                <StyledLinkExternal href={addLiquidityUrl}>{ lpLabel }</StyledLinkExternal>
+            )
+          }
+          <StyledLinkExternal href='#'>See Pair Infor</StyledLinkExternal>
+        </PairSection>
         {
           kaiAddress && (
               <StyledLinkExternal href={kaiAddress}>{t('View Contract')}</StyledLinkExternal>
           )
         }
-        {
-          linkExchange && (
-              <StyledLinkExternal href={linkExchange}>View Exchange</StyledLinkExternal>
-          )
-        }
+
       </Wrapper>
   );
 };

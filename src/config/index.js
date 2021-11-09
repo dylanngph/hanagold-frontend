@@ -15,9 +15,11 @@ export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(18)
 export const RPC_ENDPOINT = 'https://rpc.kardiachain.io'
 export const GAS_LIMIT_DEFAULT = 10000000
 export const TRADING_FEE = 0.25
-export const TOTAL_SUPPLY = 100000
-export const TOTAL_CIRCULATION = 100000
+export const TOTAL_SUPPLY = 30000000
+export const TOTAL_CIRCULATION = 30000000
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+
+export const WALLET_COMPANY = '0xb253d0e6d2Fa9f6d6fBa523Fc72732C3d32B8270'
 
 export const socials = [
   {

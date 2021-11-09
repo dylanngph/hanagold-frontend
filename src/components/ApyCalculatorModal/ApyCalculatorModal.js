@@ -48,17 +48,17 @@ const BulletList = styled.ul`
 `;
 
 const ApyCalculatorModal = ({
-                              onDismiss,
-                              earningTokenSymbol = 'LTD',
-                              apr,
-                              tokenPrice,
-                              data,
-                              roundingDecimals = 2,
-                              compoundFrequency = 1,
-                              performanceFee = 0,
-                              tokenEarnedPerThousandDaily,
-                              isFarm = false
-                            }) => {
+    onDismiss,
+    earningTokenSymbol = 'HNG',
+    apr,
+    tokenPrice,
+    data,
+    roundingDecimals = 2,
+    compoundFrequency = 1,
+    performanceFee = 0,
+    tokenEarnedPerThousandDaily,
+    isFarm = false
+  }) => {
   const {t} = useTranslation();
 
   const oneThousandDollarsWorthOfToken = 1000 / tokenPrice;

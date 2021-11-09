@@ -7,22 +7,22 @@ import PageHeader from 'components/PageHeader/PageHeader';
 
 function DIPO() {
   return (
-   <Page>
-        <PageHeader
-            styleTitle={{
-              maxWidth: 800,
-              margin: '0 auto'
-            }}
-            fontSizeTitle="30px"
-            logo="images/DIPO_logo.png"
-            title="DIGITAL INITIAL PRIVATE OFFERING"
-            subTitle="Valuable capital for productive projects"
-        />
-        <About></About>
-        <DIPOTabBtn></DIPOTabBtn>
-        <DIPOContent></DIPOContent>
-        <DIPODetails></DIPODetails>
-   </Page>
+    <Page>
+      <PageHeader
+          styleTitle={{
+            maxWidth: 800,
+            margin: '0 auto'
+          }}
+          fontSizeTitle="30px"
+          logo="images/DIPO_hng-logo.png"
+          title="DIGITAL INITIAL PRIVATE OFFERING"
+          subTitle="Valuable capital for productive projects"
+      />
+      <About></About>
+      <DIPOTabBtn></DIPOTabBtn>
+      <DIPOContent></DIPOContent>
+      <DIPODetails></DIPODetails>
+    </Page>
   );
 }
 export default DIPO;

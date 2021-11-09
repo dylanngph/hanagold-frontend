@@ -1,5 +1,5 @@
 import Flex from 'components/Box/Flex';
-import QuestionHelper from 'components/QuestionHelper/QuestionHelper';
+import QuestionHelper from 'components/QuestionHelper';
 import Text from 'components/Text/Text';
 import styled from 'styled-components';
 
