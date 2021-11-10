@@ -7,7 +7,7 @@ const Paginating = (props) => {
   const [pagiData, setPagiData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = perChunk;
-  const pageCount = Math.floor(listData.length / perChunk) + 1;
+  const pageCount = listData.length % perChunk === 0 ? listData.length / perChunk : (Math.floor(listData.length / perChunk) + 1);
   const total = listData.length * limit;
 
   const handlePageChange = (page, e) => {
@@ -35,7 +35,7 @@ const Paginating = (props) => {
   return (
     <div>
       <div className="listPagination grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-5">
-        {pagiData.length > 0
+        {pagiData && pagiData.length > 0
           ? pagiData[currentPage - 1].map((item) => <li key={item}>{item}</li>)
           : null}
       </div>
