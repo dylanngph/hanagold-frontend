@@ -3,8 +3,8 @@ import Text from 'components/Text/Text'
 import Button from 'components/Button/Button';
 import styled from 'styled-components'
 
-export const VoucherCard = ({ data , voucherBalance }) => {
-    const { title, id, image, details, voucherImage } = data
+export const VoucherCard = ({ data , voucherBalance, indexVoucher }) => {
+    const { title, id, image, details, voucherImage } = data;
 
     return(
         <NavLink to={`/bounty-detail/${id}`}>
@@ -12,7 +12,7 @@ export const VoucherCard = ({ data , voucherBalance }) => {
                 <div className="rounded-lg overflow-hidden">
                     <img height="200px" src={voucherImage} width="100%" alt={title} />
                     <CardBody>
-                        <Text color="secondary" bold fontSize="20px" mb="12px">{ title }</Text>
+                        <Text color="secondary" bold fontSize="20px" mb="12px">{ indexVoucher ? `#${indexVoucher} ${title}` : title }</Text>
                         <div>
                         {
                             details.map((d, i) => {
@@ -27,10 +27,10 @@ export const VoucherCard = ({ data , voucherBalance }) => {
                             })
                         }
                         </div>
-                        <StyleTotal className="mt-5 px-2 py-3 flex justify-between">
+                        {/* <StyleTotal className="mt-5 px-2 py-3 flex justify-between">
                             <span className="text-gray-400">Amount</span>
                             <span className="text-primary">{voucherBalance}</span>
-                        </StyleTotal>
+                        </StyleTotal> */}
                     </CardBody>
                 </div>
             </CardWrapper>
@@ -38,7 +38,7 @@ export const VoucherCard = ({ data , voucherBalance }) => {
     )
 }
 
-export const GoldCard = ({ data , goldBalance }) => {
+export const GoldCard = ({ data , goldBalance, indexGold }) => {
     const { title, id, image, totalSupply = 0, contractAddress, whiteList } = data
 
     return(
@@ -47,7 +47,7 @@ export const GoldCard = ({ data , goldBalance }) => {
                 <div className="rounded-lg overflow-hidden">
                     <img height="200px" src={image} width="100%" alt={title} />
                     <CardBody>
-                        <Text color="secondary" bold fontSize="20px" mb="12px">{ title }</Text>
+                        <Text color="secondary" bold fontSize="20px" mb="12px">{ indexGold ? `#${indexGold} ${title}` : title }</Text>
                         <div>
                             <div className="flex gap-2 items-center mb-1">
                                 <svg width={14} height={10} viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,10 +76,10 @@ export const GoldCard = ({ data , goldBalance }) => {
                             })
                         }
                         </div> */}
-                        <StyleTotal className="mt-5 px-2 py-3 flex justify-between">
+                        {/* <StyleTotal className="mt-5 px-2 py-3 flex justify-between">
                             <span className="text-gray-400">Amount</span>
                             <span className="text-primary">{goldBalance}</span>
-                        </StyleTotal>
+                        </StyleTotal> */}
                         {/* <div className="mt-5">
                             <Button className="w-full">
                                 <span className="text-black">Details</span>

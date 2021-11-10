@@ -9,18 +9,23 @@ import useKardiachain from 'hooks/useKardiachain'
 import accountData from 'constants/account'
 import {VoucherCard , GoldCard} from './components/Card/Card'
 import { fetchAccount } from './hooks/fetchAccount'
-
+import Paginating from './components/Paginating'
 
 
 const Account = () => {
-    const [type, setType] = React.useState('ALL')
-    const {account} = useKardiachain()
-    const [accountList, setAccountList] = useState(accountData)
-
-    useEffect(async() => {
+    const [type, setType] = useState('ALL')
+    const {account} = useKardiachain();
+    const [accountList, setAccountList] = useState(accountData);
+    const [listData, setListData] = useState([]);
+    const {balanceOf, voucherBalance, goldBalance, allNft, dataVoucherArr, dataGoldArr } = accountList ?? {}
+    
+    useEffect(() => {
 		if (account) {
-			const data = await fetchAccount(account)
-			setAccountList(data)
+            const getAccount = async() => {
+                const data = await fetchAccount(account);
+                setAccountList(data)
+            }
+			getAccount()
 		}
 	}, [account])
 
@@ -32,11 +37,43 @@ const Account = () => {
         return {account};
     }
 
-    const balanceOf = accountList?.balanceOf
-    const voucherBalance = accountList?.valueVoucher
-    const goldBalance = accountList?.valueGold
-    const allNft = accountList?.totalNft
-       
+    useEffect(() => {
+        let mapArr = []
+        switch (type) {
+            case 'ALL':
+                accountList.voucherData.map((d, i) => {
+                    dataVoucherArr && dataVoucherArr.length > 0 ? dataVoucherArr.map((item) => {
+                        mapArr.push(<VoucherCard voucherBalance={voucherBalance} indexVoucher={item} data={d} key={i} />)
+                    }) :  mapArr.push(<VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
+                  
+                })
+                accountList.mintData.map((d, i) => {
+                    dataGoldArr && dataGoldArr.length > 0 ? dataGoldArr.map((item) => {
+                        mapArr.push(<GoldCard goldBalance={goldBalance} indexGold={item} data={d} key={i} />)
+                    }) : mapArr.push(<GoldCard goldBalance={goldBalance} data={d} key={i} />)
+                })
+                break;
+            case 'BOUNTY':
+                accountList.voucherData.map((d, i) => {
+                    dataVoucherArr && dataVoucherArr.length > 0 ? dataVoucherArr.map((item) => {
+                        mapArr.push(<VoucherCard voucherBalance={voucherBalance} indexVoucher={item} data={d} key={i} />)
+                    }) :  mapArr.push(<VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
+                  
+                })
+                break;
+            case 'GOLD':
+                accountList.mintData.map((d, i) => {
+                    dataGoldArr && dataGoldArr.length > 0 ? dataGoldArr.map((item) => {
+                        mapArr.push(<GoldCard goldBalance={goldBalance} indexGold={item} data={d} key={i} />)
+                    }) : mapArr.push(<GoldCard goldBalance={goldBalance} data={d} key={i} />)
+                })
+                break;
+            default:
+                break;
+        }
+        setListData(mapArr)
+    }, [type, JSON.stringify(dataVoucherArr), JSON.stringify(dataGoldArr)])
+
     return (
         <Wrapper>
             <Box fontSize="30px" fontFamily="SFProTextBold" mb="20px">
@@ -122,25 +159,7 @@ const Account = () => {
                     </MenuItem>
                 ))}
             </CustomTextField>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pt-5">
-			{
-				type === 'ALL' ? 
-                    (
-                        accountList.voucherData.map((d, i) => {
-                            const arr = []
-                            arr.push(<VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
-                            arr.push(accountList.mintData.map((d, i) => <GoldCard goldBalance={goldBalance} data={d} key={i} />))
-                            return arr
-                        })
-                       
-                    )
-                    :
-                type === 'BOUNTY' ?
-                    accountList.voucherData.map((d, i) => <VoucherCard voucherBalance={voucherBalance} data={d} key={i} />)
-                    :
-                    accountList.mintData.map((d, i) => <GoldCard goldBalance={goldBalance} data={d} key={i} />)
-			}
-			</div>
+            <Paginating listData={listData ?? []} perChunk={6} />
         </Wrapper>
     )
 }
